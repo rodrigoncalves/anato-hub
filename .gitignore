@@ -52,3 +52,7 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
+
+# Configuration Files
+configs/database.py
+configs/server.py

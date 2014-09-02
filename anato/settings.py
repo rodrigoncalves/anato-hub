@@ -8,6 +8,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 
+# Importing configuration files
+from configs import database, server
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -16,16 +19,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '&9xskjcm2+ojml$1qi(@o&#qa4yaw)-!#^t7cwyxpg0g6ju0os'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-TEMPLATE_DEBUG = True
-
-ALLOWED_HOSTS = []
-
+SECRET_KEY = server.SECRET_KEY
+DEBUG = server.DEBUG
+TEMPLATE_DEBUG = server.TEMPLATE_DEBUG
+ALLOWED_HOSTS = server.ALLOWED_HOSTS
 
 # Application definition
 
@@ -36,6 +33,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'configs',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -57,8 +56,10 @@ WSGI_APPLICATION = 'anato.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.' + database.DB_ENGINE,
+        'NAME': database.DB_NAME,
+        'USER': database.DB_USER,
+        'PASSWORD': database.DB_PASSWORD,
     }
 }
 
@@ -80,3 +81,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
+
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, "templates"),
+)
