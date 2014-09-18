@@ -34,8 +34,14 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Django libs
+    'django_behave',
+
+    # Project Apps
     'configs',
 )
+
+TEST_RUNNER = 'django_behave.runner.DjangoBehaveTestSuiteRunner'
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -54,14 +60,7 @@ WSGI_APPLICATION = 'anato.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.' + database.DB_ENGINE,
-        'NAME': database.DB_NAME,
-        'USER': database.DB_USER,
-        'PASSWORD': database.DB_PASSWORD,
-    }
-}
+DATABASES = database.DATABASES
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
