@@ -26,11 +26,12 @@ $alert-color: #f04124;
 $success-color: #43AC6A;
 $warning-color: #f08a24;
 $info-color: #a0d3e8;
+$topbar-bg: #26A65B;
 $body-bg: linear-gradient(to right, #eefced, #f9fef9, #eefced);
-$body-font-color: $jet;
+$body-font-color: darken($topbar-bg, 30);
+$header-font-color: darken($primary-color, 20);
 
 // Top-bar Colors
-$topbar-bg: #26A65B;
 $topbar-bg-color: $topbar-bg;
 $topbar-dropdown-bg: $topbar-bg;
 $topbar-dropdown-link-color: $white;

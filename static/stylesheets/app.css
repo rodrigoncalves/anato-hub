@@ -16,9 +16,12 @@
   text-shadow: 3px 3px #239a54;
 }
 
-/* line 1, ../scss/components/login-panel.scss */
-.login-panel {
-  background: #000;
+/* line 12, ../scss/components/_typography.scss */
+.title {
+  text-align: center;
+  text-shadow: 1px 1px ligthen(#336e7b, 10);
+  font-family: "unbpro-regularregular";
+  font-weight: bold;
 }
 
 /* line 347, ../bower_components/foundation/scss/foundation/components/_global.scss */
@@ -84,7 +87,7 @@ body {
 /* line 396, ../bower_components/foundation/scss/foundation/components/_global.scss */
 body {
   background: linear-gradient(to right, #eefced, #f9fef9, #eefced);
-  color: #222222;
+  color: #0a2a17;
   padding: 0;
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
@@ -5581,7 +5584,7 @@ ul.pagination li {
 
 /* Panels */
 /* line 79, ../bower_components/foundation/scss/foundation/components/_panels.scss */
-.panel, .login-panel {
+.panel {
   border-style: solid;
   border-width: 1px;
   border-color: #d8d8d8;
@@ -5591,28 +5594,28 @@ ul.pagination li {
   color: #333333;
 }
 /* line 54, ../bower_components/foundation/scss/foundation/components/_panels.scss */
-.panel > :first-child, .login-panel > :first-child {
+.panel > :first-child {
   margin-top: 0;
 }
 /* line 55, ../bower_components/foundation/scss/foundation/components/_panels.scss */
-.panel > :last-child, .login-panel > :last-child {
+.panel > :last-child {
   margin-bottom: 0;
 }
 /* line 60, ../bower_components/foundation/scss/foundation/components/_panels.scss */
-.panel h1, .login-panel h1, .panel h2, .login-panel h2, .panel h3, .login-panel h3, .panel h4, .login-panel h4, .panel h5, .login-panel h5, .panel h6, .login-panel h6, .panel p, .login-panel p, .panel li, .login-panel li, .panel dl, .login-panel dl {
+.panel h1, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6, .panel p, .panel li, .panel dl {
   color: #333333;
 }
 /* line 67, ../bower_components/foundation/scss/foundation/components/_panels.scss */
-.panel h1, .login-panel h1, .panel h2, .login-panel h2, .panel h3, .login-panel h3, .panel h4, .login-panel h4, .panel h5, .login-panel h5, .panel h6, .login-panel h6 {
+.panel h1, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6 {
   line-height: 1;
   margin-bottom: 0.625rem;
 }
 /* line 69, ../bower_components/foundation/scss/foundation/components/_panels.scss */
-.panel h1.subheader, .login-panel h1.subheader, .panel h2.subheader, .login-panel h2.subheader, .panel h3.subheader, .login-panel h3.subheader, .panel h4.subheader, .login-panel h4.subheader, .panel h5.subheader, .login-panel h5.subheader, .panel h6.subheader, .login-panel h6.subheader {
+.panel h1.subheader, .panel h2.subheader, .panel h3.subheader, .panel h4.subheader, .panel h5.subheader, .panel h6.subheader {
   line-height: 1.4;
 }
 /* line 81, ../bower_components/foundation/scss/foundation/components/_panels.scss */
-.panel.callout, .callout.login-panel {
+.panel.callout {
   border-style: solid;
   border-width: 1px;
   border-color: #cbe4e9;
@@ -5622,32 +5625,32 @@ ul.pagination li {
   color: #333333;
 }
 /* line 54, ../bower_components/foundation/scss/foundation/components/_panels.scss */
-.panel.callout > :first-child, .callout.login-panel > :first-child {
+.panel.callout > :first-child {
   margin-top: 0;
 }
 /* line 55, ../bower_components/foundation/scss/foundation/components/_panels.scss */
-.panel.callout > :last-child, .callout.login-panel > :last-child {
+.panel.callout > :last-child {
   margin-bottom: 0;
 }
 /* line 60, ../bower_components/foundation/scss/foundation/components/_panels.scss */
-.panel.callout h1, .callout.login-panel h1, .panel.callout h2, .callout.login-panel h2, .panel.callout h3, .callout.login-panel h3, .panel.callout h4, .callout.login-panel h4, .panel.callout h5, .callout.login-panel h5, .panel.callout h6, .callout.login-panel h6, .panel.callout p, .callout.login-panel p, .panel.callout li, .callout.login-panel li, .panel.callout dl, .callout.login-panel dl {
+.panel.callout h1, .panel.callout h2, .panel.callout h3, .panel.callout h4, .panel.callout h5, .panel.callout h6, .panel.callout p, .panel.callout li, .panel.callout dl {
   color: #333333;
 }
 /* line 67, ../bower_components/foundation/scss/foundation/components/_panels.scss */
-.panel.callout h1, .callout.login-panel h1, .panel.callout h2, .callout.login-panel h2, .panel.callout h3, .callout.login-panel h3, .panel.callout h4, .callout.login-panel h4, .panel.callout h5, .callout.login-panel h5, .panel.callout h6, .callout.login-panel h6 {
+.panel.callout h1, .panel.callout h2, .panel.callout h3, .panel.callout h4, .panel.callout h5, .panel.callout h6 {
   line-height: 1;
   margin-bottom: 0.625rem;
 }
 /* line 69, ../bower_components/foundation/scss/foundation/components/_panels.scss */
-.panel.callout h1.subheader, .callout.login-panel h1.subheader, .panel.callout h2.subheader, .callout.login-panel h2.subheader, .panel.callout h3.subheader, .callout.login-panel h3.subheader, .panel.callout h4.subheader, .callout.login-panel h4.subheader, .panel.callout h5.subheader, .callout.login-panel h5.subheader, .panel.callout h6.subheader, .callout.login-panel h6.subheader {
+.panel.callout h1.subheader, .panel.callout h2.subheader, .panel.callout h3.subheader, .panel.callout h4.subheader, .panel.callout h5.subheader, .panel.callout h6.subheader {
   line-height: 1.4;
 }
 /* line 83, ../bower_components/foundation/scss/foundation/components/_panels.scss */
-.panel.callout a:not(.button), .callout.login-panel a:not(.button) {
+.panel.callout a:not(.button) {
   color: #336e7b;
 }
 /* line 88, ../bower_components/foundation/scss/foundation/components/_panels.scss */
-.panel.radius, .radius.login-panel {
+.panel.radius {
   border-radius: 3px;
 }
 
@@ -6805,7 +6808,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
-  color: #222222;
+  color: #152e33;
   text-rendering: optimizeLegibility;
   margin-top: 0.2rem;
   margin-bottom: 0.5rem;
@@ -6814,7 +6817,7 @@ h1, h2, h3, h4, h5, h6 {
 /* line 262, ../bower_components/foundation/scss/foundation/components/_type.scss */
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
   font-size: 60%;
-  color: #6f6f6f;
+  color: #428e9f;
   line-height: 0;
 }
 
@@ -6851,7 +6854,7 @@ h6 {
 /* line 276, ../bower_components/foundation/scss/foundation/components/_type.scss */
 .subheader {
   line-height: 1.4;
-  color: #6f6f6f;
+  color: #428e9f;
   font-weight: normal;
   margin-top: 0.2rem;
   margin-bottom: 0.5rem;
@@ -6987,7 +6990,7 @@ abbr,
 acronym {
   text-transform: uppercase;
   font-size: 90%;
-  color: #222222;
+  color: #0a2a17;
   border-bottom: 1px dotted #DDDDDD;
   cursor: help;
 }
@@ -7008,7 +7011,7 @@ blockquote {
 blockquote cite {
   display: block;
   font-size: 0.8125rem;
-  color: #555555;
+  color: #336d7a;
 }
 /* line 406, ../bower_components/foundation/scss/foundation/components/_type.scss */
 blockquote cite:before {
@@ -7017,14 +7020,14 @@ blockquote cite:before {
 /* line 410, ../bower_components/foundation/scss/foundation/components/_type.scss */
 blockquote cite a,
 blockquote cite a:visited {
-  color: #555555;
+  color: #336d7a;
 }
 
 /* line 416, ../bower_components/foundation/scss/foundation/components/_type.scss */
 blockquote,
 blockquote p {
   line-height: 1.6;
-  color: #6f6f6f;
+  color: #428e9f;
 }
 
 /* Microformats */
