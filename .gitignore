@@ -56,3 +56,6 @@ docs/_build/
 # Configuration Files
 configs/database.py
 configs/server.py
+
+# Others
+.sass-cache/
