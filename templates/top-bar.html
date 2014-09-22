@@ -1,0 +1,22 @@
+<div class="stiky">
+    <nav class="top-bar" data-topbar>
+        <ul class="title-area">
+          <li class="name">
+            {% load staticfiles %}
+            <h1><a href="#"><img src="{% static "img/logo-unb.png" %}" alt=""></a></h1>
+          </li>
+          <li class="toggle-topbar menu-icon"><a href="#"><i class="fi-list"></i></a></li>
+        </ul>
+
+      <section class="top-bar-section">
+        <ul class="right">
+          {% if user.is_authenticated %}
+            <li class="active"><a href="#">Sair</a></li>
+          {% else %}
+            <li class="active"><a href="#">Entrar</a></li>
+          {% endif %}
+        </ul>
+
+      </section>
+    </nav>
+</div>
