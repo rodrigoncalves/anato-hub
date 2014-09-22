@@ -17,10 +17,14 @@
 }
 
 /* line 12, ../scss/components/_typography.scss */
+.unbpro-font, .title {
+  font-family: "unbpro-regularregular";
+}
+
+/* line 16, ../scss/components/_typography.scss */
 .title {
   text-align: center;
   text-shadow: 1px 1px ligthen(#336e7b, 10);
-  font-family: "unbpro-regularregular";
   font-weight: bold;
 }
 

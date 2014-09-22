@@ -9,9 +9,13 @@ $header-top-margin: .2rem;
 $header-bottom-margin: .5rem;
 $header-text-rendering: optimizeLegibility;
 
+.unbpro-font {
+    font-family: "unbpro-regularregular";
+}
+
 .title {
+    @extend .unbpro-font;
     text-align: center;
     text-shadow: 1px 1px ligthen($primary-color, 10);
-    font-family: "unbpro-regularregular";
     font-weight: bold;
 }
