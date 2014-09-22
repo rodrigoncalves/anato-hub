@@ -27,7 +27,9 @@ $success-color: #43AC6A;
 $warning-color: #f08a24;
 $info-color: #a0d3e8;
 $topbar-bg: #26A65B;
-$body-bg: linear-gradient(to right, #eefced, #f9fef9, #eefced);
+$body-bg-sides: #f3fcf2;
+$body-bg-center: lighten($body-bg-sides, 45);
+$body-bg: linear-gradient(to right, $body-bg-sides, $body-bg-center, $body-bg-sides);
 $body-font-color: darken($topbar-bg, 30);
 $header-font-color: darken($primary-color, 20);
 
