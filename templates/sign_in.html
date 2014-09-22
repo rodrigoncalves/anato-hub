@@ -12,8 +12,13 @@
             <input type="text" name="username" id="username" placeholder="Usuário">
             <input type="password" placeholder="Senha" name="password" id="password">
             <hr>
-            <button class="postfix">Entrar</button>
+            <input type="button" class="button postfix" name="enter-button" id="enter-button" value="Entrar">
         </form>
     </div>
 
+{% endblock %}
+
+{% block 'footer-scripts' %}
+    {% load staticfiles %}
+        <script src="{% static "js/login.js" %}"></script>
 {% endblock %}
