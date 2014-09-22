@@ -1,0 +1,35 @@
+/*
+Sass::SyntaxError: ".login-panel" failed to @extend ".panel".
+The selector ".panel" was not found.
+Use "@extend .panel !optional" if the extend should be able to fail.
+
+
+Backtrace:
+/home/msfernandes/Dropbox/matheus/projetos/anato-hub/static/scss/components/login-panel.scss:2
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/tree/visitors/extend.rb:65:in `block in check_extends_fired!'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/util/subset_map.rb:106:in `block in each_value'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/util/subset_map.rb:106:in `each'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/util/subset_map.rb:106:in `each_value'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/tree/visitors/extend.rb:50:in `check_extends_fired!'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/tree/visitors/extend.rb:16:in `visit'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/tree/root_node.rb:39:in `css_tree'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/tree/root_node.rb:20:in `render'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/engine.rb:268:in `render'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/plugin/compiler.rb:491:in `update_stylesheet'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/plugin/compiler.rb:209:in `each'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/plugin/compiler.rb:469:in `on_file_changed'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/lib/sass/plugin/compiler.rb:328:in `block in watch'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/vendor/listen/lib/listen/listener.rb:252:in `call'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/vendor/listen/lib/listen/listener.rb:252:in `on_change'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/vendor/listen/lib/listen/listener.rb:290:in `block in initialize_adapter'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/vendor/listen/lib/listen/adapter.rb:254:in `call'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/vendor/listen/lib/listen/adapter.rb:254:in `report_changes'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/vendor/listen/lib/listen/adapter.rb:323:in `poll_changed_directories'
+/var/lib/gems/1.9.1/gems/sass-3.4.5/vendor/listen/lib/listen/adapter.rb:299:in `block in start_poller'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Sass::SyntaxError: \".login-panel\" failed to @extend \".panel\".\A The selector \".panel\" was not found.\A Use \"@extend .panel !optional\" if the extend should be able to fail.\A "; }

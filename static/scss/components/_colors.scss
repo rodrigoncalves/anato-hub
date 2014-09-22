@@ -1,0 +1,54 @@
+// Foundation default colors
+$white       : #FFFFFF;
+$ghost       : #FAFAFA;
+$snow        : #F9F9F9;
+$vapor       : #F6F6F6;
+$white-smoke : #F5F5F5;
+$silver      : #EFEFEF;
+$smoke       : #EEEEEE;
+$gainsboro   : #DDDDDD;
+$iron        : #CCCCCC;
+$base        : #AAAAAA;
+$aluminum    : #999999;
+$jumbo       : #888888;
+$monsoon     : #777777;
+$steel       : #666666;
+$charcoal    : #555555;
+$tuatara     : #444444;
+$oil         : #333333;
+$jet         : #222222;
+$black       : #000000;
+
+// We use these as default colors throughout
+$primary-color: #336e7b;
+$secondary-color: #e7e7e7;
+$alert-color: #f04124;
+$success-color: #43AC6A;
+$warning-color: #f08a24;
+$info-color: #a0d3e8;
+$body-bg: linear-gradient(to right, #eefced, #f9fef9, #eefced);
+$body-font-color: $jet;
+
+// Top-bar Colors
+$topbar-bg: #26A65B;
+$topbar-bg-color: $topbar-bg;
+$topbar-dropdown-bg: $topbar-bg;
+$topbar-dropdown-link-color: $white;
+$topbar-dropdown-link-bg: darken($topbar-bg, 5);
+$topbar-dropdown-toggle-color: $white;
+$topbar-link-color: $white;
+$topbar-link-color-hover: $white;
+$topbar-link-color-active: $white;
+$topbar-link-color-active-hover: $white;
+$topbar-link-hover-lightness: -10%; // Darken by 10%
+$topbar-link-bg: $topbar-bg;
+$topbar-link-bg-color-hover: $charcoal;
+$topbar-link-bg-hover: darken($topbar-bg, 10);
+$topbar-link-bg-active: $primary-color;
+$topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%);
+$topbar-dropdown-label-color: $white;
+$topbar-dropdown-label-bg: $oil;
+$topbar-menu-link-color: $white;
+$topbar-menu-icon-color: $white;
+$topbar-menu-link-color-toggled: darken($topbar-bg, 20);
+$topbar-menu-icon-color-toggled: $white;

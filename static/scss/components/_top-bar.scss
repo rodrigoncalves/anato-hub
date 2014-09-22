@@ -1,0 +1,76 @@
+// Height and margin
+$topbar-height: 55px;
+$topbar-margin-bottom: 15px;
+
+// Controlling the styles for the title in the top bar
+// $topbar-title-weight: $font-weight-normal;
+$topbar-title-font-size: rem-calc(17);
+
+// Style the top bar dropdown elements
+// $topbar-dropdown-link-weight: $font-weight-normal;
+$topbar-dropdown-toggle-size: 5px;
+$topbar-dropdown-toggle-alpha: 0.4;
+
+// Set the link colors and styles for top-level nav
+// $topbar-link-weight: $font-weight-normal;
+$topbar-link-font-size: rem-calc(13);
+// $topbar-link-font-family: $body-font-family;
+$topbar-link-text-transform: none;
+$topbar-link-padding: $topbar-height / 3;
+// $topbar-back-link-size: $h5-font-size;
+$topbar-link-dropdown-padding: 20px;
+
+$topbar-button-font-size: 0.75rem;
+$topbar-button-top: 7px;
+
+$topbar-dropdown-label-text-transform: uppercase;
+// $topbar-dropdown-label-font-weight: $font-weight-bold;
+$topbar-dropdown-label-font-size: rem-calc(10);
+
+// Top menu icon styles
+$topbar-menu-link-transform: uppercase;
+$topbar-menu-link-font-size: rem-calc(13);
+// $topbar-menu-link-weight: $font-weight-bold;
+
+// Transitions and breakpoint styles
+$topbar-transition-speed: 300ms;
+
+// Using rem-calc for the below breakpoint causes issues with top bar
+// $topbar-breakpoint: #{lower-bound($medium-range)}; // Change to 9999px for always mobile layout
+// $topbar-media-query: $medium-up;
+
+// Divider Styles
+$topbar-divider-border-bottom: solid 1px  scale-color($topbar-bg-color, $lightness: 13%);
+$topbar-divider-border-top: solid 1px scale-color($topbar-bg-color, $lightness: -50%);
+
+// Sticky Class
+// $topbar-sticky-class: ".sticky";
+// $topbar-arrows: true; //Set false to remove the triangle icon from the menu item
+
+@import "mixins.scss";
+
+.top-bar {
+    @include box-shadow($horizontal:0px, $vertical:3px, $blur: 5px , $color: $primary-color);
+
+    .title-area{
+        .name {
+            align-content: center;
+            width: 150px;
+            h1{
+                a{
+                    img{
+                    }
+                }
+            }
+        }
+    }
+    .menu-icon {
+        a {
+            i{
+                align-content: right;
+                font-size: 2rem;
+                text-shadow: 3px 3px darken($topbar-bg, 3);
+            }
+        }
+    }
+}
