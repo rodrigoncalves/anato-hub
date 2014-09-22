@@ -1,17 +1,18 @@
 # -*- coding: utf-8 -*-
 from behave import given, when, then
-# from selenium import webdriver
-# from should_dsl import should, should_not
+from selenium import webdriver
+from should_dsl import should, should_not
 
 
 @given(u'que o usuario acessa o sistema')
 def accessing_the_system(context):
-    assert False
+    context.driver = webdriver.Firefox()
+    context.driver.get('http://192.168.0.9:8000/login/entrar/')
 
 
 @given(u'aparece a tela de login')
 def showing_login(context):
-    assert False
+    context.driver.title | should | equal_to('Login | Anato HUB')
 
 
 @when(u'o usuario digita seu nome')
@@ -41,14 +42,19 @@ def returns_message(context, mensagem):
 
 @when(u'o usuario digita somente sua senha')
 def typing_password_only(context):
-    assert False
+    username_input = context.driver.find_element_by_id('username')
+    username_input.send_keys('teste')
 
 
 @when(u'o usuario digita somente seu nome')
 def typing_username_only(context):
-    assert False
+    username_input = context.driver.find_element_by_id('username')
+    username_input.send_keys('teste')
 
 
 @then(u'o sistema nao permite que o botao entrar seja clicado')
 def enter_button_deactivated(context):
-    assert False
+    enter_button = context.driver.find_element_by_id('enter-button')
+    disabled_attribute = enter_button.get_attribute('disabled')
+    disabled_attribute | should | equal_to('true')
+    context.driver.close()
