@@ -4,10 +4,14 @@
 
 {% block 'content' %}
 
-    <div class="small-14 medium-7 medium-centered small-centered columns" style="position: absolute;top: 40%;">
-        <form action="">
-            <input type="text" placeholder="Usuário">
-            <input type="password" name="" id="">
+    <div class="small-14 medium-5 large-4 medium-centered large-centered columns">
+        <form action="" method="post">
+            {% csrf_token %}
+            <p><h2 class="title">Anato - HUB</h2></p>
+            <hr>
+            <input type="text" name="username" id="username" placeholder="Usuário">
+            <input type="password" placeholder="Senha" name="password" id="password">
+            <hr>
             <button class="postfix">Entrar</button>
         </form>
     </div>
