@@ -39,6 +39,7 @@ INSTALLED_APPS = (
 
     # Project Apps
     'configs',
+    'authentication',
 )
 
 TEST_RUNNER = 'django_behave.runner.DjangoBehaveTestSuiteRunner'
