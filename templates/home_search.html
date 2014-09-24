@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block 'title' %}Home | Anato{% endblock %}
+
+{% block 'content' %}
+
+    <div class="small-15 medium-7 large-6 medium-centered large-centered columns">
+        <form action="" method="post">
+            {% csrf_token %}
+            <p><h2 class="title">Anato - HUB</h2></p>
+            <hr>
+            <fieldset>
+                <legend>Buscar Paciente</legend>
+
+                <div class="small-15 medium-15 columns">
+                    <input type="text" name="patient" id="patient" placeholder="Paciente">
+                </div>
+
+                <div class="small-15 medium-7 columns">
+                    <input type="text" name="report" id="report" placeholder="Prontuário">
+                </div>
+
+                <div class="small-15 medium-8 columns">
+                    <input type="date" name="date" id="date" placeholder="Data de Nascimento">
+                </div>
+
+                <div class="small-15 columns">
+                    <input type="text" name="mother_name" id="mother_name" placeholder="Nome da Mãe">
+                </div>
+            </fieldset>
+            <hr>
+
+            <div class="small-15 medium-12 large-10 medium-centered large-centered columns">
+                <input type="button" class="button postfix" name="search-button" id="search-button" value="Buscar">
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
+
+{% block 'footer-scripts' %}
+    {% load staticfiles %}
+        <script src="{% static "js/foundation-datepicker.js" %}"></script>
+{% endblock %}

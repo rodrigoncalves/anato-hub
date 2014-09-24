@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 from behave import given, when, then
 from selenium import webdriver
-from should_dsl import should, should_not
+from should_dsl import should
 
 
 @given(u'que o usuario acessa o sistema')
 def accessing_the_system(context):
     context.driver = webdriver.Firefox()
-    context.driver.get('http://192.168.0.9:8000/login/entrar/')
+    context.driver.get('http://localhost:8080/login/entrar/')
 
 
 @given(u'aparece a tela de login')

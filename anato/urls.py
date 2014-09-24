@@ -10,4 +10,5 @@ urlpatterns = patterns(
     url(r'^admin/', include(admin.site.urls)),
     url(r'^home/$', 'authentication.views.home'),
     url(r'^$', 'core.views.home_search'),
+    url(r'^resultados/$', 'core.views.search_results'),
 )

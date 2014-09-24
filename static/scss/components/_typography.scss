@@ -19,3 +19,14 @@ $header-text-rendering: optimizeLegibility;
     text-shadow: 1px 1px ligthen($primary-color, 10);
     font-weight: bold;
 }
+
+@import "mixins.scss";
+
+.shadow {
+    @include box-shadow($horizontal:0px, $vertical:1px, $blur: 2px , $color: $primary-color);
+}
+
+.icon-topbar {
+    font-weight: bold;
+    // font-size: 100%;
+}

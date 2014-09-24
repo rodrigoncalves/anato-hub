@@ -56,21 +56,17 @@ $topbar-divider-border-top: solid 1px scale-color($topbar-bg-color, $lightness: 
         .name {
             align-content: center;
             width: 150px;
-            h1{
-                a{
-                    img{
-                    }
-                }
-            }
+        }
+        &:hover {
+            background: darken($topbar-bg, 10%);
         }
     }
+
     .menu-icon {
-        a {
-            i{
+        a > i{
                 align-content: right;
                 font-size: 2rem;
                 text-shadow: 3px 3px darken($topbar-bg, 3);
             }
-        }
     }
 }

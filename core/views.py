@@ -9,3 +9,10 @@ def home_search(request):
         'home_search.html',
         context_instance=RequestContext(request)
     )
+
+
+def search_results(request):
+    return render_to_response(
+        'search_results.html',
+        context_instance=RequestContext(request)
+    )
