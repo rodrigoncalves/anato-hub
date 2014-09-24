@@ -8,5 +8,6 @@ urlpatterns = patterns(
 
     url(r'^login/', include('authentication.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^home/$', 'authentication.views.home'),
     url(r'^$', 'core.views.home_search'),
 )
