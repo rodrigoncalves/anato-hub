@@ -19,6 +19,11 @@
           {% endif %}
         </ul>
 
+        {% if user.is_authenticated %}
+        <ul class="left">
+          <li><a href="">Olá, <b>{{user.username}}</b>!</a></li>
+        </ul>
+        {% endif %}
       </section>
     </nav>
 </div>

@@ -7470,9 +7470,9 @@ blockquote p {
 /* line 38, ../bower_components/foundation/scss/foundation/components/_tooltips.scss */
 .has-tip {
   border-bottom: dotted 1px #CCCCCC;
-  cursor: help;
-  font-weight: bold;
-  color: #333333;
+  cursor: normal;
+  font-weight: normal;
+  color: #0a2a17;
 }
 /* line 44, ../bower_components/foundation/scss/foundation/components/_tooltips.scss */
 .has-tip:hover, .has-tip:focus {
@@ -7497,7 +7497,7 @@ blockquote p {
   left: 50%;
   width: 100%;
   color: #FFFFFF;
-  background: #333333;
+  background: #152e33;
 }
 /* line 68, ../bower_components/foundation/scss/foundation/components/_tooltips.scss */
 .tooltip > .nub {
@@ -7507,7 +7507,7 @@ blockquote p {
   width: 0;
   height: 0;
   border: solid 5px;
-  border-color: transparent transparent #333333 transparent;
+  border-color: transparent transparent #152e33 transparent;
   top: -10px;
   pointer-events: none;
 }
@@ -7545,12 +7545,12 @@ blockquote p {
 @media only screen and (min-width: 40.063em) {
   /* line 110, ../bower_components/foundation/scss/foundation/components/_tooltips.scss */
   .tooltip > .nub {
-    border-color: transparent transparent #333333 transparent;
+    border-color: transparent transparent #152e33 transparent;
     top: -10px;
   }
   /* line 114, ../bower_components/foundation/scss/foundation/components/_tooltips.scss */
   .tooltip.tip-top > .nub {
-    border-color: #333333 transparent transparent transparent;
+    border-color: #152e33 transparent transparent transparent;
     top: auto;
     bottom: -10px;
   }
@@ -7560,7 +7560,7 @@ blockquote p {
   }
   /* line 123, ../bower_components/foundation/scss/foundation/components/_tooltips.scss */
   .tooltip.tip-left > .nub {
-    border-color: transparent transparent transparent #333333;
+    border-color: transparent transparent transparent #152e33;
     right: -10px;
     left: auto;
     top: 50%;
@@ -7568,7 +7568,7 @@ blockquote p {
   }
   /* line 130, ../bower_components/foundation/scss/foundation/components/_tooltips.scss */
   .tooltip.tip-right > .nub {
-    border-color: transparent #333333 transparent transparent;
+    border-color: transparent #152e33 transparent transparent;
     right: auto;
     left: -10px;
     top: 50%;
