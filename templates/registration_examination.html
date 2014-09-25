@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block 'title' %}Cadastro de Exame | Anato{% endblock %}
+
+{% block 'content' %}
+
+    <div class="small-15 medium-7 large-6 medium-centered large-centered columns">
+        <form action="" method="post">
+            {% csrf_token %}
+            <p><h2 class="title">Anato - HUB</h2></p>
+            <hr>
+            <fieldset>
+                <legend>Cadastro de Exame</legend>
+
+                <form name=myform>
+                    <select name=mytextarea>
+                        <option name=one value=one> Exame 1 </option>
+                        <option name=two value=two> Exame 2 </option>
+                        <option name=three value=three> Exame 3 </option>
+                </select>
+                </form>
+            </fieldset>
+            <hr>
+
+            <div class="small-15 medium-12 large-10 medium-centered large-centered columns">
+                <input type="button" class="button postfix" name="register-button" id="register-button" value="Preencher">
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
+
+{% block 'footer-scripts' %}
+    {% load staticfiles %}
+        <script src="{% static "js/foundation-datepicker.js" %}"></script>
+{% endblock %}

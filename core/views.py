@@ -16,3 +16,9 @@ def search_results(request):
         'search_results.html',
         context_instance=RequestContext(request)
     )
+
+def registration_examination(request):
+	return render_to_response(
+		'registration_examination.html',
+		context_instance=RequestContext(request)
+	)
