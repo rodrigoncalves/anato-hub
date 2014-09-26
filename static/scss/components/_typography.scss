@@ -20,6 +20,12 @@ $header-text-rendering: optimizeLegibility;
     font-weight: bold;
 }
 
+.sub-title {
+    @extend .title;
+    text-align: left;
+    text-shadow: 1px 1px ligthen($primary-color, 10);
+}
+
 @import "mixins.scss";
 
 .shadow {

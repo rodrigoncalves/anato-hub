@@ -17,8 +17,16 @@ def search_results(request):
         context_instance=RequestContext(request)
     )
 
+
 def registration_examination(request):
-	return render_to_response(
-		'registration_examination.html',
-		context_instance=RequestContext(request)
-	)
+    return render_to_response(
+        'registration_examination.html',
+        context_instance=RequestContext(request)
+    )
+
+
+def patient_profile(request, records):
+    return render_to_response(
+        'patient_profile.html',
+        context_instance=RequestContext(request)
+    )
