@@ -11,6 +11,11 @@ INVALID_LOGIN = 2
 
 
 def sign_in(request):
+    if request.method == 'GET':
+        return render_to_response('sign_in.html',
+            context_instance=RequestContext(request)
+        )
+
     username = request.POST.get('username')
     password = request.POST.get('password')
 
@@ -24,18 +29,18 @@ def sign_in(request):
         if login_user.last_login != login_user.date_joined:
             if login_user.is_active:
                 login(request, login_user)
-                return redirect('/', csrf_token)
+                return redirect('/home/', csrf_token)
             else:
                 login_error = INACTIVE_USER
         else:
             login(request, login_user)
-            return redirect('/primeiro-acesso/', csrf_token)
+            return redirect('/home/', csrf_token)
     else:
         login_error = INVALID_LOGIN
 
     return render_to_response(
         'sign_in.html',
-        {'login_error': login_error, 'modal_error': False},
+        {'login_error': login_error, 'modal_error': True},
         context_instance=RequestContext(request)
     )
 
@@ -47,7 +52,7 @@ def first_access(request):
 
     return render_to_response(
         'home.html', {
-            'first_access': True, },
+        'first_access': True, },
         context_instance=RequestContext(request)
     )
 
