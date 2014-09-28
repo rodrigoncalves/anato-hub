@@ -5,4 +5,5 @@ urlpatterns = patterns(
     'authentication.views',
 
     url(r'^entrar/$', 'sign_in'),
+    url(r'^sair/$', 'log_out'),
 )

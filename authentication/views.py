@@ -29,12 +29,12 @@ def sign_in(request):
         if login_user.last_login != login_user.date_joined:
             if login_user.is_active:
                 login(request, login_user)
-                return redirect('/home/', csrf_token)
+                return redirect('/', csrf_token)
             else:
                 login_error = INACTIVE_USER
         else:
             login(request, login_user)
-            return redirect('/home/', csrf_token)
+            return redirect('/', csrf_token)
     else:
         login_error = INVALID_LOGIN
 
@@ -44,6 +44,10 @@ def sign_in(request):
         context_instance=RequestContext(request)
     )
 
+@login_required(login_url='/login/')
+def log_out(request):
+    logout(request)
+    return redirect('/')
 
 @login_required(login_url='/login/')
 def first_access(request):
