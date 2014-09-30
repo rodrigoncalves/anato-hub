@@ -30,3 +30,10 @@ def patient_profile(request, records):
         'patient_profile.html',
         context_instance=RequestContext(request)
     )
+
+
+def new_biopsy(request):
+    return render_to_response(
+        'new_biopsy.html',
+        context_instance=RequestContext(request)
+    )

@@ -29,10 +29,9 @@
 
 {% endblock %}
 
-{% load staticfiles %}
-    <script src="{% static "js/login.js" %}"></script>
-
 {% block 'footer-scripts' %}
+    {% load staticfiles %}
+        <script src="{% static "js/login.js" %}"></script>
 
     {% if modal_error == True %}
         <script>
