@@ -11,7 +11,7 @@ urlpatterns = patterns(
     url(r'^admin/', include(admin.site.urls)),
 
     url(r'^$', 'authentication.views.sign_in'),
-    url(r'^home/$', 'authentication.views.home'),
     url(r'^resultados/$', 'core.views.search_results'),
+    url(r'^consulta/$', 'core.views.home_search'),
     url(r'^paciente/(?P<records>\w*)$', 'core.views.patient_profile'),
 )

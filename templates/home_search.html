@@ -5,7 +5,7 @@
 {% block 'content' %}
 
     <div class="small-15 medium-7 large-6 medium-centered large-centered columns">
-        <form action="" method="post">
+        <form action="/resultados/" method="post">
             {% csrf_token %}
             <p><h2 class="title">Anato - HUB</h2></p>
             <hr>
@@ -31,7 +31,7 @@
             <hr>
 
             <div class="small-15 medium-12 large-10 medium-centered large-centered columns">
-                <input type="button" class="button postfix" name="search-button" id="search-button" value="Buscar">
+                <input type="submit" class="button postfix" name="search-button" id="search-button" value="Buscar">
             </div>
         </form>
     </div>

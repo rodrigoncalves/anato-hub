@@ -9,8 +9,12 @@ from django.core.context_processors import csrf
 INACTIVE_USER = 1
 INVALID_LOGIN = 2
 
-
 def sign_in(request):
+    if request.user.is_authenticated():
+        return render_to_response('home_search.html',
+            context_instance=RequestContext(request)
+        )
+
     if request.method == 'GET':
         return render_to_response('sign_in.html',
             context_instance=RequestContext(request)
