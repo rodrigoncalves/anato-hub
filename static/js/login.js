@@ -1,7 +1,10 @@
 // Disabling Enter button
-// $('#enter-button').disabled = true;
 $(document).ready( function() {
-    $('#enter-button').attr('disabled', 'disabled');
+    if ($('#username').val() != '' && $('#password').val() != '') {
+        $('#enter-button').removeAttr('disabled');
+    } else {
+        $('#enter-button').attr('disabled', 'disabled');
+    }
 })
 
 $('#username').keyup(function () {
