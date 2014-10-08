@@ -6,8 +6,6 @@ from should_dsl import should, should_not
 
 @given(u'que o Usuario esta autenticado')
 def step_impl(context):
-    context.driver = webdriver.Firefox()
-    context.driver.get('http://localhost:8080/login/entrar/')
     assert False
 
 @given(u'aparece a tela de busca')
@@ -16,8 +14,7 @@ def step_impl(context):
 
 @when(u'o usuario digita o nome do Paciente')
 def typing_patientname_only(context):
-    patient_name_input = context.driver.find_element_by_id('patient_name')
-    patient_name_input.send_keys('jose eduardo barboza')
+    assert False
 
 @when(u'clica em buscar')
 def step_impl(context):
@@ -29,8 +26,7 @@ def step_impl(context):
 
 @when(u'o usuario digita o prontuario do Paciente')
 def typing_patientreport_only(context):
-    patient_report_input = context.driver.find_element_by_id('patient_report')
-    patient_report_input.send_keys('123456')
+    assert False
 
 @then(u'o sistema retorna os Pacientes com o prontuario digitado')
 def step_impl(context):
@@ -38,8 +34,7 @@ def step_impl(context):
 
 @when(u'o usuario digita o nome da mae do Paciente')
 def typing_mothername_only(context):
-    mother_name_input = context.driver.find_element_by_id('mother_name')
-    mother_name_input.send_keys('paola coelho')
+    assert False
 
 @then(u'o sistema retorna os Pacientes com o nome da mae digitado')
 def step_impl(context):
@@ -47,8 +42,7 @@ def step_impl(context):
 
 @when(u'o usuario digita a data de nascimento do Paciente')
 def typing_birthday_only(context):
-    birthday_input = context.driver.find_element_by_id('birthday')
-    birthday_input.send_keys('28/04/1990')
+    assert False
 
 @then(u'o sistema retorna os Pacientes com a data de nascimento digitada')
 def step_impl(context):
