@@ -1,6 +1,8 @@
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 
+from modeling.forms_exam import ExamForm
+
 # Create your views here.
 
 
@@ -18,9 +20,12 @@ def search_results(request):
     )
 
 
-def registration_examination(request):
+def new_exam(request):
+    form_exam = ExamForm()
     return render_to_response(
-        'registration_examination.html',
+        'new_exam.html',{
+            "form_exam": form_exam
+        },
         context_instance=RequestContext(request)
     )
 
