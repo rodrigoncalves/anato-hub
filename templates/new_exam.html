@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+
+{% block 'title' %}Cadastro de Exame | Anato{% endblock %}
+
+{% block 'content' %}
+
+    <div class="small-15 medium-13 large-13 small-centered columns">
+        <p><h2 class="title">Anato - HUB</h2></p>
+        <hr>
+        <p><h4 class="title">Cadastrar Novo Exame:</h4></p>
+        <br>
+    </div>
+
+    <div class="small-15 medium-7 large-6 medium-centered large-centered columns">
+        <form action="" method="post">
+            {% csrf_token %}
+
+
+            <div class="row">
+                <div class="large-12 columns">
+                    <div class="row collapse prefix-radius">
+                        <div class="small-6 columns">
+                        <span class="prefix">Data da Requisicao:</span>
+                        </div>
+                        <div class="small-9 columns">
+                              {{form_exam.request_date}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-12 columns">
+                    <div class="row collapse prefix-radius">
+                        <div class="small-6 columns">
+                        <span class="prefix">Data de Recebimento:</span>
+                        </div>
+                        <div class="small-9 columns">
+                              {{form_exam.receipt_date}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-12 columns">
+                    <div class="row collapse prefix-radius">
+                        <div class="small-8 columns">
+                        <span class="prefix">Data de Coleta da Amostra:</span>
+                        </div>
+                        <div class="small-7 columns">
+                              {{form_exam.speciment_collection_date}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-12 columns">
+                    <div class="row collapse prefix-radius">
+                        <div class="small-6 columns">
+                        <span class="prefix">Amostras Recebidas:</span>
+                        </div>
+                        <div class="small-9 columns">
+                              {{form_exam.received_speciment}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-12 columns">
+                    <div class="row collapse prefix-radius">
+                        <div class="small-6 columns">
+                        <span class="prefix">Tempo de Exame:</span>
+                        </div>
+                        <div class="small-9 columns">
+                              {{form_exam.examination_time}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-12 columns">
+                    <div class="row collapse prefix-radius">
+                        <div class="small-6 columns">
+                        <span class="prefix">Medico Requisitante:</span>
+                        </div>
+                        <div class="small-9 columns">
+                              {{form_exam.requesting_physician}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-12 columns">
+                    <div class="row collapse prefix-radius">
+                        <div class="small-6 columns">
+                        <span class="prefix">Medico Responsavel:</span>
+                        </div>
+                        <div class="small-9 columns">
+                              {{form_exam.responsible_physician}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+  
+
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
+
+{% endblock %}
+
+{% block 'footer-scripts' %}
+    {% load staticfiles %}
+        <script src="{% static "js/foundation-datepicker.js" %}"></script>
+{% endblock %}
