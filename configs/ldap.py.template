@@ -1,0 +1,4 @@
+# -*- coding: utf-8 -*-
+
+LDAP_SERVER = 'ldap://192.168.0.0'
+LDAP_DOMAIN = '@domain.local'

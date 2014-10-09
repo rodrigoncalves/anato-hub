@@ -7,13 +7,12 @@ urlpatterns = patterns(
     '',
 
     url(r'^login/', include('authentication.urls')),
-    url(r'^exames/', include('core.urls')),
     url(r'^admin/', include(admin.site.urls)),
 
     url(r'^$', 'authentication.views.sign_in'),
     url(r'^resultados/$', 'core.views.search_results'),
     url(r'^consulta/$', 'core.views.home_search'),
-    url(r'^paciente/(?P<records>\w*)$', 'core.views.patient_profile'),
+    url(r'^paciente/(?P<records>\w+)$', 'core.views.patient_profile'),
     url(r'^nova/biopsia/$', 'core.views.new_biopsy'),
     url(r'^nova/biopsia/salvar/$', 'biopsy.views.add_biopsy'),
     url(r'^novo/exame/$', 'core.views.new_exam'),

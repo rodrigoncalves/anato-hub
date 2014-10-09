@@ -2,13 +2,14 @@
 
 import ldap
 from auth_exceptions import LDAPConnectionError, LDAPCredentialError
+from configs.ldap import LDAP_DOMAIN, LDAP_SERVER
 
 
 def initialize_ldap_connection():
-    server = 'ldap://192.168.8.0'
+    server = LDAP_SERVER
 
     connection = ldap.initialize(server)
-    connection.protocol_version = 3
+    connection.protocol_version = ldap.VERSION3
     connection.set_option(ldap.OPT_REFERRALS, 0)
 
     return connection
@@ -16,6 +17,7 @@ def initialize_ldap_connection():
 
 def ldap_autentication(username, password):
     connection = initialize_ldap_connection()
+    username = username + LDAP_DOMAIN
 
     try:
         connection.simple_bind_s(username, password)
