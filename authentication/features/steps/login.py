@@ -17,12 +17,14 @@ def showing_login(context):
 
 @when(u'o usuario digita seu nome')
 def insert_username(context):
-    assert False
+    username_input = context.driver.find_element_by_id('username')
+    username_input.send_keys('test_user')
 
 
 @when(u'digita a sua senha')
 def insert_password(context):
-    assert False
+    username_input = context.driver.find_element_by_id('password')
+    username_input.send_keys('123456')
 
 
 @then(u'autentica o usuario com sucesso')
@@ -40,16 +42,14 @@ def returns_message(context, mensagem):
     assert False
 
 
-@when(u'o usuario digita somente sua senha')
-def typing_password_only(context):
-    username_input = context.driver.find_element_by_id('username')
-    username_input.send_keys('teste')
+@then(u'o sistema nao consegue conectar no LDAP')
+def cant_connect_ldap(context):
+    assert False
 
 
-@when(u'o usuario digita somente seu nome')
-def typing_username_only(context):
-    username_input = context.driver.find_element_by_id('username')
-    username_input.send_keys('teste')
+@then(u'retorna a mensagem de erro "{mensagem}"')
+def returns_error_message(context, mensagem):
+    assert False
 
 
 @then(u'o sistema nao permite que o botao entrar seja clicado')
