@@ -15,28 +15,29 @@ Nova Biópsia | Anato HUB
 
     <div class="row">
         <div class="small-14 small-centered medium-10 medium-centered large-10 large-centered columns">
-            <form action="">
+            <form action="/nova/biopsia/salvar/" method="POST">
                 <label for="clinical_information">Informações Clínicas</label>
-                <textarea name="" id="clinical_information" cols="30" rows="7"></textarea>
+                <textarea name="clinical_information" id="clinical_information" cols="30" rows="7"></textarea>
 
                 <label for="macroscopic">Macroscopia</label>
-                <textarea name="" id="macroscopic" cols="30" rows="7"></textarea>
+                <textarea name="macroscopic" id="macroscopic" cols="30" rows="7"></textarea>
 
                 <label for="microscopic">Microscopia</label>
-                <textarea name="" id="microscopic" cols="30" rows="7"></textarea>
+                <textarea name="microscopic" id="microscopic" cols="30" rows="7"></textarea>
 
                 <label for="conclusion">Conclusão</label>
-                <textarea name="" id="conclusion" cols="30" rows="7"></textarea>
+                <textarea name="conclusion" id="conclusion" cols="30" rows="7"></textarea>
 
                 <label for="notes">Notas</label>
-                <textarea name="" id="notes" cols="30" rows="7"></textarea>
+                <textarea name="notes" id="notes" cols="30" rows="7"></textarea>
 
                 <label for="footer">Legenda</label>
-                <textarea name="" id="footer" cols="30" rows="7"></textarea>
+                <textarea name="footer" id="footer" cols="30" rows="7"></textarea>
 
                 <div class="row">
                     <div class="small-14 small-centered medium-6 medium-centered large-6 large-centered columns">
-                        <a href="" class="button postfix"><i class="fi-save"></i> Salvar</a>
+                        <!-- <a href="" class="button postfix"><i class="fi-save"></i> Salvar</a> -->
+                        <button type="submit" class="button postfix"> Salvar</input>
                     </div>
                 </div>
             </form>

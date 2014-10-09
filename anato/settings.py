@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'configs',
     'authentication',
     'core',
+    'biopsy',
 )
 
 TEST_RUNNER = 'django_behave.runner.DjangoBehaveTestSuiteRunner'
