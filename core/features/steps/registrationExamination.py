@@ -6,7 +6,7 @@ from should_dsl import should, should_not
 @given(u'que o auxiliar acessa o sistema e esta autenticado')
 def accessing_the_system(context):
     context.driver = webdriver.Firefox()
-    context.driver.get('http://localhost:8000/examination/registration/')
+    context.driver.get('http://localhost:8000/novo/exame/')
 
 @given(u'aparece a tela de cadastro de exame')
 def showing_registration_examination(context):
@@ -17,8 +17,10 @@ def insert_examination(context):
     assert False
 
 @when(u'clica em cadastrar')
-def step_impl(context):
-    assert False
+def registration(context):
+    examination = driver.find_element_by_name("Cadastrar")
+    actions = ActionChains(driver)
+    actions.click(examination)
 
 @then(u'o sistema cadastra o exame')
 def registration_examitation(context):
