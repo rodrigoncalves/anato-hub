@@ -5,3 +5,5 @@ should-dsl==2.1.2
 South==1.0
 coverage==3.7.1
 selenium==2.43.0
+python-ldap==2.4.16
+Pillow==2.5.3
