@@ -1,8 +1,12 @@
 from django.shortcuts import render
 from biopsy.models import Biopsy
+from django.shortcuts import render_to_response
+from django.shortcuts import render
+from django.template.context import RequestContext
 
 # Create your views here.
 def add_biopsy(request):
+	
 	clinical_information = request.POST.get('clinical_information')
 	macroscopic = request.POST.get('macroscopic')
 	microscopic = request.POST.get('microscopic')
@@ -21,4 +25,16 @@ def add_biopsy(request):
 
 	biopsy.save()
 
-	return render_to_response('search_results.html', context_instance=RequestContext(request))
+	#return render_to_response('search_results.html', context_instance=RequestContext(request))
+	#return render_to_response('top-bar.html', context_instance=RequestContext(request))
+
+	
+	#return render_to_response(request,'sign_in.html', c )
+
+	#return redirect('/', csrf_token)
+
+	return render_to_response(
+	    'home_search.html',
+	    context_instance=RequestContext(request)
+	)
+

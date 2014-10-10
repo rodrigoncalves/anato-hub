@@ -16,6 +16,7 @@ Nova Biópsia | Anato HUB
     <div class="row">
         <div class="small-14 small-centered medium-10 medium-centered large-10 large-centered columns">
             <form action="/nova/biopsia/salvar/" method="POST">
+                {% csrf_token %}
                 <label for="clinical_information">Informações Clínicas</label>
                 <textarea name="clinical_information" id="clinical_information" cols="30" rows="7"></textarea>
 
