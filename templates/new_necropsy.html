@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block 'title' %}
+Nova Necrópsia | Anato HUB
+{% endblock 'title' %}
+
+{% block 'content' %}
+
+    <div class="small-15 medium-13 large-13 small-centered columns">
+        <p><h2 class="title">Anato - HUB</h2></p>
+        <hr>
+        <p><h4 class="title">Nova N</h4></p>
+        <br>
+    </div>
+
+    <div class="row">
+        <div class="small-14 small-centered medium-10 medium-centered large-10 large-centered columns">
+            <form action="/nova/necropsia/salvar/" method="POST">
+                {% csrf_token %}
+                <label for="clinical_information">Informações Clínicas</label>
+                <textarea name="clinical_information" id="clinical_information" cols="30" rows="7"></textarea>
+
+                <label for="macroscopic">Macroscopia</label>
+                <textarea name="macroscopic" id="macroscopic" cols="30" rows="7"></textarea>
+
+                <label for="microscopic">Microscopia</label>
+                <textarea name="microscopic" id="microscopic" cols="30" rows="7"></textarea>
+
+                <label for="conclusion">Conclusão</label>
+                <textarea name="conclusion" id="conclusion" cols="30" rows="7"></textarea>
+
+                <label for="notes">Notas</label>
+                <textarea name="notes" id="notes" cols="30" rows="7"></textarea>
+
+                <label for="footer">Legenda</label>
+                <textarea name="footer" id="footer" cols="30" rows="7"></textarea>
+
+                <div class="row">
+                    <div class="small-14 small-centered medium-6 medium-centered large-6 large-centered columns">
+                        <!-- <a href="" class="button postfix"><i class="fi-save"></i> Salvar</a> -->
+                        <button type="submit" class="button postfix"> Salvar</input>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock 'content' %}
