@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 from django.test import TestCase
 from django.db import models
-from necropsy.models import Necropsy
+from biopsy.models import Biopsy
 
 class CronTest(TestCase):
 
 	def biopy_test(self):
-		necropsy = Necropsy(
+		biopsy = Biopsy(
 			clinical_information= "clinica",
 			macroscopic= "macroscopia",
 			microscopic= "microscopia",
@@ -17,9 +17,9 @@ class CronTest(TestCase):
 
 		necropsy.save()
 
-		self.assertEquals("clinica",necropsy.clinical_information)
-		self.assertEquals("macroscopia",necropsy.macroscopic)
-		self.assertEquals("microscopia",necropsy.microscopic)
-		self.assertEquals("conclusao",necropsy.conclusion)
-		self.assertEquals("nota",necropsy.notes)
-		self.assertEquals("rodape",necropsy.footer)
+		self.assertEquals("clinica",biopsy.clinical_information)
+		self.assertEquals("macroscopia",biopsy.macroscopic)
+		self.assertEquals("microscopia",biopsy.microscopic)
+		self.assertEquals("conclusao",biopsy.conclusion)
+		self.assertEquals("nota",biopsy.notes)
+		self.assertEquals("rodape",biopsy.footer)
