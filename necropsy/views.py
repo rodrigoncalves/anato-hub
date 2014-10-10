@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.shortcuts import render
 from necropsy.models import Necropsy
 from django.shortcuts import render_to_response
