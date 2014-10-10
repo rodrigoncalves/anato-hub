@@ -25,14 +25,6 @@ def add_biopsy(request):
 
 	biopsy.save()
 
-	#return render_to_response('search_results.html', context_instance=RequestContext(request))
-	#return render_to_response('top-bar.html', context_instance=RequestContext(request))
-
-	
-	#return render_to_response(request,'sign_in.html', c )
-
-	#return redirect('/', csrf_token)
-
 	return render_to_response(
 	    'home_search.html',
 	    context_instance=RequestContext(request)

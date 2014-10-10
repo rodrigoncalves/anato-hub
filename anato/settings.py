@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'authentication',
     'core',
     'biopsy',
+    'necropsy',
     'modeling',
 )
 
