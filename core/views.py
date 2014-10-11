@@ -42,3 +42,9 @@ def new_biopsy(request):
         'new_biopsy.html',
         context_instance=RequestContext(request)
     )
+
+def new_necropsy(request):
+    return render_to_response(
+        'new_necropsy.html',
+        context_instance=RequestContext(request)
+    )

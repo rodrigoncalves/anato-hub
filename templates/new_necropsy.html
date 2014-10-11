@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block 'title' %}
-Nova Biópsia | Anato HUB
+Nova Necrópsia | Anato HUB
 {% endblock 'title' %}
 
 {% block 'content' %}
@@ -9,13 +9,13 @@ Nova Biópsia | Anato HUB
     <div class="small-15 medium-13 large-13 small-centered columns">
         <p><h2 class="title">Anato - HUB</h2></p>
         <hr>
-        <p><h4 class="title">Nova Biópsia</h4></p>
+        <p><h4 class="title">Nova Necrópsia</h4></p>
         <br>
     </div>
 
     <div class="row">
         <div class="small-14 small-centered medium-10 medium-centered large-10 large-centered columns">
-            <form action="/nova/biopsia/salvar/" method="POST">
+            <form action="/necropsia/nova/salvar/" method="POST">
                 {% csrf_token %}
                 <label for="clinical_information">Informações Clínicas</label>
                 <textarea name="clinical_information" id="clinical_information" cols="30" rows="7"></textarea>
