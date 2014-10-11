@@ -4,7 +4,6 @@ import ldap
 from auth_exceptions import LDAPConnectionError, LDAPCredentialError
 from configs.ldap import LDAP_DOMAIN, LDAP_SERVER
 
-
 def initialize_ldap_connection():
     server = LDAP_SERVER
 
@@ -14,8 +13,7 @@ def initialize_ldap_connection():
 
     return connection
 
-
-def ldap_autentication(username, password):
+def ldap_authentication(username, password):
     connection = initialize_ldap_connection()
     username = username + LDAP_DOMAIN
 

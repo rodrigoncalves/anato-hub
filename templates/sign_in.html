@@ -3,14 +3,7 @@
 {% block 'title' %}Login | Anato HUB{% endblock %}
 
 {% block modal_error %}
-    {% if login_error == 1 %}
-        Parece que este usuário está desativado.
-    {% elif login_error == 2 %}
-        Usuário ou senha estão inválidos.
-    {% elif message_error %}
-        {{message_error}} <br>
-        Persistindo o erro, entre em contato com o Desenvolvedor.
-    {% endif %}
+    {{ login_error }}
 {% endblock %}
 
 {% block 'content' %}
