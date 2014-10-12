@@ -3,7 +3,7 @@ from django.test import TestCase
 from django.db import models
 from necropsy.models import Necropsy
 
-class CronTest(TestCase):
+class NecropsyTest(TestCase):
 
 	def necropsy_test(self):
 		necropsy = Necropsy(

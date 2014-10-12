@@ -30,3 +30,4 @@ def add_necropsy(request):
 	    'home_search.html',
 	    context_instance=RequestContext(request)
 	)
+
