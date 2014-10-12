@@ -1,13 +1,30 @@
+# -*- coding: utf-8 -*-
+
 from django.db import models
-
-# Create your models here.
-class Biopsy (models.Model):
-	clinical_information = models.CharField(max_length=200)
-	macroscopic = models.CharField(max_length=200)
-	microscopic = models.CharField(max_length=200)
-	conclusion = models.CharField(max_length=200)
-	notes = models.CharField(max_length=200)
-	footer = models.CharField(max_length=200)
+from modeling.exam import Exam
+from modeling.report import ReportStatus
 
 
-# Colocar as chaves estrangeiras
+class BiopsyStatus(models.Model):
+    description = models.CharField(max_length=50)
+
+
+class Biopsy(models.Model):
+    clinical_information = models.TextField(null=True, blank=True)
+    macroscopic = models.TextField(null=True, blank=True)
+    microscopic = models.TextField(null=True, blank=True)
+    conclusion = models.TextField(null=True, blank=True)
+    note = models.TextField(null=True, blank=True)
+    footer = models.TextField(null=True, blank=True)
+    status = models.ForeignKey(BiopsyStatus)
+    exam = models.ForeignKey(Exam)
+
+
+class BiopsyReport(models.Model):
+    clinical_information = models.TextField(null=True, blank=True)
+    macroscopic = models.TextField(null=True, blank=True)
+    microscopic = models.TextField(null=True, blank=True)
+    conclusion = models.TextField(null=True, blank=True)
+    note = models.TextField(null=True, blank=True)
+    status = models.ForeignKey(ReportStatus)
+    biopsy = models.ForeignKey(Biopsy)
