@@ -7,108 +7,126 @@
     <div class="small-15 medium-13 large-13 small-centered columns">
         <p><h2 class="title">Anato - HUB</h2></p>
         <hr>
-        <p><h4 class="title">Cadastrar Novo Exame</h4></p>
+        <p><h4 class="title">Dados do Paciente</h4></p>
         <br>
     </div>
 
+    <div class="small-13 small-centered medium-12 medium-centered large-9 large-centered columns">
+        <div class="small-15 medium-7 large-7 columns">
+            <small><b>Código Prontuário:</b></small><br>
+            <i>12580879</i> <br>
+            <small><b>Registro SUS:</b></small><br>
+            <i>2323234343</i> <br>
+            <small><b>Nome do Pai:</b></small><br>
+            <i>Angelo Fernando Fernandes</i> <br>
+            <small><b>Nome da Mãe:</b></small><br>
+            <i>Tania Maria Correa de Souza</i> <br>
+        </div>
+
+        <div class="small-15 medium-offset-1 medium-7 large-7 large-offset-1 columns">
+            <small><b>Data Nascimento:</b></small><br>
+            <i>12/04/1987</i> <br>
+            <small><b>Endereço:</b> </small><br>
+            <i>Q 29, L 31, apt 301, St Lest, Gama-DF</i> <br>
+            <small><b>Telefone:</b></small><br>
+            <i>61 8888-7777</i> <br>
+        </div>
+        <hr>
+    </div>
+
     <div class="small-15 medium-7 large-6 medium-centered large-centered columns">
-        <form action="" method="post">
+        <p><h4 class="title">Cadastrar Novo Exame:</h4></p>
+        <form action="/exame/registrar/" method="post">
             {% csrf_token %}
 
-
             <div class="row">
-                <div class="large-12 columns">
-                    <div class="row collapse prefix-radius">
-                        <div class="small-6 columns">
+                <div class="row collapse prefix-radius">
+                    <div class="large-7 columns">
                         <span class="prefix">Data da Requisição:</span>
-                        </div>
-                        <div class="small-9 columns">
-                              {{form_exam.request_date}}
-                        </div>
+                    </div>
+                    <div class="large-8 columns">
+                        <input type="date" class="calendar form-input" name="request_date" id="request_date">
                     </div>
                 </div>
             </div>
-
             <div class="row">
-                <div class="large-12 columns">
-                    <div class="row collapse prefix-radius">
-                        <div class="small-6 columns">
-                        <span class="prefix">Data de Recebimento:</span>
-                        </div>
-                        <div class="small-9 columns">
-                              {{form_exam.receipt_date}}
-                        </div>
+                <div class="row collapse prefix-radius">
+                    <div class="large-7 columns">
+                        <span class="prefix">Recebimento do Material:</span>
+                    </div>
+                    <div class="large-8 columns">
+                        <input type="date" class="form-input calendar" name="receipt_date" id="receipt_date">
                     </div>
                 </div>
             </div>
-
             <div class="row">
-                <div class="large-12 columns">
-                    <div class="row collapse prefix-radius">
-                        <div class="small-8 columns">
-                        <span class="prefix">Data de Coleta da Amostra:</span>
-                        </div>
-                        <div class="small-7 columns">
-                              {{form_exam.speciment_collection_date}}
-                        </div>
+                <div class="row collapse prefix-radius">
+                    <div class="large-7 columns">
+                        <span class="prefix">Coleta do Material:</span>
+                    </div>
+                    <div class="large-8 columns">
+                        <input type="date" class="form-input calendar" name="speciment_collection_date" id="speciment_collection_date">
                     </div>
                 </div>
             </div>
-
             <div class="row">
-                <div class="large-12 columns">
-                    <div class="row collapse prefix-radius">
-                        <div class="small-6 columns">
-                        <span class="prefix">Amostras Recebidas:</span>
-                        </div>
-                        <div class="small-9 columns">
-                              {{form_exam.received_speciment}}
-                        </div>
+                <div class="row collapse prefix-radius">
+                    <div class="large-7 columns">
+                        <span class="prefix">Material Recebido:</span>
+                    </div>
+                    <div class="large-8 columns">
+                        <input type="text" class="form-input" name="received_speciment" id="received_speciment">
                     </div>
                 </div>
             </div>
-
             <div class="row">
-                <div class="large-12 columns">
-                    <div class="row collapse prefix-radius">
-                        <div class="small-6 columns">
-                        <span class="prefix">Tempo de Exame:</span>
-                        </div>
-                        <div class="small-9 columns">
-                              {{form_exam.examination_time}}
-                        </div>
+                <div class="row collapse prefix-radius">
+                    <div class="large-7 columns">
+                        <span class="prefix">Hora do Exame:</span>
+                    </div>
+                    <div class="large-8 columns">
+                        <input type="text" class="form-input" name="examination_time" id="examination_time">
                     </div>
                 </div>
             </div>
-
             <div class="row">
-                <div class="large-12 columns">
-                    <div class="row collapse prefix-radius">
-                        <div class="small-6 columns">
+                <div class="row collapse prefix-radius">
+                    <div class="large-7 columns">
                         <span class="prefix">Médico Requisitante:</span>
-                        </div>
-                        <div class="small-9 columns">
-                              {{form_exam.requesting_physician}}
-                        </div>
+                    </div>
+                    <div class="large-8 columns">
+                        <input type="text" class="form-input" name="requesting_physician" id="requesting_physician">
                     </div>
                 </div>
             </div>
-
             <div class="row">
-                <div class="large-12 columns">
-                    <div class="row collapse prefix-radius">
-                        <div class="small-6 columns">
-                        <span class="prefix">Médico Responsavel:</span>
-                        </div>
-                        <div class="small-9 columns">
-                              {{form_exam.responsible_physician}}
-                        </div>
+                <div class="row collapse prefix-radius">
+                    <div class="large-7 columns">
+                        <span class="prefix">Médico Responsável:</span>
+                    </div>
+                    <div class="large-8 columns">
+                        <input type="text" class="form-input" name="responsible_physician" id="responsible_physician">
                     </div>
                 </div>
             </div>
-  
+            <div class="row">
+                <div class="row collapse prefix-radius">
+                    <div class="large-7 columns">
+                        <span class="prefix">Tipo de Exame:</span>
+                    </div>
+                    <div class="large-8 columns">
+                        <select name="exam_type" id="exam_type">
+                            {% for type in exam_types %}
+                                <option value="{{type.id}}">{{type.description}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
 
-            <input type="submit" value="Submit" />
+            <div class="small-14 small-centered medium-8 medium-centered large-7 large-centered columns">
+                <input class="button small expand" type="submit" value="Enviar" />
+            </div>
         </form>
     </div>
 
@@ -116,5 +134,13 @@
 
 {% block 'footer-scripts' %}
     {% load staticfiles %}
-        <script src="{% static "js/foundation-datepicker.js" %}"></script>
+        <script src="{% static "js/jquery.inputmask.js" %}"></script>
+        <script type="text/javascript">
+            $(document).ready( function(){
+                $('.calendar').inputmask('99/99/9999');
+            })
+        //     $('.calendar').on('keydown', function(e){
+        //         e.preventDefault();
+        //     });
+        </script>
 {% endblock %}
