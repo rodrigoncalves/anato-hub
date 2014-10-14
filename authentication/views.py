@@ -8,6 +8,12 @@ from authentication.auth import authenticate_user, SUCCESS, INACTIVE_USER, \
     INVALID_LOGIN, LDAP_CONNECTION_ERROR
 
 def sign_in(request):
+    if request.method == 'GET':
+        return render_to_response(
+            'sign_in.html',
+            context_instance=RequestContext(request)
+        )
+
     username = request.POST.get('username')
     password = request.POST.get('password')
 
