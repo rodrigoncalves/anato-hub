@@ -60,6 +60,20 @@
   background: #eaf4f6;
 }
 
+/* line 63, ../scss/components/_forms.scss */
+.prefix-radius .prefix {
+  border-right: 1px solid #CCC;
+}
+
+/* line 68, ../scss/components/_forms.scss */
+input .form-input {
+  text-align: center;
+}
+/* line 71, ../scss/components/_forms.scss */
+input .calendar {
+  text-align: center;
+}
+
 /* line 347, ../bower_components/foundation/scss/foundation/components/_global.scss */
 meta.foundation-version {
   font-family: "/5.4.3/";
