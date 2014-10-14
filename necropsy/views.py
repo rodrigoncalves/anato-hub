@@ -1,11 +1,17 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
-from necropsy.models import Necropsy
 from django.shortcuts import render_to_response
 from django.shortcuts import render
 from django.template.context import RequestContext
+from necropsy.models import Necropsy
 
 # Create your views here.
+def new_necropsy(request):
+    return render_to_response(
+        'new_necropsy.html',
+        context_instance=RequestContext(request)
+    )
+
 def add_necropsy(request):
 	
 	clinical_information = request.POST.get('clinical_information')

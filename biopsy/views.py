@@ -5,6 +5,12 @@ from django.shortcuts import render
 from django.template.context import RequestContext
 
 # Create your views here.
+def new_biopsy(request):
+    return render_to_response(
+        'new_biopsy.html',
+        context_instance=RequestContext(request)
+    )
+
 def add_biopsy(request):
 	
 	clinical_information = request.POST.get('clinical_information')
@@ -29,4 +35,3 @@ def add_biopsy(request):
 	    'home_search.html',
 	    context_instance=RequestContext(request)
 	)
-
