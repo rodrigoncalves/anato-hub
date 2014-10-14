@@ -4,8 +4,7 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
-urlpatterns = patterns(
-    '',
+urlpatterns = patterns('',
 
     url(r'^login/', include('authentication.urls')),
     url(r'^admin/', include(admin.site.urls)),
@@ -19,5 +18,4 @@ urlpatterns = patterns(
     url(r'^biopsia/nova/salvar/$', 'biopsy.views.add_biopsy'),
     url(r'^necropsia/nova/salvar/$', 'necropsy.views.add_necropsy'),
     url(r'^novo/exame/$', 'core.views.new_exam'),
-
 )

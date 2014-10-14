@@ -32,7 +32,7 @@ def search_user(connection, username):
         return False
 
 
-def ldap_autentication(username, password):
+def ldap_authentication(username, password):
     try:
         connection = initialize_ldap_connection()
 
