@@ -8,6 +8,11 @@ from authentication.auth import authenticate_user, SUCCESS, INACTIVE_USER, \
     INVALID_LOGIN, LDAP_CONNECTION_ERROR
 
 def sign_in(request):
+    if request.user.is_authenticated():
+        return render_to_response('home_search.html',
+            context_instance=RequestContext(request)
+        )
+
     if request.method == 'GET':
         return render_to_response(
             'sign_in.html',

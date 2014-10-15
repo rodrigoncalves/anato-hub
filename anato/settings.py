@@ -47,7 +47,7 @@ INSTALLED_APPS = (
     'exam',
     'biopsy',
     'necropsy',
-    # 'modeling',
+    'modeling',
 )
 
 TEST_RUNNER = 'django_behave.runner.DjangoBehaveTestSuiteRunner'

@@ -1,5 +1,5 @@
 from django import forms
-from modeling.exam import Exam
+from exam.models import Exam
 from modeling.report import ReportStatus
 
 

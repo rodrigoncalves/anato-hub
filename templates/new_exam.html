@@ -143,4 +143,9 @@
         //         e.preventDefault();
         //     });
         </script>
+        {% if exam_saved %}
+            <script>
+                $('#exam_saved').foundation('reveal', 'open');
+            </script>
+        {% endif %}
 {% endblock %}

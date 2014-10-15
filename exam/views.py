@@ -6,14 +6,11 @@ from exam.forms import get_exam_form
 
 # Create your views here.
 
-
 def new_exam(request):
     exam_types = ExamType.objects.all()
-
     return render_to_response(
-        'new_exam.html', {
-            "exam_types": exam_types
-        },
+        'new_exam.html', 
+        { "exam_types": exam_types },
         context_instance=RequestContext(request)
     )
 
@@ -21,4 +18,8 @@ def new_exam(request):
 def register_exam(request):
     exam = get_exam_form(request)
     exam.save()
-    print exam
+    return render_to_response(
+        'new_exam.html',
+        { 'exam_saved': True },
+        context_instance=RequestContext(request)
+    )

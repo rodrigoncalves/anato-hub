@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from biopsy.models import Biopsy
+from biopsy import Biopsy
 from django.shortcuts import render_to_response
 from django.shortcuts import render
 from django.template.context import RequestContext

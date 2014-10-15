@@ -4,7 +4,7 @@ from django.db import models
 
 # Create your models here.
 
-from modeling.exam import Exam
+from exam import Exam
 from modeling.report import ReportStatus
 from modeling.immunohistochemical import Immunohistochemical, \
     ImmunohistochemicalStatus, AntibodiesTable, ImmunohistochemicalReport

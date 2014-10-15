@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.db import models
-from modeling.exam import Exam
+from exam import Exam
 from modeling.report import ReportStatus
 
 
