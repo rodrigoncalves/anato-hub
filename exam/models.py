@@ -8,6 +8,7 @@ class ExamType(models.Model):
         return self.description
 
     description = models.CharField(max_length=50)
+    name_class = models.CharField(max_length=50)
 
 
 class Exam(models.Model):

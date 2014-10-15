@@ -20,7 +20,7 @@ class Biopsy(models.Model):
         max_length=255, null=True, blank=True)
     footer = models.CharField(
         max_length=255, null=True, blank=True)
-    status = models.ForeignKey(BiopsyStatus)
+    status = models.ForeignKey(BiopsyStatus, default=1)
     exam = models.ForeignKey(Exam)
 
 
