@@ -1,13 +1,16 @@
 from django.shortcuts import render
-from biopsy.models import Biopsy
+from biopsy import Biopsy
 from django.shortcuts import render_to_response
 from django.shortcuts import render
 from django.template.context import RequestContext
 
 # Create your views here.
 def new_biopsy(request):
+    biopsy = Biopsy()
     return render_to_response(
-        'new_biopsy.html',
+        'new_biopsy.html', { 
+            "biopsy" : biopsy
+        },
         context_instance=RequestContext(request)
     )
 
