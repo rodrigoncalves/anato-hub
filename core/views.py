@@ -2,6 +2,7 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response
 
 from modeling.forms_exam import ExamForm
+from biopsy.biopsy import Biopsy
 
 # Create your views here.
 
@@ -38,7 +39,10 @@ def patient_profile(request, records):
 
 
 def new_biopsy(request):
+    biopsy = Biopsy()
     return render_to_response(
-        'new_biopsy.html',
+        'new_biopsy.html', { 
+            "biopsy" : biopsy
+        },
         context_instance=RequestContext(request)
     )
