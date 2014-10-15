@@ -12,6 +12,7 @@
 
     {% load staticfiles %}
         <link rel="stylesheet" href="{% static "stylesheets/app.css" %}" />
+        <link rel="stylesheet" href="{% static "stylesheets/components/foundation-datepicker.css" %}" />
         <link rel="stylesheet" href="{% static "fonts/unb-font.css" %}" />
         <link rel="stylesheet" href="{% static "bower_components/foundation-icons/foundation-icons.css" %}" />
         <script src="{% static "bower_components/foundation/js/vendor/modernizr.js" %}"></script>
@@ -52,6 +53,7 @@
         <script src="{% static "bower_components/foundation/js/vendor/jquery.js" %}"></script>
         <script src="{% static "bower_components/foundation/js/foundation.min.js" %}"></script>
         <script src="{% static "js/app.js" %}"></script>
+        <!-- <script src="{% static "js/foundation-datepicker.js" %}"></script>  -->
 
     {% block 'footer-scripts' %}
     {% endblock %}
