@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
 from django.db import models
-from exam.models import Exam
-from modeling.report import ReportStatus
+from exam.models import Exam, ReportStatus
 
 
 class NecropsyStatus(models.Model):
     description = models.CharField(max_length=50)
+
 
 class Necropsy(models.Model):
     clinical_information = models.TextField(null=True, blank=True)
@@ -19,6 +19,7 @@ class Necropsy(models.Model):
     footer = models.TextField(null=True, blank=True)
     status = models.ForeignKey(NecropsyStatus)
     exam = models.ForeignKey(Exam)
+
 
 class NecropsyReport(models.Model):
     clinical_information = models.TextField(null=True, blank=True)

@@ -22,3 +22,7 @@ class Exam(models.Model):
     requesting_physician = models.CharField(max_length=50)
     responsible_physician = models.CharField(max_length=50)
     exam_type = models.ForeignKey(ExamType)
+
+
+class ReportStatus(models.Model):
+    description = models.CharField(max_length=50)
