@@ -45,7 +45,7 @@
                         <span class="prefix">Data da Requisição:</span>
                     </div>
                     <div class="large-8 columns">
-                        <input type="date" class="calendar form-input" name="request_date" id="request_date">
+                        <input type="date" class="form-input calendar" name="request_date" id="request_date" readonly data-date-format="dd/mm/yyyy">
                     </div>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                         <span class="prefix">Recebimento do Material:</span>
                     </div>
                     <div class="large-8 columns">
-                        <input type="date" class="form-input calendar" name="receipt_date" id="receipt_date">
+                        <input type="date" class="form-input calendar" name="receipt_date" id="receipt_date" readonly data-date-format="dd/mm/yyyy">
                     </div>
                 </div>
             </div>
@@ -65,7 +65,7 @@
                         <span class="prefix">Coleta do Material:</span>
                     </div>
                     <div class="large-8 columns">
-                        <input type="date" class="form-input calendar" name="speciment_collection_date" id="speciment_collection_date">
+                        <input type="date" class="form-input calendar" name="speciment_collection_date" id="speciment_collection_date" readonly data-date-format="dd/mm/yyyy">
                     </div>
                 </div>
             </div>
@@ -85,7 +85,7 @@
                         <span class="prefix">Hora do Exame:</span>
                     </div>
                     <div class="large-8 columns">
-                        <input type="text" class="form-input" name="examination_time" id="examination_time">
+                        <input type="text" class="form-input hour" name="examination_time" id="examination_time">
                     </div>
                 </div>
             </div>
@@ -135,13 +135,12 @@
 {% block 'footer-scripts' %}
     {% load staticfiles %}
         <script src="{% static "js/jquery.inputmask.js" %}"></script>
+        <script src="{% static "js/foundation-datepicker.js" %}"></script>
         <script type="text/javascript">
             $(document).ready( function(){
-                $('.calendar').inputmask('99/99/9999');
+                $('.calendar').fdatepicker();
+                $('.hour').inputmask('99:99')
             })
-        //     $('.calendar').on('keydown', function(e){
-        //         e.preventDefault();
-        //     });
         </script>
         {% if exam_saved %}
             <script>
