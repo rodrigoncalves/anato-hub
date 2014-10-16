@@ -21,3 +21,14 @@ class TestDynamicImport(TestCase):
 
         specific_exam | should | be_kind_of(Necropsy)
 
+    def test_create_specific_exam_invalid_param(self):
+        from exam.exceptions import InvalidParameter
+
+        InvalidParameter | should | be_thrown_by(lambda: create_specific_exam(
+            ''))
+
+    def test_create_specific_exam_invalid_model(self):
+        from exam.exceptions import ModelDoesNotExist
+
+        ModelDoesNotExist | should | be_thrown_by(lambda: create_specific_exam(
+            'InvalidModel'))
