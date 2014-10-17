@@ -20,5 +20,5 @@ urlpatterns = patterns('',
     url(r'^biopsia/nova/$', 'biopsy.views.new_biopsy'),
     url(r'^necropsia/$', 'necropsy.views.add_necropsy'),
     url(r'^necropsia/nova/$', 'necropsy.views.new_necropsy'),
-    url(r'^exame/novo/$', 'core.views.new_exam'),
+    url(r'^exame/novo/$', 'exam.views.new_exam'),
 )

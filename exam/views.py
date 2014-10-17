@@ -7,7 +7,6 @@ from exam.dynamic_import import create_specific_exam
 
 # Create your views here.
 
-
 def new_exam(request):
     exam_types = ExamType.objects.all()
     return render_to_response(
