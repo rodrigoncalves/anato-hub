@@ -12,7 +12,7 @@ class CytologyTest(TestCase):
 			microscopic = "miscroscopia",
 			conclusion = "conclusao",
 			note = "nota",
-			footer = "rodape"
+			footer = "legenda"
 		)
 
 		cytology.save()
@@ -22,4 +22,4 @@ class CytologyTest(TestCase):
 		self.assertEquals("miscroscopia", cytology.microscopic)
 		self.assertEquals("conclusao", cytology.conclusion)
 		self.assertEquals("nota", cytology.notes)
-		self.assertEquals("rodape", cytology.footer)
+		self.assertEquals("legenda", cytology.footer)

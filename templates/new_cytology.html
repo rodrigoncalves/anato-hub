@@ -16,78 +16,90 @@
 			{% csrf_token %}
 
 			<div class="row">
-				<div class="large-12 columns">
+				<div class="large-15 columns">
 					<div class="row collapse prefix-radius">
-						<div class="small-6 columns">
+						<div class="small-4 columns">
 							<span class="prefix">Informacoes Clinicas:</span>
 						</div>
-						<div class="small-9 columns">
-							{{cytology.clinical_information}}
+						<div class="small-15 columns">
+							<textarea rows="10" cols="100">
+								{{cytology.clinical_information}}
+						</textarea>
 						</div>
 					</div>
 				</div>
 			</div>
 
 			<div class="row">
-				<div class="large-12 columns">
+				<div class="large-15 columns">
 					<div class="row collapse prefix-radius">
-						<div class="small-6 columns">
+						<div class="small-4 columns">
 							<span class="prefix">Quantidade:</span>
 						</div>
-						<div class="small-9 columns">
-							{{cytology.quantity}}
+						<div class="small-15 columns">
+							<textarea rows="10" cols="100">
+								{{cytology.quantity}}
+						</textarea>
 						</div>
 					</div>
 				</div>
 			</div>
 
 			<div class="row">
-				<div class="large-12 columns">
+				<div class="large-15 columns">
 					<div class="row collapse prefix-radius">
-						<div class="small-6 columns">
+						<div class="small-4 columns">
 							<span class="prefix">Microscopia:</span>
 						</div>
-						<div class="small-9 columns">
-							{{cytology.microscopic}}
+						<div class="small-15 columns">
+							<textarea rows="10" cols="100">
+								{{cytology.microscopic}}
+						</textarea>
 						</div>
 					</div>
 				</div>
 			</div>
 
 			<div class="row">
-				<div class="large-12 columns">
+				<div class="large-15 columns">
 					<div class="row collapse prefix-radius">
-						<div class="small-6 columns">
+						<div class="small-4 columns">
 							<span class="prefix">Conclusao:</span>
 						</div>
-						<div class="small-9 columns">
-							{{cytology.conclusion}}
+						<div class="small-15 columns">
+							<textarea rows="10" cols="100">
+								{{cytology.conclusion}}
+						</textarea>
 						</div>
 					</div>
 				</div>
 			</div>
 
 			<div class="row">
-				<div class="large-12 columns">
+				<div class="large-15 columns">
 					<div class="row collapse prefix-radius">
-						<div class="small-6 columns">
+						<div class="small-4 columns">
 							<span class="prefix">Notas:</span>
 						</div>
-						<div class="small-9 columns">
-							{{cytology.note}}
+						<div class="small-15 columns">
+							<textarea rows="10" cols="100">
+								{{cytology.note}}
+						</textarea>
 						</div>
 					</div>
 				</div>
 			</div>
 
 			<div class="row">
-				<div class="large-12 columns">
+				<div class="large-15 columns">
 					<div class="row collapse prefix-radius">
-						<div class="small-6 columns">
-							<span class="prefix">Rodape:</span>
+						<div class="small-4 columns">
+							<span class="prefix">Legenda:</span>
 						</div>
-						<div class="small-9 columns">
-							{{cytology.footer}}
+						<div class="small-15 columns">
+							<textarea rows="10" cols="100">
+								{{cytology.footer}}
+						</textarea>
 						</div>
 					</div>
 				</div>
