@@ -20,7 +20,7 @@ def add_biopsy(request):
 	macroscopic = request.POST.get('macroscopic')
 	microscopic = request.POST.get('microscopic')
 	conclusion = request.POST.get('conclusion')
-	notes = request.POST.get('notes')
+	note = request.POST.get('note')
 	footer = request.POST.get('footer')
 
 	biopsy = Biopsy(
@@ -28,7 +28,7 @@ def add_biopsy(request):
 		macroscopic=macroscopic,
 		microscopic=microscopic,
 		conclusion=conclusion,
-		notes=notes,
+		note=note,
 		footer=footer
 	)
 
