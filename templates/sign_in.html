@@ -9,7 +9,7 @@
 {% block 'content' %}
 
     <div class="small-15 medium-5 large-4 medium-centered large-centered columns">
-        <form action="/login/entrar/" method="post">
+        <form action="/" method="post">
             {% csrf_token %}
             <p><h2 class="title">Anato - HUB</h2></p>
             <hr>
@@ -26,7 +26,7 @@
     {% load staticfiles %}
         <script src="{% static "js/login.js" %}"></script>
 
-    {% if modal_error == True %}
+    {% if modal_error %}
         <script>
             $('#modal_error').foundation('reveal', 'open');
         </script>

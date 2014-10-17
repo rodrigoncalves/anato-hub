@@ -14,28 +14,26 @@ def sign_in(request):
         )
 
     if request.method == 'GET':
-        return render_to_response(
-            'sign_in.html',
+        return render_to_response('sign_in.html',
             context_instance=RequestContext(request)
         )
 
     username = request.POST.get('username')
     password = request.POST.get('password')
-
     login_user = authenticate_user(request=request, username=username, password=password)
-
+    error_message = None
+    print login_user
     if login_user == SUCCESS:
-        return redirect('/', csrf_token)
+        return redirect('/')
     elif login_user == INACTIVE_USER:
-        error_messsage = "Solicitação realizada, aguarde confirmação."
+        error_message = "Solicitação realizada, aguarde confirmação."
     elif login_user == INVALID_LOGIN:
-        error_messsage = "Usuário ou senha estão inválidos."
+        error_message = "Usuário ou senha estão inválidos."
     elif login_user == LDAP_CONNECTION_ERROR:
-        error_messsage = "Um erro ocorreu com a conexão. Tente novamente."
+        error_message = "Um erro ocorreu com a conexão. Tente novamente."
 
-    return render_to_response(
-        'sign_in.html',
-        {'error_messsage': error_messsage, 'modal_error': True},
+    return render_to_response('sign_in.html',
+        {'login_error': error_message, 'modal_error': True},
         context_instance=RequestContext(request)
     )
 
@@ -46,6 +44,4 @@ def log_out(request):
 
 @login_required(login_url='/login/')
 def home(request):
-    return render_to_response(
-        'home.html'
-    )
+    return render_to_response('home.html')
