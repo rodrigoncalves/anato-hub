@@ -12,7 +12,7 @@ urlpatterns = patterns('',
     url(r'^exame/', include('exam.urls')),
 
     url(r'^$', 'authentication.views.sign_in'),
-    url(r'^sair/', 'authentication.views.log_out'),
+    url(r'^sair/$', 'authentication.views.log_out'),
     url(r'^resultados/$', 'core.views.search_results'),
     url(r'^consulta/$', 'core.views.home_search'),
     url(r'^paciente/(?P<records>\w+)$', 'core.views.patient_profile'),
