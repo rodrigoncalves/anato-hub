@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block 'title' %}Cadastro de Exame | Anato{% endblock %}
+
+{% block 'content' %}
+
+	<div class="small-15 medium-13 large-13 small-centered columns">
+		<p><h2 class="title">Anato - HUB</h2></p>
+		<hr>
+		<p><h4 class="title">Exame Citologia:</h4></p>
+		<br>
+	</div>
+
+	<div class="small-15 medium-7 large-6 medium-centered large-centered columns">
+		<form action="" method="post">
+			{% csrf_token %}
+
+			<div class="row">
+				<div class="large-12 columns">
+					<div class="row collapse prefix-radius">
+						<div class="small-6 columns">
+							<span class="prefix">Informacoes Clinicas:</span>
+						</div>
+						<div class="small-9 columns">
+							{{cytology.clinical_information}}
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="large-12 columns">
+					<div class="row collapse prefix-radius">
+						<div class="small-6 columns">
+							<span class="prefix">Quantidade:</span>
+						</div>
+						<div class="small-9 columns">
+							{{cytology.quantity}}
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="large-12 columns">
+					<div class="row collapse prefix-radius">
+						<div class="small-6 columns">
+							<span class="prefix">Microscopia:</span>
+						</div>
+						<div class="small-9 columns">
+							{{cytology.microscopic}}
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="large-12 columns">
+					<div class="row collapse prefix-radius">
+						<div class="small-6 columns">
+							<span class="prefix">Conclusao:</span>
+						</div>
+						<div class="small-9 columns">
+							{{cytology.conclusion}}
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="large-12 columns">
+					<div class="row collapse prefix-radius">
+						<div class="small-6 columns">
+							<span class="prefix">Notas:</span>
+						</div>
+						<div class="small-9 columns">
+							{{cytology.note}}
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="large-12 columns">
+					<div class="row collapse prefix-radius">
+						<div class="small-6 columns">
+							<span class="prefix">Rodape:</span>
+						</div>
+						<div class="small-9 columns">
+							{{cytology.footer}}
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<input type="submit" value="Submit" />
+
+		</form>
+	</div>
+
+{%endblock %}
+
+{% block 'footer-scripts' %}
+	{% load staticfiles %}
+		<script src="{% static "js/foundation-datepicker.js" %}"></script>
+{% endblock %}
