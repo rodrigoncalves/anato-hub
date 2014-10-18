@@ -15,7 +15,7 @@ Para poder utiliza-lo
         Quando o usuario digita seu nome
         E digita a sua senha
         Então o sistema nao consegue autenticar o usuario no LDAP
-        E retorna uma mensagem "Usuário ou senha incorretos."
+        E retorna uma mensagem "Nome de usuário ou senha incorretos."
 
     Cenário: Sistema não consegue se conectar ao LDAP
         Dado que o usuario acessa o sistema
@@ -23,7 +23,7 @@ Para poder utiliza-lo
         Quando o usuario digita seu nome
         E digita a sua senha
         Então o sistema nao consegue conectar no LDAP
-        E retorna a mensagem de erro "Não foi possível realizar a autenticação, tente novamente mais tarde."
+        E retorna a mensagem de erro "Ocorreu um erro na conexão. Tente novamente."
 
     Cenário: Usuario digita apenas o nome de usuario
         Dado que o usuario acessa o sistema
