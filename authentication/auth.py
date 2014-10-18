@@ -3,7 +3,7 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from authentication.ldap_auth import ldap_authentication
-from auth_exceptions import LDAPConnectionError, LDAPCredentialError
+from auth_exceptions import LDAPUserDoesNotExist, LDAPConnectionError, LDAPCredentialError
 
 # Login errors
 SUCCESS = 0
