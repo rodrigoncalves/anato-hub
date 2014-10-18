@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.db import models
 
 class Paciente(models.Model):
-    codigo = models.IntegerField(blank=True, null=True)
+    codigo = models.IntegerField(blank=True, null=True, primary_key = True)
     nome = models.CharField(max_length=-1, blank=True)
     cpf = models.CharField(max_length=-1, blank=True)
     nome_mae = models.CharField(max_length=-1, blank=True)
