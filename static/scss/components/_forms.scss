@@ -64,11 +64,11 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%);
     border-right: 1px solid #CCC;
 }
 
-input {
-    .form-input {
-        text-align: center;
-    }
-    .calendar {
-        text-align: center;
-    }
+
+.form-input {
+    text-align: center;
+    background: $white;
+}
+.calendar {
+    background: $white;
 }

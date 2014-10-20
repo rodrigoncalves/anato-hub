@@ -1,8 +1,9 @@
-from django.shortcuts import render_to_response, redirect, get_object_or_404
+# -*- coding: utf-8 -*-
+
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from authentication.ldap_auth import ldap_authentication
-from auth_exceptions import LDAPConnectionError, LDAPCredentialError
+from auth_exceptions import LDAPUserDoesNotExist, LDAPConnectionError, LDAPCredentialError
 
 # Login errors
 SUCCESS = 0
@@ -12,26 +13,42 @@ LDAP_CONNECTION_ERROR = 3
 
 def authenticate_user(request, username, password):
     try:
+        user = exist_user(username, password)
         if ldap_authentication(username, password):
-            if exist_user(username, password):
-                login_user = authentication(username=username, password=password)
-                login(request, login_user)
-                return SUCCESS
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return SUCCESS
+                elif user.last_login == user.date_joined:
+                    return INACTIVE_USER
+                else:
+                    return INVALID_LOGIN
             else:
                 create_user(username, password)
                 return INACTIVE_USER
+        elif user is not None:
+            inactivate_user(user)
+
+        return INVALID_LOGIN
+
+    except LDAPUserDoesNotExist:
+        return INVALID_LOGIN
     except LDAPCredentialError:
         return INVALID_LOGIN
     except LDAPConnectionError:
         return LDAP_CONNECTION_ERROR
 
 def exist_user(username, password):
-    try:
-        user = User.objects.get(username=username, password=password, is_active=True)
-        return True
-    except:
-        return False
-
+    login_user = authenticate(username=username, password=password)
+    return login_user
+    
 def create_user(username, password):
-    user = User.objects.create_user(username=username, email=None, password=password, is_active=False)
+    user = User.objects.create_user(username=username, email=None, password=password)
+    user.is_active = False
+    user.save()
+    return user
+
+def inactivate_user(user):
+    user.is_active = False
+    user.save()
     return user

@@ -1,30 +1,39 @@
 # -*- coding: utf-8 -*-
-
-from django import forms
-from exam.models import Exam
-from modeling.report import ReportStatus
+from django.db import models
+from exam.models import Exam, ReportStatus
 
 
-class BiopsyStatus(forms.Form):
-    description = forms.CharField(max_length=50)
+class BiopsyStatus(models.Model):
+    description = models.CharField(max_length=50)
 
 
-class Biopsy(forms.Form):
-    clinical_information = forms.CharField()
-    macroscopic = forms.CharField()
-    microscopic = forms.CharField()
-    conclusion = forms.CharField()
-    note = forms.CharField()
-    footer = forms.CharField()
-    #status = forms.ForeignKey(BiopsyStatus)
-    #exam = forms.ForeignKey(Exam)
+class Biopsy(models.Model):
+    clinical_information = models.CharField(
+        max_length=255, null=True, blank=True)
+    macroscopic = models.CharField(
+        max_length=255, null=True, blank=True)
+    microscopic = models.CharField(
+        max_length=255, null=True, blank=True)
+    conclusion = models.CharField(
+        max_length=255, null=True, blank=True)
+    note = models.CharField(
+        max_length=255, null=True, blank=True)
+    footer = models.CharField(
+        max_length=255, null=True, blank=True)
+    status = models.ForeignKey(BiopsyStatus, default=1)
+    exam = models.ForeignKey(Exam)
 
 
-class BiopsyReport(forms.Form):
-    clinical_information = forms.CharField()
-    macroscopic = forms.CharField()
-    microscopic = forms.CharField()
-    conclusion = forms.CharField()
-    note = forms.CharField()
-    #status = forms.ForeignKey(ReportStatus)
-    #biopsy = forms.ForeignKey(Biopsy)
+class BiopsyReport(models.Model):
+    clinical_information = models.CharField(
+        max_length=255, null=True, blank=True)
+    macroscopic = models.CharField(
+        max_length=255, null=True, blank=True)
+    microscopic = models.CharField(
+        max_length=255, null=True, blank=True)
+    conclusion = models.CharField(
+        max_length=255, null=True, blank=True)
+    note = models.CharField(
+        max_length=255, null=True, blank=True)
+    status = models.ForeignKey(ReportStatus)
+    biopsy = models.ForeignKey(Biopsy)

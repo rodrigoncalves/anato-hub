@@ -10,97 +10,40 @@
         <p><h4 class="title">Resultados da Busca:</h4></p>
         <br>
     </div>
-
+    {% if empty_fields != True and empty_results != True %}
     <div class="small-15 medium-12 large-8 row">
-        <div class="small-15 medium-10 columns">
-            <div class="small-14 small-centered columns">
-                <span data-tooltip aria-haspopup="true" class="has-tip" title="Nome do Paciente">
-                    <i class="fi-male"> Matheus Souza Fernandes</i>
-                </span>
-                <br>
-                <span data-tooltip aria-haspopup="true" class="has-tip" title="Nº Prontuário">
-                    <i class="fi-clipboard-notes"> 488271930</i>
-                </span>
-                <br>
-                <span data-tooltip aria-haspopup="true" class="has-tip" title="Data de Nascimento">
-                    <i class="fi-calendar"> 13 de Janeiro de 1993</i>
-                </span>
-                <br>
-                <span data-tooltip aria-haspopup="true" class="has-tip" title="Nome da Mãe">
-                    <i class="fi-torso-female"> Tania Maria Correa de Souza</i>
-                </span>
+        {% for patient in patients %}
+            <div class="small-15 medium-10 columns">
+                <div class="small-14 small-centered columns">
+                    <span data-tooltip aria-haspopup="true" class="has-tip" title="Nome do Paciente">
+                        <i class="fi-male"> {{patient.nome}}</i>
+                    </span>
+                    <br>
+                    <span data-tooltip aria-haspopup="true" class="has-tip" title="Nº Prontuário">
+                        <i class="fi-clipboard-notes"> {{patient.prontuario}}</i>
+                    </span>
+                    <br>
+                    <span data-tooltip aria-haspopup="true" class="has-tip" title="Data de Nascimento">
+                        <i class="fi-calendar"> {{patient.dt_nascimento}}</i>
+                    </span>
+                    <br>
+                    <span data-tooltip aria-haspopup="true" class="has-tip" title="Nome da Mãe">
+                        <i class="fi-torso-female"> {{patient.nome_mae}}</i>
+                    </span>
                 </div>
             </div>
-        <div class="small-15 medium-5 columns">
-            <div class="small-14 small-centered columns">
-                <button class="postfix"><i class="fi-male"></i> Ver Paciente</button>
-            </div>
-            <div class="small-14 small-centered columns">
-                <button class="postfix"><i class="fi-page-add"></i> Novo Exame</button>
-            </div>
-        </div>
-        <hr>
-    </div>
-
-    <div class="small-15 medium-12 large-8 row">
-        <div class="small-15 medium-10 columns">
-            <div class="small-14 small-centered columns">
-                <span data-tooltip aria-haspopup="true" class="has-tip" title="Nome do Paciente">
-                    <i class="fi-male"> Paola Coelho Sabino</i>
-                </span>
-                <br>
-                <span data-tooltip aria-haspopup="true" class="has-tip" title="Nº Prontuário">
-                    <i class="fi-clipboard-notes"> 684208589</i>
-                </span>
-                <br>
-                <span data-tooltip aria-haspopup="true" class="has-tip" title="Data de Nascimento">
-                    <i class="fi-calendar"> 14 de Outubro de 1990</i>
-                </span>
-                <br>
-                <span data-tooltip aria-haspopup="true" class="has-tip" title="Nome da Mãe">
-                    <i class="fi-torso-female"> Selma Sabino</i>
-                </span>
+            <div class="small-15 medium-5 columns">
+                <div class="small-14 small-centered columns">
+                    <a class="postfix button" href="/paciente/1 "><i class="fi-male"></i> Ver Paciente</a>
+                </div>
+                <div class="small-14 small-centered columns">
+                    <a class="postfix button" href="/exame/novo"><i class="fi-page-add"></i> Novo Exame</a>
                 </div>
             </div>
-        <div class="small-15 medium-5 columns">
-            <div class="small-14 small-centered columns">
-                <button class="postfix"><i class="fi-male"></i> Ver Paciente</button>
-            </div>
-            <div class="small-14 small-centered columns">
-                <button class="postfix"><i class="fi-page-add"></i> Novo Exame</button>
-            </div>
-        </div>
-        <hr>
+            <hr>
+        {% endfor %}
     </div>
-
-    <div class="small-15 medium-12 large-8 row">
-        <div class="small-15 medium-10 columns">
-            <div class="small-14 small-centered columns">
-                <span data-tooltip aria-haspopup="true" class="has-tip" title="Nome do Paciente">
-                    <i class="fi-male"> Matheus Souza Fernandes</i>
-                </span>
-                <br>
-                <span data-tooltip aria-haspopup="true" class="has-tip" title="Nº Prontuário">
-                    <i class="fi-clipboard-notes"> 488271930</i>
-                </span>
-                <br>
-                <span data-tooltip aria-haspopup="true" class="has-tip" title="Data de Nascimento">
-                    <i class="fi-calendar"> 13 de Janeiro de 2014</i>
-                </span>
-                <br>
-                <span data-tooltip aria-haspopup="true" class="has-tip" title="Nome da Mãe">
-                    <i class="fi-torso-female"> Tania Maria Correa de Souza</i>
-                </span>
-                </div>
-            </div>
-        <div class="small-15 medium-5 columns">
-            <div class="small-14 small-centered columns">
-                <button class="postfix"><i class="fi-male"></i> Ver Paciente</button>
-            </div>
-            <div class="small-14 small-centered columns">
-                <button class="postfix"><i class="fi-page-add"></i> Novo Exame</button>
-            </div>
-        </div>
-        <hr>
-    </div>
+    {% else %}
+        <p><h4 class="title">Nenhum paciente encontrado.</h4></p>
+    {% endif %}
 {% endblock %}
