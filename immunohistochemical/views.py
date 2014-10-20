@@ -1,38 +1,36 @@
 from django.shortcuts import render
-from biopsy import Biopsy
+from immunohistochemical import Immunohistochemical
 from django.shortcuts import render_to_response
 from django.shortcuts import render
 from django.template.context import RequestContext
-
 # Create your views here.
-def new_biopsy(request):
-    biopsy = Biopsy()
+
+def new_immunohistochemical(request):
+    immunohistochemical = Immunohistochemical()
     return render_to_response(
-        'new_biopsy.html', { 
-            "biopsy" : biopsy
+        'new_immunohistochemical.html', { 
+            "immunohistochemical" : immunohistochemical
         },
         context_instance=RequestContext(request)
     )
 
-def add_biopsy(request):
+def add_immunohistochemical(request):
 	
 	clinical_information = request.POST.get('clinical_information')
-	macroscopic = request.POST.get('macroscopic')
-	microscopic = request.POST.get('microscopic')
+	previous_biopsy = request.POST.get('previous_biopsy')
 	conclusion = request.POST.get('conclusion')
 	note = request.POST.get('note')
 	footer = request.POST.get('footer')
 
-	biopsy = Biopsy(
+	immunohistochemical = Immunohistochemical(
 		clinical_information=clinical_information,
-		macroscopic=macroscopic,
-		microscopic=microscopic,
+		previous_biopsy=previous_biopsy,
 		conclusion=conclusion,
 		note=note,
 		footer=footer
 	)
 
-	biopsy.save()
+	immunohistochemical.save()
 
 	return render_to_response(
 	    'home_search.html',

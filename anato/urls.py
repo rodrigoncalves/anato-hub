@@ -22,4 +22,7 @@ urlpatterns = patterns('',
     url(r'^citologia/nova/$', 'cytology.views.new_cytology'),
     url(r'^necropsia/$', 'necropsy.views.add_necropsy'),
     url(r'^necropsia/nova/$', 'necropsy.views.new_necropsy'),
+    url(r'^imunohistoquimica/$', 'immunohistochemical.views.add_immunohistochemical'),
+    url(r'^imunohistoquimica/nova/$', 'immunohistochemical.views.new_immunohistochemical'),
+
 )

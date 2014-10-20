@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
-
 from django.db import models
-from exam import Exam
-from modeling.report import ReportStatus
+from exam.models import Exam, ReportStatus
 
 
 class ImmunohistochemicalStatus(models.Model):

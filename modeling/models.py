@@ -6,7 +6,7 @@ from django.db import models
 
 from exam import Exam
 from modeling.report import ReportStatus
-from modeling.immunohistochemical import Immunohistochemical, \
+from immunohistochemical import Immunohistochemical, \
     ImmunohistochemicalStatus, AntibodiesTable, ImmunohistochemicalReport
 from modeling.citology import Citology, CitologyReport, CitologyStatus, \
     CitologyType
