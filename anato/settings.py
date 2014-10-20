@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'configs',
     'authentication',
     'core',
+    'patients',
     'exam',
     'biopsy',
     'necropsy',

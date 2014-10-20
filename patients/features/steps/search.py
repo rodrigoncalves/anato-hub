@@ -28,15 +28,20 @@ def click_search_button(context):
 @then(u'o sistema retorna os Pacientes com o nome digitado')
 def return_pacient_name(context):
     pacient_name = context.driver.find_element_by_class_name('fi-male')
-    pacient_name.getText() | should | equal_to('QUEILANE BXXXISTA')
+    pacient_name.text | should | equal_to('QUEILANE BXXXISTA')
 
 @when(u'o usuario digita o prontuario do Paciente')
-def typing_patientreport_only(context):
-    assert False
+def typing_pacient_name(context):
+    pacient_name_input = context.driver.find_element_by_id('report')
+    pacient_name_input.send_keys('808790')
 
 @then(u'o sistema retorna os Pacientes com o prontuario digitado')
 def step_impl(context):
-    assert False
+    pacient_report = context.driver.find_element_by_class_name('fi-male')
+    pacient_report.text | should | equal_to('LEONARDO QXXXXXXXXXXXXILVA')
+    pacient_report = context.driver.find_element_by_class_name('fi-clipboard-notes')
+    pacient_report.text | should | equal_to('808790')
+
 
 @when(u'o usuario digita o nome da mae do Paciente')
 def typing_mothername_only(context):

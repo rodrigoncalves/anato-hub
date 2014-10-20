@@ -9,8 +9,7 @@ Para visualizar seus dados e seus exames
 	Então o sistema retorna os Pacientes com o nome digitado
 
 	Cenario: Usuario busca Paciente somente pelo prontuario
-	Dado que o Usuario esta autenticado
-	E aparece a tela de busca
+	Dado que o Usuario esta na tela de busca de pacientes
 	Quando o usuario digita o prontuario do Paciente
 	E clica em buscar
 	Então o sistema retorna os Pacientes com o prontuario digitado
