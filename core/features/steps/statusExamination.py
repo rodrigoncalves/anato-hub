@@ -22,25 +22,39 @@ def show_examination(context):
 
 @then(u'mostra o status como Em Macroscopia')
 def status_examination(context):
-    context.driver.find_element_by_link_text('Em Macroscopia')
-
+    id_status = context.driver.find_element_by_id('Status') 
+    status = id_status.text
+    status | should | equal_to('Em Macroscopia')
+    context.driver.close()
 
 
 @then(u'mostra o status como Em Processamento')
 def status_examination(context):
-    context.driver.find_element_by_css_selector("Em Processamento")
+    id_status = context.driver.find_element_by_id('Status') 
+    status = id_status.text
+    status | should | equal_to('Em Processamento')
+    context.driver.close()
 
 @then(u'mostra o status como Com o residente')
 def status_examination(context):
-    context.driver.find_element_by_css_selector("Com o residente")
+    id_status = context.driver.find_element_by_id('Status') 
+    status = id_status.text
+    status | should | equal_to('Com o residente')
+    context.driver.close()
 
 @then(u'mostra o status como Com o staff')
 def status_examination(context):
-    context.driver.find_element_by_css_selector("Com o staff")
+    id_status = context.driver.find_element_by_id('Status') 
+    status = id_status.text
+    status | should | equal_to('Com o staff')
+    context.driver.close()
 
 @then(u'mostra o status como Liberado')
 def status_examination(context):
-    context.driver.find_element_by_css_selector("Liberado")
+    id_status = context.driver.find_element_by_id('Status') 
+    status = id_status.text
+    status | should | equal_to('Liberado')
+    context.driver.close()
 
 @when(u'o  auxiliar clica no exame de citologia geral')
 def show_general_cytology(context):
@@ -56,7 +70,10 @@ def show_Immunohistochemistry(context):
 
 @then(u'mostra o status como Em estudo previo')
 def status_examination(context):
-    context.driver.find_element_by_css_selector("Em estudo previo")
+    id_status = context.driver.find_element_by_id('Status') 
+    status = id_status.text
+    status | should | equal_to('Em estudo previo')
+    context.driver.close()
 
 @when(u'o  auxiliar clica no exame de Necropsia')
 def show_necropsy(context):
@@ -64,4 +81,7 @@ def show_necropsy(context):
 
 @then(u'mostra o status como Selecao de amostras')
 def status_examination(context):
-    context.driver.find_element_by_css_selector("Selecao de amostras")
+   id_status = context.driver.find_element_by_id('Status') 
+    status = id_status.text
+    status | should | equal_to('Selecao de amostras')
+    context.driver.close()
