@@ -5,7 +5,8 @@ from django.contrib import admin
 admin.autodiscover()
 
 
-urlpatterns = patterns('',
+urlpatterns = patterns(
+    '',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^tinymce/', include('tinymce.urls')),
 
@@ -24,5 +25,4 @@ urlpatterns = patterns('',
     url(r'^necropsia/nova/$', 'necropsy.views.new_necropsy'),
     url(r'^imunohistoquimica/$', 'immunohistochemical.views.add_immunohistochemical'),
     url(r'^imunohistoquimica/nova/$', 'immunohistochemical.views.new_immunohistochemical'),
-
 )

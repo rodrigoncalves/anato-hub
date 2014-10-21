@@ -68,12 +68,11 @@
 /* line 68, ../scss/components/_forms.scss */
 .form-input {
   text-align: center;
-  background: #FFFFFF;
 }
 
-/* line 72, ../scss/components/_forms.scss */
-.calendar {
-  background: #FFFFFF;
+/* line 71, ../scss/components/_forms.scss */
+.calendar, [readonly] {
+  background: #FFFFFF !important;
 }
 
 /* line 347, ../bower_components/foundation/scss/foundation/components/_global.scss */

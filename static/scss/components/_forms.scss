@@ -67,8 +67,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%);
 
 .form-input {
     text-align: center;
-    background: $white;
 }
-.calendar {
-    background: $white;
+.calendar, [readonly] {
+    background: $white !important;
 }

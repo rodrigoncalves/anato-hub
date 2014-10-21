@@ -2,10 +2,17 @@
 
 from django.test import TestCase
 from should_dsl import should
+
 from exam.dynamic_import import create_specific_exam
+from core.tests import FormatTest
+from sys import stderr
 
 
-class TestDynamicImport(TestCase):
+class TestDynamicImport(FormatTest, TestCase):
+
+    def setUp(self):
+        self.my_type = '[Exam - Dynamic Import]'
+        stderr.write(self.__str__())
 
     def test_create_biopsy_exam(self):
         from biopsy.models import Biopsy
