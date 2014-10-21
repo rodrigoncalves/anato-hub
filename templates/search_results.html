@@ -32,12 +32,16 @@
                     </span>
                 </div>
             </div>
-            <div class="small-15 medium-5 columns">
-                <div class="small-14 small-centered columns">
-                    <a class="postfix button" href="/paciente/1 "><i class="fi-male"></i> Ver Paciente</a>
+            <div class="small-14 small-centered medium-5 columns">
+                <div class="small-14 small-centered medium-15 large-15 columns">
+                    <a class="postfix button" href="/paciente/{{patient.codigo}}"><i class="fi-male"></i> Ver Paciente</a>
                 </div>
-                <div class="small-14 small-centered columns">
-                    <a class="postfix button" href="/exame/novo"><i class="fi-page-add"></i> Novo Exame</a>
+                <div class="small-14 small-centered medium-15 large-15 columns">
+                    <form action="/exame/novo/" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" value="{{patient.codigo}}" id="patient_id" name="patient_id">
+                        <button class="postfix"><i class="fi-page-add"></i> Novo Exame</button>
+                    </form>
                 </div>
             </div>
             <hr>

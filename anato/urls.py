@@ -16,7 +16,7 @@ urlpatterns = patterns(
     url(r'^sair/$', 'authentication.views.log_out'),
     url(r'^resultados/$', 'patients.views.search_results'),
     url(r'^consulta/$', 'patients.views.home_search'),
-    url(r'^paciente/(?P<records>\w+)$', 'core.views.patient_profile'),
+    url(r'^paciente/(?P<patient_id>\w+)$', 'core.views.patient_profile'),
     url(r'^exame/novo/$', 'exam.views.new_exam'),
     url(r'^biopsia/$', 'biopsy.views.add_biopsy'),
     url(r'^biopsia/nova/$', 'biopsy.views.new_biopsy'),

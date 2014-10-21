@@ -9,7 +9,7 @@ from should_dsl import should, should_not
 @given(u'que o auxiliar acessa o sistema e esta autenticado')
 def accessing_the_system(context):
     context.driver = webdriver.Firefox()
-    context.driver.get('http://localhost:8080/exame/novo/')
+    context.driver.get('http://127.0.0.1:8000/exame/novo/')
 
 
 @given(u'aparece a tela de cadastro de exame')

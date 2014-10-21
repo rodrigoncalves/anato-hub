@@ -5,6 +5,8 @@ from should_dsl import should, should_not
 from exam.models import ExamType
 from core.tests import FormatTest
 from sys import stderr
+from biopsy.models import BiopsyStatus
+from necropsy.models import NecropsyStatus
 
 
 class TestViews(FormatTest, TestCase):
@@ -17,10 +19,19 @@ class TestViews(FormatTest, TestCase):
             id=1,
             description='Biópsia',
             name_class='Biopsy')
+
+        BiopsyStatus.objects.create(
+            id=1,
+            description='Macroscopia')
+
         ExamType.objects.create(
             id=2,
             description='Necrópsia',
             name_class='Necropsy')
+
+        NecropsyStatus.objects.create(
+            id=1,
+            description='Macroscopia')
 
         self.client = Client()
 
