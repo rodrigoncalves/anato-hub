@@ -15,15 +15,14 @@ Para visualizar seus dados e seus exames
 	Então o sistema retorna os Pacientes com o prontuario digitado
 
 	Cenario: Usuario busca Paciente somente pelo nome da mae
-	Dado que o Usuario esta autenticado
-	E aparece a tela de busca
+	Dado que o Usuario esta na tela de busca de pacientes
 	Quando o usuario digita o nome da mae do Paciente
 	E clica em buscar
 	Então o sistema retorna os Pacientes com o nome da mae digitado
 
+    #-------Implementando
 	Cenario: Usuario busca Paciente somente pela data de nascimento
-	Dado que o Usuario esta autenticado
-	E aparece a tela de busca
+	Dado que o Usuario esta na tela de busca de pacientes
 	Quando o usuario digita a data de nascimento do Paciente
 	E clica em buscar
 	Então o sistema retorna os Pacientes com a data de nascimento digitada
