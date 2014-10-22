@@ -1,22 +1,24 @@
+# -*- coding: utf-8 -*-
 from django.test import TestCase, Client
-from should_dsl import should, should_not
-from django.db.models.query import QuerySet
-from patients.views import search_patient
-from patients.models import Paciente
+#from should_dsl import should, should_not
+#from django.db.models.query import QuerySet
+#from patients.views import search_patient
+#from patients import Patient
 
-class TestVies(TestCase):
+class TestPatient(TestCase):
 
     def setUp(self):
         self.client = Client()
 
-    #Valores de testes:
-    #Testar para 1 Paciente retornado.
-    #Testar para mais de 1 Paciente retornado.
-    #Testar para nenhum Paciente retornado.
+        #Valores de testes:
+        #Testar para 1 Paciente retornado.
+        #Testar para mais de 1 Paciente retornado.
+        #Testar para nenhum Paciente retornado.
 
     def test_search_patients(self):
         #Deixei o teste "passando", pq estava atrapalhando 
         #na visualização do log dos outros testes
+        #Responsável por este teste, apagar esse assert depois, por favor
         self.assertEquals("anato","anato")
         #Tentando contar quantos objetos o QuerySet contem.
         ##p = Paciente.objects.using('test_hub').all()
