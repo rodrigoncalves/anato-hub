@@ -54,9 +54,8 @@ docs/_build/
 
 
 # Configuration Files
-configs/database.py
-configs/server.py
-configs/ldap.py
+configs/*
+!configs/*.template
 
 # Others
 .sass-cache/
