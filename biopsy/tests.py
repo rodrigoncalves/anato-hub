@@ -11,15 +11,10 @@ class BiopsyTest(TestCase):
 			macroscopic= "macroscopia",
 			microscopic= "microscopia",
 			conclusion= "conclusao",
-<<<<<<< HEAD
-			note= "nota",
-			footer= "legenda"
-=======
 			notes= "nota",
 			footer= "legenda",
 			status = "status",
 			exam = "exame"
->>>>>>> 2f317d29afc3439fdbe9de968e44e357a60912eb
 		)
 
 		biopsy.save()
