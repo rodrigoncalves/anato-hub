@@ -4,100 +4,102 @@
 
 {% block 'content' %}
 
-	<div class="small-15 medium-13 large-13 small-centered columns">
-		<p><h2 class="title">Anato - HUB</h2></p>
-		<hr>
-		<p><h4 class="title">Exame Imunohistoquimica:</h4></p>
-		<br>
-	</div>
+    <div class="small-15 medium-13 large-13 small-centered columns">
+        <p><h2 class="title">Anato - HUB</h2></p>
+        <hr>
+        <p><h4 class="title">Exame Imunohistoquimmica:</h4></p>
+        <br>
+    </div>
 
-	<div class="small-15 medium-7 large-6 medium-centered large-centered columns">
-		<form action="" method="post">
-			{% csrf_token %}
+    <div class="small-15 medium-7 large-6 medium-centered large-centered columns">
+        <form action="" method="post">
+            {% csrf_token %}
 
-			<div class="row">
-				<div class="large-15 columns">
-					<div class="row collapse prefix-radius">
-						<div class="small-6 columns">
-							<span class="prefix">Informacoes Clinicas:</span>
-						</div>
-						<div class="small-15 columns">
-							<textarea rows="10" cols="100">
-								{{immunohistochemical.clinical_information}}
-							</textarea>
-						</div>
-					</div>
-				</div>
-			</div>
 
-			<div class="row">
-				<div class="large-15 columns">
-					<div class="row collapse prefix-radius">
-						<div class="small-6 columns">
-							<span class="prefix">Biopsia anterior:</span>
-						</div>
-						<div class="small-15 columns">
-							<textarea rows="10" cols="100">
-								{{immunohistochemical.previous_biopsy}}
-							</textarea>
-						</div>
-					</div>
-				</div>
-			</div>
+            <div class="row">
+                <div class="large-15 columns">
+                    <div class="row collapse prefix-radius">
+                        <div class="small-6 columns">
+                            <span class="prefix">Informacoes Clinicas:</span>
+                        </div>
+                        <div class="small-15 columns">
+                            <textarea rows="10" cols="100">
+                                {{immunohistochemical.clinical_information}}
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="row">
+                <div class="large-15 columns">
+                    <div class="row collapse prefix-radius">
+                        <div class="small-6 columns">
+                            <span class="prefix">Biopsia Anterior:</span>
+                        </div>
+                        <div class="small-15 columns">
+                            <textarea rows="10" cols="100">
+                                {{immunohistochemical.previous_biopsy}}  
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+            <div class="row">
+                <div class="large-15 columns">
+                    <div class="row collapse prefix-radius">
+                        <div class="small-6 columns">
+                        <span class="prefix">Conclusao:</span>
+                        </div>
+                        <div class="small-15 columns">
+                            <textarea rows="10" cols="100">
+                                 {{immunohistochemical.conclusion}}
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-			<div class="row">
-				<div class="large-15 columns">
-					<div class="row collapse prefix-radius">
-						<div class="small-6 columns">
-							<span class="prefix">Conclusao:</span>
-						</div>
-						<div class="small-15 columns">
-							<textarea rows="10" cols="100">
-								{{immunohistochemical.conclusion}}
-							</textarea>
-						</div>
-					</div>
-				</div>
-			</div>
+            <div class="row">
+                <div class="large-15 columns">
+                    <div class="row collapse prefix-radius">
+                        <div class="small-6 columns">
+                        <span class="prefix">Notas:</span>
+                        </div>
+                        <div class="small-15 columns">
+                            <textarea rows="10" cols="100">
+                                {{immunohistochemical.note}}  
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-			<div class="row">
-				<div class="large-15 columns">
-					<div class="row collapse prefix-radius">
-						<div class="small-6 columns">
-							<span class="prefix">Nota:</span>
-						</div>
-						<div class="small-15 columns">
-							<textarea rows="10" cols="100">
-								{{immunohistochemical.note}}
-							</textarea>
-						</div>
-					</div>
-				</div>
-			</div>
+            <div class="row">
+                <div class="large-15 columns">
+                    <div class="row collapse prefix-radius">
+                        <div class="small-6 columns">
+                        <span class="prefix">Legenda:</span>
+                        </div>
+                        <div class="small-15 columns">
+                            <textarea rows="10" cols="100">
+                                {{immunohistochemical.footer}}
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-			<div class="row">
-				<div class="large-15 columns">
-					<div class="row collapse prefix-radius">
-						<div class="small-4 columns">
-							<span class="prefix">Legenda:</span>
-						</div>
-						<div class="small-15 columns">
-							<textarea rows="10" cols="100">
-								{{immunohistochemical.footer}}
-							</textarea>
-						</div>
-					</div>
-				</div>
-			</div>
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
 
-			<input type="submit" value="Submit" />
-
-		</form>
-	</div>
-
-{%endblock %}
+{% endblock %}
 
 {% block 'footer-scripts' %}
-	{% load staticfiles %}
-		<script src="{% static "js/foundation-datepicker.js" %}"></script>
+    {% load staticfiles %}
+        <script src="{% static "js/foundation-datepicker.js" %}"></script>
 {% endblock %}
+    
+
