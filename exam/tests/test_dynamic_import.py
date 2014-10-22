@@ -17,16 +17,16 @@ class TestDynamicImport(FormatTest, TestCase):
     def test_create_biopsy_exam(self):
         from biopsy.models import Biopsy
 
-        specific_exam = create_specific_exam('Biopsy')
+        biopsy_exam = create_specific_exam('Biopsy')
 
-        specific_exam | should | be_kind_of(Biopsy)
+        biopsy_exam | should | be_kind_of(Biopsy)
 
     def test_create_necropsy_exam(self):
         from necropsy.models import Necropsy
 
-        specific_exam = create_specific_exam('Necropsy')
+        necropsy_exam = create_specific_exam('Necropsy')
 
-        specific_exam | should | be_kind_of(Necropsy)
+        necropsy_exam | should | be_kind_of(Necropsy)
 
     def test_create_specific_exam_invalid_param(self):
         from exam.exceptions import InvalidParameter
