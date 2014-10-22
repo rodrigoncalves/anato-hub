@@ -1,10 +1,13 @@
+# -*- coding: utf-8 -*-
+
 from django.shortcuts import render
-from immunohistochemical import Immunohistochemical
 from django.shortcuts import render_to_response
 from django.shortcuts import render
 from django.template.context import RequestContext
-# Create your views here.
+from django.contrib.auth.decorators import login_required
+from immunohistochemical import Immunohistochemical
 
+@login_required(login_url='/', redirect_field_name='')
 def new_immunohistochemical(request):
     immunohistochemical = Immunohistochemical()
     return render_to_response(
@@ -14,6 +17,7 @@ def new_immunohistochemical(request):
         context_instance=RequestContext(request)
     )
 
+@login_required(login_url='/', redirect_field_name='')
 def add_immunohistochemical(request):
 	
 	clinical_information = request.POST.get('clinical_information')

@@ -1,13 +1,14 @@
+# -*- coding: utf-8 -*-
+
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-
+from django.contrib.auth.decorators import login_required
 from exam.models import ExamType
 from exam.forms import get_exam_form
 from exam.dynamic_import import create_specific_exam
 from patients.models import Paciente
 
-# Create your views here.
-
+@login_required(login_url='/', redirect_field_name='')
 def new_exam(request):
     exam_types = ExamType.objects.all()
     patient_id = request.POST["patient_id"]
@@ -19,7 +20,7 @@ def new_exam(request):
         context_instance=RequestContext(request)
     )
 
-
+@login_required(login_url='/', redirect_field_name='')
 def register_exam(request):
     exam = get_exam_form(request)
     exam.save()

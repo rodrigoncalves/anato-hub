@@ -1,10 +1,13 @@
+# -*- coding: utf-8 -*-
+
 from django.shortcuts import render
-from biopsy import Biopsy
 from django.shortcuts import render_to_response
 from django.shortcuts import render
 from django.template.context import RequestContext
+from django.contrib.auth.decorators import login_required
+from biopsy import Biopsy
 
-# Create your views here.
+@login_required(login_url='/', redirect_field_name='')
 def new_biopsy(request):
     biopsy = Biopsy()
     return render_to_response(
@@ -14,8 +17,8 @@ def new_biopsy(request):
         context_instance=RequestContext(request)
     )
 
+@login_required(login_url='/', redirect_field_name='')
 def add_biopsy(request):
-	
 	clinical_information = request.POST.get('clinical_information')
 	macroscopic = request.POST.get('macroscopic')
 	microscopic = request.POST.get('microscopic')

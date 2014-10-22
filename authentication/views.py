@@ -37,7 +37,7 @@ def sign_in(request):
         context_instance=RequestContext(request)
     )
 
-@login_required(login_url='/')
+@login_required(login_url='/', redirect_field_name='')
 def log_out(request):
     logout(request)
     return redirect('/')

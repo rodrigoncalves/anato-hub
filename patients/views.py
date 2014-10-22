@@ -1,7 +1,11 @@
+# -*- coding: utf-8 -*-
+
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+from django.contrib.auth.decorators import login_required
 from patients.models import Paciente
 
+@login_required(login_url='/', redirect_field_name='')
 def search_results(request):
     patient = request.POST['patient']
     report = request.POST['report']
@@ -16,6 +20,7 @@ def search_results(request):
         context_instance=RequestContext(request)
     )
 
+@login_required(login_url='/', redirect_field_name='')
 def search_patient(patient_name, report_id, birth_date, mother_name):
     if patient_name == "" and report_id == "" and birth_date == "" and mother_name == "":
         empty_fields = True
@@ -38,10 +43,3 @@ def search_patient(patient_name, report_id, birth_date, mother_name):
         empty_results = True
 
     return {"empty_fields": empty_fields, "empty_results": empty_results, "patients": patients}
-
-
-def home_search(request):
-    return render_to_response(
-        'home_search.html',
-        context_instance=RequestContext(request)
-    )

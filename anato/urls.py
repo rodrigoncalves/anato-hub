@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
-from django.conf.urls import patterns, include, url
 
+from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
-
-urlpatterns = patterns(
-    '',
+urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^tinymce/', include('tinymce.urls')),
 
@@ -15,7 +13,7 @@ urlpatterns = patterns(
     url(r'^$', 'authentication.views.sign_in'),
     url(r'^sair/$', 'authentication.views.log_out'),
     url(r'^resultados/$', 'patients.views.search_results'),
-    url(r'^consulta/$', 'patients.views.home_search'),
+    url(r'^consulta/$', 'core.views.home_search'),
     url(r'^paciente/(?P<patient_id>\w+)$', 'core.views.patient_profile'),
     url(r'^exame/novo/$', 'exam.views.new_exam'),
     url(r'^biopsia/$', 'biopsy.views.add_biopsy'),
