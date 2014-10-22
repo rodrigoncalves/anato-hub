@@ -7,15 +7,13 @@
 	<div class="small-15 medium-13 large-13 small-centered columns">
 		<p><h2 class="title">Anato - HUB</h2></p>
 		<hr>
-		<p><h4 class="title">Exame Citologia:</h4></p>
+		<p><h4 class="title">Exame Imunohistoquimica:</h4></p>
 		<br>
 	</div>
 
 	<div class="small-15 medium-7 large-6 medium-centered large-centered columns">
 		<form action="" method="post">
 			{% csrf_token %}
-
-			<input type="checkbox" name="gynecological" value="Bike"> Ginecologico<br>
 
 			<div class="row">
 				<div class="large-15 columns">
@@ -25,7 +23,7 @@
 						</div>
 						<div class="small-15 columns">
 							<textarea rows="10" cols="100">
-								{{cytology.clinical_information}}
+								{{immunohistochemical.clinical_information}}
 							</textarea>
 						</div>
 					</div>
@@ -36,26 +34,11 @@
 				<div class="large-15 columns">
 					<div class="row collapse prefix-radius">
 						<div class="small-6 columns">
-							<span class="prefix">Quantidade:</span>
+							<span class="prefix">Biopsia anterior:</span>
 						</div>
 						<div class="small-15 columns">
 							<textarea rows="10" cols="100">
-								{{cytology.quantity}}
-							</textarea>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="large-15 columns">
-					<div class="row collapse prefix-radius">
-						<div class="small-6 columns">
-							<span class="prefix">Microscopia:</span>
-						</div>
-						<div class="small-15 columns">
-							<textarea rows="10" cols="100">
-								{{cytology.microscopic}}
+								{{immunohistochemical.previous_biopsy}}
 							</textarea>
 						</div>
 					</div>
@@ -70,22 +53,7 @@
 						</div>
 						<div class="small-15 columns">
 							<textarea rows="10" cols="100">
-								{{cytology.conclusion}}
-							</textarea>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="large-15 columns">
-					<div class="row collapse prefix-radius">
-						<div class="small-4 columns">
-							<span class="prefix">Notas:</span>
-						</div>
-						<div class="small-15 columns">
-							<textarea rows="10" cols="100">
-								{{cytology.note}}
+								{{immunohistochemical.conclusion}}
 							</textarea>
 						</div>
 					</div>
@@ -96,11 +64,26 @@
 				<div class="large-15 columns">
 					<div class="row collapse prefix-radius">
 						<div class="small-6 columns">
+							<span class="prefix">Nota:</span>
+						</div>
+						<div class="small-15 columns">
+							<textarea rows="10" cols="100">
+								{{immunohistochemical.note}}
+							</textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="large-15 columns">
+					<div class="row collapse prefix-radius">
+						<div class="small-4 columns">
 							<span class="prefix">Legenda:</span>
 						</div>
 						<div class="small-15 columns">
 							<textarea rows="10" cols="100">
-								{{cytology.footer}}
+								{{immunohistochemical.footer}}
 							</textarea>
 						</div>
 					</div>

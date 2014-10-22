@@ -11,7 +11,7 @@ class BiopsyTest(TestCase):
 			macroscopic= "macroscopia",
 			microscopic= "microscopia",
 			conclusion= "conclusao",
-			notes= "nota",
+			note= "nota",
 			footer= "legenda"
 		)
 
