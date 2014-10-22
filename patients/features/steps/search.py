@@ -29,27 +29,38 @@ def click_search_button(context):
 def return_pacient_name(context):
     pacient_name = context.driver.find_element_by_class_name('fi-male')
     pacient_name.text | should | equal_to('QUEILANE BXXXISTA')
+    context.driver.close()
 
 @when(u'o usuario digita o prontuario do Paciente')
-def typing_pacient_name(context):
+def typing_pacient_report(context):
     pacient_name_input = context.driver.find_element_by_id('report')
     pacient_name_input.send_keys('808790')
 
 @then(u'o sistema retorna os Pacientes com o prontuario digitado')
-def step_impl(context):
+def return_pacient_report(context):
     pacient_report = context.driver.find_element_by_class_name('fi-male')
     pacient_report.text | should | equal_to('LEONARDO QXXXXXXXXXXXXILVA')
     pacient_report = context.driver.find_element_by_class_name('fi-clipboard-notes')
     pacient_report.text | should | equal_to('808790')
-
+    context.driver.close()
 
 @when(u'o usuario digita o nome da mae do Paciente')
-def typing_mothername_only(context):
-    assert False
+def typing_patient_mothername(context):
+    pacient_mothername = context.driver.find_element_by_id('mother_name')
+    pacient_mothername.send_keys('Marfiza')
 
 @then(u'o sistema retorna os Pacientes com o nome da mae digitado')
-def step_impl(context):
-    assert False
+def return_patient_mothername(context):
+    patients_name = context.driver.find_elements_by_class_name('fi-male')
+    patients_mothername = context.driver.find_elements_by_class_name('fi-torso-female')
+
+    patients_name[0].text | should | equal_to('ARIDEU CXXXXXXXXXXOPES')
+    patients_mothername[0].text | should | equal_to('MARFIZA XXXXXXXXXXOPES')
+    
+    patients_name[2].text | should | equal_to('NILZA MXXXXXXXXXXXNTOS') 
+    patients_mothername[1].text | should | equal_to('MARFIZA XXXXXXXAQUI')
+      
+    context.driver.close()
 
 @when(u'o usuario digita a data de nascimento do Paciente')
 def typing_birthday_only(context):
