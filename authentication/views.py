@@ -4,8 +4,8 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response, redirect
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
-from authentication.auth import authenticate_user, SUCCESS, INACTIVE_USER, \
-    INVALID_LOGIN, LDAP_CONNECTION_ERROR
+from authentication.auth import authenticate_user, authenticate_user_without_ldap, \
+    SUCCESS, INACTIVE_USER, INVALID_LOGIN, LDAP_CONNECTION_ERROR
 
 def sign_in(request):
     if request.user.is_authenticated():
@@ -20,7 +20,7 @@ def sign_in(request):
 
     username = request.POST.get('username')
     password = request.POST.get('password')
-    login_user = authenticate_user(request=request, username=username, password=password)
+    login_user = authenticate_user_without_ldap(request=request, username=username, password=password)
     warning_message = None
 
     if login_user == SUCCESS:

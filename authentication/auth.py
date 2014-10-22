@@ -52,3 +52,14 @@ def inactivate_user(user):
     user.is_active = False
     user.save()
     return user
+
+def authenticate_user_without_ldap(request, username, password):
+    user = authenticate(username=username, password=password)
+    if user is not None:
+        if user.is_active:
+            login(request, user)
+            return SUCCESS
+        else:
+            return INACTIVE_USER
+    else:
+        return INVALID_LOGIN
