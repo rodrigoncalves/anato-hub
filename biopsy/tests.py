@@ -12,7 +12,9 @@ class BiopsyTest(TestCase):
 			microscopic= "microscopia",
 			conclusion= "conclusao",
 			notes= "nota",
-			footer= "legenda"
+			footer= "legenda",
+			status = "status",
+			exam = "exame"
 		)
 
 		biopsy.save()
@@ -23,3 +25,5 @@ class BiopsyTest(TestCase):
 		self.assertEquals("conclusao",biopsy.conclusion)
 		self.assertEquals("nota",biopsy.notes)
 		self.assertEquals("legenda",biopsy.footer)
+		self.assertEquals("status",biopsy.status)
+		self.assertEquals("exame",biopsy.exam)
