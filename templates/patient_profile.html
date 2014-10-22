@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block 'title' %}Matheus Souza Fernandes | Anato HUB{% endblock %}
+{% block 'title' %}{{patient.nome}} | Anato HUB{% endblock %}
 
 {% block 'content' %}
 
@@ -10,28 +10,28 @@
         <p><h2 class="title">Anato - HUB</h2></p>
         <hr>
 
-        <p><h4 class="title">Matheus Souza Fernandes</h4></p>
+        <p><h4 class="title">{{patient.nome}}</h4></p>
     </div>
 
     <div class="small-13 small-centered medium-12 medium-centered large-9 large-centered columns">
         <div class="small-15 medium-7 large-7 columns">
             <small><b>Código Prontuário:</b></small><br>
-            <i>12580879</i> <br>
+            <i>{{patient.prontuario}}</i> <br>
             <small><b>Registro SUS:</b></small><br>
-            <i>2323234343</i> <br>
+            <i>{{patient.nro_cartao_saude}}</i> <br>
             <small><b>Nome do Pai:</b></small><br>
-            <i>Angelo Fernando Fernandes</i> <br>
+            <i>{{patient.nome_pai}}</i> <br>
             <small><b>Nome da Mãe:</b></small><br>
-            <i>Tania Maria Correa de Souza</i> <br>
+            <i>{{patient.nome_mae}}</i> <br>
         </div>
 
         <div class="small-15 medium-offset-1 medium-7 large-7 large-offset-1 columns">
             <small><b>Data Nascimento:</b></small><br>
-            <i>12/04/1987</i> <br>
-            <small><b>Endereço:</b> </small><br>
-            <i>Q 29, L 31, apt 301, St Lest, Gama-DF</i> <br>
-            <small><b>Telefone:</b></small><br>
-            <i>61 8888-7777</i> <br>
+            <i>{{patient.dt_nascimento}}</i> <br>
+            <small><b>Naturalidade:</b> </small><br>
+            <i>{{patient.naturalidade}}</i> <br>
+            <small><b>Observação:</b></small><br>
+            <i>{{patient.observacao}}</i> <br>
         </div>
         <hr>
     </div>
@@ -43,7 +43,11 @@
             </div>
 
             <div class="small-15 medium-4 medium-offset-3 large-4 large-offset-3 columns right">
-                <a href="" data-reveal-id="modal_new_exam" id="new_exam_button" class="button postfix"><i class="fi-page-add"></i> Novo Exame</a>
+                 <form action="/exame/novo/" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" value="{{patient.codigo}}" id="patient_id" name="patient_id">
+                    <button class="postfix"><i class="fi-page-add"></i> Novo Exame</button>
+                </form>
             </div>
         </div>
     </div>
@@ -51,17 +55,18 @@
     <div class="row">
         <div class="small-13 small-centered medium-9 medium-centered large-9 large-centered columns">
             <dl class="accordion" data-accordion>
+              {% for exam in exams %}  
               <dd>
-                <a href="#Biopsia"> Biopsia </a>
-                <div id="Biopsia" class="content">
+                <a href="#exam{{exam.id}}"><i>{{exam.exam_type.description}}</i><br>{{exam.receipt_date}} </a>
+                <div id="exam{{exam.id}}" class="content">
                     <div class="row">
                         <div class="small-15 medium-9 large-9 columns">
                             <small><b>Status:</b></small><br>
                             <i id="Status">Em Macroscopia</i><br>
                             <small><b>Médico Solicitante:</b></small><br>
-                            <i>João da Silva</i><br>
+                            <i>{{exam.requesting_physician}}</i><br>
                             <small><b>Médico Responsável:</b></small><br>
-                            <i>Marcos Fonseca</i><br>
+                            <i>{{exam.responsible_physician}}</i><br>
                         </div>
                         <div class="small-15 medium-6 large-6 columns">
                             <button class="postfix"><i class="fi-page-search"></i> Ver Exame</button>
@@ -69,44 +74,7 @@
                     </div>
                 </div>
               </dd>
-
-              <dd>
-                <a href="#panel2">Necropsia</a>
-                <div id="panel2" class="content">
-                    <div class="row">
-                        <div class="small-15 medium-9 large-9 columns">
-                            <small><b>Status:</b></small><br>
-                            <i id="Status">Em Processamento</i><br>
-                            <small><b>Médico Solicitante:</b></small><br>
-                            <i>João da Silva</i><br>
-                            <small><b>Médico Responsável:</b></small><br>
-                            <i>Marcos Fonseca</i><br>
-                        </div>
-                        <div class="small-15 medium-6 large-6 columns">
-                            <button class="postfix"><i class="fi-page-search"></i> Ver Exame</button>
-                        </div>
-                    </div>
-                </div>
-              </dd>
-
-              <dd>
-                <a href="#panel3">Citologia Geral</a>
-                <div id="panel3" class="content">
-                    <div class="row">
-                        <div class="small-15 medium-9 large-9 columns">
-                            <small><b>Status:</b></small><br>
-                            <i id="Status">Liberado</i><br>
-                            <small><b>Médico Solicitante:</b></small><br>
-                            <i>João da Silva</i><br>
-                            <small><b>Médico Responsável:</b></small><br>
-                            <i>Marcos Fonseca</i><br>
-                        </div>
-                        <div class="small-15 medium-6 large-6 columns">
-                            <button class="postfix"><i class="fi-page-search"></i> Ver Exame</button>
-                        </div>
-                    </div>
-                </div>
-              </dd>
+              {% endfor %}
             </dl>
             <hr>
         </div>

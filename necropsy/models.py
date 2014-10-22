@@ -17,7 +17,7 @@ class Necropsy(models.Model):
     other_disases = models.TextField(null=True, blank=True)
     note = models.TextField(null=True, blank=True)
     footer = models.TextField(null=True, blank=True)
-    status = models.ForeignKey(NecropsyStatus)
+    status = models.ForeignKey(NecropsyStatus, default=1)
     exam = models.ForeignKey(Exam)
 
 
@@ -30,5 +30,5 @@ class NecropsyReport(models.Model):
     other_disases = models.TextField(null=True, blank=True)
     note = models.TextField(null=True, blank=True)
     footer = models.TextField(null=True, blank=True)
-    status = models.ForeignKey(ReportStatus)
+    status = models.ForeignKey(ReportStatus, default=1)
     necropsy = models.ForeignKey(Necropsy)

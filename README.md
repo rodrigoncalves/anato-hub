@@ -17,9 +17,14 @@ Após baixar, extrair os arquivos-fonte do Anato, entre no diretório da aplica�
 ```
 # apt-get install pip
 ```
+
 2) Instale os pacotes necessários:
 ```
 # pip install -r requirements.txt
+```
+2.1) Caso seu requirements.txt, não ache python-ldap:
+```
+# sudo apt-get build-dep python-ldap
 ```
 3) Salve os arquivos `configs/database.py.template`, `configs/ldap.py.template` e `server.py.template` retirando a extensão `.template`.
 
