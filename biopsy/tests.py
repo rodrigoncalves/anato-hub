@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.test import TestCase
+from mock import MagicMock
 from django.db import models
 from models import Biopsy
 from models import BiopsyReport
@@ -7,7 +8,7 @@ from models import BiopsyReport
 class BiopsyTest(TestCase):
 
 	def test_biopsy(self):
-		
+
 		biopsy = Biopsy(
 			clinical_information= 'clinica',
 			macroscopic= 'macroscopia',
@@ -28,6 +29,7 @@ class BiopsyTest(TestCase):
 class BiopsyReportTest(TestCase):
 
 	def test_biopy_report(self):
+		
 		biopsy_report = BiopsyReport(
 			clinical_information= "clinica",
 			macroscopic= "macroscopia",
@@ -41,3 +43,5 @@ class BiopsyReportTest(TestCase):
 		self.assertEquals("microscopia",biopsy_report.microscopic)
 		self.assertEquals("conclusao",biopsy_report.conclusion)
 		self.assertEquals("nota",biopsy_report.note)
+
+

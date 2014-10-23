@@ -1,25 +1,26 @@
 # -*- coding: utf-8 -*-
 from django.test import TestCase
 from django.db import models
-from necropsy.models import Necropsy
+from models import Necropsy
 
 class NecropsyTest(TestCase):
 
-	def necropsy_test(self):
+	def test_necropsy(self):
+
 		necropsy = Necropsy(
-			clinical_information= "clinica",
-			macroscopic= "macroscopia",
-			microscopic= "microscopia",
-			conclusion= "conclusao",
-			notes= "nota",
-			footer= "rodape"
+			clinical_information = 'clinica',
+			main_disease = 'doenca',
+			contributors_disease = 'consequencia',
+			consequential_disease = 'consequencia',
+			other_disases = 'outra doenca',
+			note = 'nota',
+			footer = 'rodape'
 		)
 
-		necropsy.save()
-
-		self.assertEquals("clinica",necropsy.clinical_information)
-		self.assertEquals("macroscopia",necropsy.macroscopic)
-		self.assertEquals("microscopia",necropsy.microscopic)
-		self.assertEquals("conclusao",necropsy.conclusion)
-		self.assertEquals("nota",necropsy.notes)
-		self.assertEquals("rodape",necropsy.footer)
+		self.assertEquals('clinica',necropsy.clinical_information)
+		self.assertEquals('doenca',necropsy.main_disease)
+		self.assertEquals('consequencia',necropsy.contributors_disease)
+		self.assertEquals('consequencia',necropsy.consequential_disease)
+		self.assertEquals('outra doenca',necropsy.other_disases)
+		self.assertEquals('nota',necropsy.note)
+		self.assertEquals('rodape',necropsy.footer)
