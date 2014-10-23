@@ -7,6 +7,7 @@ from models import BiopsyReport
 class BiopsyTest(TestCase):
 
 	def test_biopsy(self):
+		
 		biopsy = Biopsy(
 			clinical_information= 'clinica',
 			macroscopic= 'macroscopia',
