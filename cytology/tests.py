@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 from django.test import TestCase
 from django.db import models
-from cytology.models import Cytology
+from models.citology import Cytology
 
 class CytologyTest(TestCase):
 
-	def cytology_test(self):
+	def test_cytology(self):
+
 		cytology = Cytology(
 			clinical_information = "clinica",
 			quantity = "quantidade",
@@ -13,20 +14,14 @@ class CytologyTest(TestCase):
 			conclusion = "conclusao",
 			note = "nota",
 			footer = "legenda",
-			status = "status",
-			exam = "exame"
 		)
-
-		cytology.save()
 
 		self.assertEquals("clinica", cytology.clinical_information)
 		self.assertEquals("quantidade", cytology.quantity)
 		self.assertEquals("miscroscopia", cytology.microscopic)
 		self.assertEquals("conclusao", cytology.conclusion)
-		self.assertEquals("nota", cytology.notes)
+		self.assertEquals("nota", cytology.note)
 		self.assertEquals("legenda", cytology.footer)
-		self.assertEquals("status", cytology.status)
-		self.assertEquals("exame", cytology.exam)
 
 class CytologyReportTest(TestCase):
 
