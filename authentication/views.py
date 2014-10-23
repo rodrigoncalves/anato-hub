@@ -18,8 +18,8 @@ def sign_in(request):
                                   context_instance=RequestContext(request)
                                   )
 
-    username = request.POST.get('username')
-    password = request.POST.get('password')
+    username = request.POST['username']
+    password = request.POST['password']
     login_user = authenticate_user_without_ldap(
         request=request, username=username, password=password)
     warning_message = None

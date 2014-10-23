@@ -4,7 +4,7 @@ from exam.models import Exam, ExamType
 from core.utils import convert_date_format
 
 
-def exam_form(request):
+def get_exam_form(request):
     exam = Exam()
     exam.request_date = convert_date_format(
         request.POST['request_date'])

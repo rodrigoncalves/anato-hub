@@ -10,7 +10,6 @@ class ExamType(models.Model):
 
 
 class Exam(models.Model):
-
     request_date = models.DateField()
     receipt_date = models.DateField()
     speciment_collection_date = models.DateField()

@@ -8,6 +8,10 @@ class ImmunoHistochemicalStatus(models.Model):
 
 
 class ImmunoHistochemical(models.Model):
+
+    def exam_antibodies(self):
+        return AntibodiesTable.objects.filter(immunohistochemical=self.id)
+
     clinical_information = models.TextField(null=True, blank=True)
     previous_biopsy = models.CharField(max_length=50, null=True, blank=True)
     conclusion = models.TextField(null=True, blank=True)
@@ -15,6 +19,7 @@ class ImmunoHistochemical(models.Model):
     footer = models.TextField(null=True, blank=True)
     status = models.ForeignKey(ImmunoHistochemicalStatus)
     exam = models.ForeignKey(Exam)
+    antibodies = property(exam_antibodies)
 
 
 class AntibodiesTable(models.Model):

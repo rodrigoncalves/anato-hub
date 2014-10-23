@@ -47,7 +47,7 @@ INSTALLED_APPS = (
     'patients',
     'exam',
     'biopsy',
-    'citology',
+    'cytology',
     'necropsy',
     'immunohistochemical',
 )
