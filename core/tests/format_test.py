@@ -2,6 +2,7 @@
 
 
 class FormatTest():
+
     def getName(self):
         self.name = str(self.id).split('=')[-1][:-2]
         self.name = self.name.split('test_')[-1]

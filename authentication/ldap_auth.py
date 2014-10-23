@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 import ldap
 from auth_exceptions import LDAPConnectionError, LDAPCredentialError, \
     LDAPUserDoesNotExist
@@ -21,6 +20,7 @@ def ldap_authentication(username, password):
     except ldap.SERVER_DOWN:
         raise LDAPConnectionError("Can't contact LDAP server")
 
+
 def initialize_ldap_connection():
     server = LDAP_SERVER
 
@@ -30,6 +30,7 @@ def initialize_ldap_connection():
     connection.simple_bind_s(DN, DN_SECRET)
 
     return connection
+
 
 def search_user(connection, username):
     scope = ldap.SCOPE_SUBTREE

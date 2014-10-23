@@ -9,3 +9,4 @@ python-ldap==2.4.16
 Pillow==2.5.3
 django-tinymce==1.5.3
 django-wysiwyg==0.7.0
+mock==1.0.1

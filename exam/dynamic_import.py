@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 from exam.exceptions import ModelDoesNotExist, InvalidParameter
 
 
@@ -13,6 +12,6 @@ def create_specific_exam(name_class):
 
         return instance
     except ImportError:
-            raise ModelDoesNotExist('Model does not exist')
+        raise ModelDoesNotExist('Model does not exist')
     except ValueError:
-            raise InvalidParameter('Invalid parameter')
+        raise InvalidParameter('Invalid parameter')
