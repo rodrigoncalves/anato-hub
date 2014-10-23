@@ -4,6 +4,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from patients.models import Paciente
+from exam.models import Exam
 
 @login_required(login_url='/', redirect_field_name='')
 def search_results(request):
