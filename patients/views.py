@@ -20,7 +20,6 @@ def search_results(request):
         context_instance=RequestContext(request)
     )
 
-@login_required(login_url='/', redirect_field_name='')
 def search_patient(patient_name, report_id, birth_date, mother_name):
     if patient_name == "" and report_id == "" and birth_date == "" and mother_name == "":
         empty_fields = True
@@ -43,3 +42,15 @@ def search_patient(patient_name, report_id, birth_date, mother_name):
         empty_results = True
 
     return {"empty_fields": empty_fields, "empty_results": empty_results, "patients": patients}
+
+@login_required(login_url='/', redirect_field_name='')
+def patient_profile(request, patient_id):
+    patient = Paciente.objects.using("hub").get(codigo=patient_id)
+    exams = Exam.objects.filter(patient=patient.codigo)
+    return render_to_response(
+        'patient_profile.html',{
+            'patient': patient,
+            'exams': exams},
+        context_instance=RequestContext(request)
+    )
+    
