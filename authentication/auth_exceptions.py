@@ -2,6 +2,7 @@
 
 
 class LDAPConnectionError(Exception):
+
     def __init__(self, message):
         self.message = message
 
@@ -10,6 +11,7 @@ class LDAPConnectionError(Exception):
 
 
 class LDAPCredentialError(Exception):
+
     def __init__(self, message):
         self.message = message
 
@@ -18,6 +20,7 @@ class LDAPCredentialError(Exception):
 
 
 class LDAPUserDoesNotExist(Exception):
+
     def __init__(self, message):
         self.message = message
 

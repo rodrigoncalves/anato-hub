@@ -2,6 +2,7 @@
 
 
 class ModelDoesNotExist(Exception):
+
     def __init__(self, message):
         self.message = message
 
@@ -10,6 +11,7 @@ class ModelDoesNotExist(Exception):
 
 
 class InvalidParameter(Exception):
+
     def __init__(self, message):
         self.message = message
 
