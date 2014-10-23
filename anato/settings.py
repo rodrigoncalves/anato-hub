@@ -50,6 +50,7 @@ INSTALLED_APPS = (
     'cytology',
     'necropsy',
     'immunohistochemical',
+    'importer',
 )
 
 TEST_RUNNER = 'django_behave.runner.DjangoBehaveTestSuiteRunner'
