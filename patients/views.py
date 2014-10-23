@@ -1,12 +1,15 @@
 # -*- coding: utf-8 -*-
-
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from patients.models import Paciente
 
 @login_required(login_url='/', redirect_field_name='')
 def search_results(request):
+
+    if 'patient' not in request.POST and 'report' not in request.POST and 'date' not in request.POST and 'mother_name' not in request.POST:
+        return redirect('/consulta/')
+
     patient = request.POST['patient']
     report = request.POST['report']
     date = request.POST['date']
