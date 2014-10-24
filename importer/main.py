@@ -35,3 +35,16 @@ def import_report_status():
             report_status.id = row[0]
             report_status.description = row[1]
             report_status.save()
+
+def import_profile_type():
+    from profiletype.models import ProfileType
+
+    with open_csv('profile_type') as csv_file:
+        data = csv.reader(csv_file)
+
+        print 'Importing profile type...'
+        for row in data:
+            profile_type = ProfileType()
+            profile_type.id = row[0]
+            profile_type.description = row[1]
+            profile_type.save()
