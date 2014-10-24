@@ -2,7 +2,7 @@
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
 from django.contrib.auth.decorators import login_required
-from immunohistochemical import Immunohistochemical
+from immunohistochemical.models import ImmunoHistochemical
 
 
 @login_required(login_url='/', redirect_field_name='')

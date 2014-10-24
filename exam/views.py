@@ -38,3 +38,11 @@ def register_exam(request):
         {'exam_saved': True, 'exam_types': exam_types},
         context_instance=RequestContext(request)
     )
+
+
+#@login_required(login_url='/', redirect_field_name='')
+#def visualize_exam(request, id_exam):
+
+
+
+
