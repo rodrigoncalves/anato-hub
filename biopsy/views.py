@@ -3,7 +3,7 @@
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
 from django.contrib.auth.decorators import login_required
-from biopsy.models import Biopsy
+from models import Biopsy
 
 
 @login_required(login_url='/', redirect_field_name='')
