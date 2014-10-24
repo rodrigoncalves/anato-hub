@@ -22,6 +22,7 @@ def import_exam_type():
             exam_type.name_class = row[2]
             exam_type.save()
 
+    print 'Done!'
 
 def import_report_status():
     from exam.models import ReportStatus
@@ -35,3 +36,20 @@ def import_report_status():
             report_status.id = row[0]
             report_status.description = row[1]
             report_status.save()
+
+    print 'Done!'
+
+def import_group():
+    from django.contrib.auth.models import Group
+
+    with open_csv('profile_type') as csv_file:
+        data = csv.reader(csv_file)
+
+        print 'Importing groups...'
+        for row in data:
+            group = Group()
+            group.id = row[0]
+            group.name = row[1]
+            group.save()
+            
+    print 'Done!'
