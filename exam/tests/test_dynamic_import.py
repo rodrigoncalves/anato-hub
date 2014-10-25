@@ -4,7 +4,7 @@ from django.test import TestCase
 from should_dsl import should
 
 from exam.dynamic_import import create_specific_exam
-from core.tests import FormatTest
+from core.tests.format_test import FormatTest
 from sys import stderr
 
 
