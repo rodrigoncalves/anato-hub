@@ -6,5 +6,13 @@ DATABASES = {
         'NAME': 'anato',
         'USER': 'postgres',
         'PASSWORD': '1234',
+        'HOST': 'localhost',
+    },
+    'hub': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'hub',
+        'USER': 'postgres',
+        'PASSWORD': '1234',
+        'HOST': 'localhost',
     }
 }
