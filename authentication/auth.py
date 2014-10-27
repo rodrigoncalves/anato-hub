@@ -5,6 +5,7 @@ from authentication.ldap_auth import ldap_authentication
 from auth_exceptions import LDAPUserDoesNotExist, LDAPConnectionError, \
     LDAPCredentialError
 
+
 # Login errors
 SUCCESS = 0
 INACTIVE_USER = 1
@@ -33,8 +34,12 @@ def authenticate_user(request, username, password):
         return INVALID_LOGIN
 
     except LDAPUserDoesNotExist:
+        if user is not None:
+            inactivate_user(user)
         return INVALID_LOGIN
     except LDAPCredentialError:
+        if user is not None:
+            inactivate_user(user)
         return INVALID_LOGIN
     except LDAPConnectionError:
         return LDAP_CONNECTION_ERROR
@@ -46,8 +51,7 @@ def exist_user(username, password):
 
 
 def create_user(username, password):
-    user = User.objects.create_user(username=username,
-                                    email=None, password=password)
+    user = User.objects.create_user(username=username, email=None, password=password)
     user.is_active = False
     user.save()
     return user
