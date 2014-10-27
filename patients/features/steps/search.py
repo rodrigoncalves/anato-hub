@@ -4,9 +4,20 @@ from selenium import webdriver
 from should_dsl import should, should_not
 
 
-@given(u'que o Usuario esta na tela de busca de pacientes')
-def is_authenticated(context):
+@given(u'que o Usuario se autentica')
+def authentication(context):
     context.driver = webdriver.Firefox()
+    context.driver.get('http://localhost:8000/')
+    
+    username = context.driver.find_element_by_id('username')
+    username.send_keys('admin')
+    password = context.driver.find_element_by_id('password')
+    password.send_keys('1234')
+    submit = context.driver.find_element_by_id('enter-button')
+    submit.click()
+
+@given(u'que o Usuario esta na tela de busca de pacientes')
+def is_on_home_search(context):
     #Alterar porta do localhost
     context.driver.get('http://localhost:8000/consulta/')
     context.driver.title | should | equal_to('Home | Anato')
