@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django_behave',
     'django_wysiwyg',
     'tinymce',
+    'south',
 
     # Project Apps
     'configs',
