@@ -12,7 +12,7 @@ from patients.models import Paciente
 @login_required()
 def new_exam(request):
     exam_types = ExamType.objects.all()
-    patient_id = request.POST.get("patient_id")
+    patient_id = request.POST["patient_id"]
     patient = Paciente.objects.using("hub").get(codigo=patient_id)
 
     return render_to_response(

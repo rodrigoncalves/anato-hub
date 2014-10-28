@@ -39,3 +39,17 @@ class TestDynamicImport(FormatTest, TestCase):
 
         ModelDoesNotExist | should | be_thrown_by(lambda: create_specific_exam(
             'InvalidModel'))
+
+    def test_create_cytology_exam(self):
+        from cytology.models import Cytology
+
+        cytology_exam = create_specific_exam('Cytology')
+
+        cytology_exam | should | be_kind_of(Cytology)
+
+    def test_create_immunohistochemical_exam(self):
+        from immunohistochemical.models import ImmunoHistochemical
+
+        immunohistochemical_exam = create_specific_exam('ImmunoHistochemical')
+
+        immunohistochemical_exam | should | be_kind_of(ImmunoHistochemical)
