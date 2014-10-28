@@ -18,6 +18,6 @@ def get_exam_form(request):
     exam.responsible_physician = request.POST['responsible_physician']
     exam_type_id = request.POST['exam_type']
     exam.exam_type = ExamType.objects.get(id=exam_type_id)
-    exam.patient = request.POST.get('patient_id')
+    exam.patient = request.POST["patient_id"]
 
     return exam
