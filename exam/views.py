@@ -14,6 +14,8 @@ def new_exam(request):
     exam_types = ExamType.objects.all()
     patient_id = request.POST.get("patient_id")
     patient = Paciente.objects.using("hub").get(codigo=patient_id)
+    if request.user.groups.filter(name='Staff Doctor').exists():
+        patient.nome = 'bla'
     return render_to_response(
         'new_exam.html',
         {"exam_types": exam_types,
