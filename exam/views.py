@@ -14,6 +14,7 @@ def new_exam(request):
     exam_types = ExamType.objects.all()
     patient_id = request.POST.get("patient_id")
     patient = Paciente.objects.using("hub").get(codigo=patient_id)
+
     if request.user.groups.filter(name='Staff Doctor').exists():
         return render_to_response(
            'new_exam.html',
@@ -21,11 +22,11 @@ def new_exam(request):
             "patient": patient},
             context_instance=RequestContext(request)
         )
-    else: 
-        return render_to_response(
-           'access_denied.html',
-            context_instance=RequestContext(request)
-        )
+
+    return render_to_response(
+       '403.html',
+        context_instance=RequestContext(request)
+    )
 
 @login_required(login_url='/', redirect_field_name='')
 def register_exam(request):
