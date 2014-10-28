@@ -21,4 +21,5 @@ urlpatterns = patterns(
     url(r'^resultados/$', 'patients.views.search_results'),
     url(r'^paciente/(?P<patient_id>\w+)$',
         'patients.views.patient_profile'),
+    url(r'^denied/$', 'core.views.access_denied'),
 )

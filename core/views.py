@@ -10,3 +10,9 @@ def home_search(request):
         'home_search.html',
         context_instance=RequestContext(request)
     )
+
+def access_denied(request):
+    return render_to_response(
+        'access_denied.html',
+        context_instance=RequestContext(request)
+    )
