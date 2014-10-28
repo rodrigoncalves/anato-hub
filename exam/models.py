@@ -17,7 +17,7 @@ class Exam(models.Model):
         return class_.objects.get(exam=self)
 
     def get_patient_information(self):
-        from patient.models import Paciente
+        from patients.models import Paciente
         patient = Paciente.objects.using("hub").get(codigo=self.patient)
         return patient
 
