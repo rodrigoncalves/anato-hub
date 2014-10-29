@@ -4,59 +4,34 @@
 
 {% block 'content' %}
 
-<html>
-<body>
-    <div class="small-15 medium-13 large-13 small-centered columns">
-        <p><h2 class="title">Anato - HUB</h2></p>
-        <hr>
+<div class="small-15 medium-13 large-13 small-centered columns">
+    <p><h2 class="title">Anato - HUB</h2></p>
+    <hr>
+</div>
 
-        <p><h4 class="title">{{patient.nome}}</h4></p>
-    </div>
+{% include 'tags/patient_information.html' %}
 
-    <div class="small-13 small-centered medium-12 medium-centered large-9 large-centered columns">
+<div class="row">
+    <div class="small-13 small-centered medium-12 medium-centered large-12 large-centered columns">
         <div class="small-15 medium-7 large-7 columns">
-            <small><b>Código Prontuário:</b></small><br>
-            <i>{{patient.prontuario}}</i> <br>
-            <small><b>Registro SUS:</b></small><br>
-            <i>{{patient.nro_cartao_saude}}</i> <br>
-            <small><b>Nome do Pai:</b></small><br>
-            <i>{{patient.nome_pai}}</i> <br>
-            <small><b>Nome da Mãe:</b></small><br>
-            <i>{{patient.nome_mae}}</i> <br>
+            <h3><b>Exames</b></h3>
         </div>
 
-        <div class="small-15 medium-offset-1 medium-7 large-7 large-offset-1 columns">
-            <small><b>Data Nascimento:</b></small><br>
-            <i>{{patient.dt_nascimento}}</i> <br>
-            <small><b>Naturalidade:</b> </small><br>
-            <i>{{patient.naturalidade}}</i> <br>
-            <small><b>Observação:</b></small><br>
-            <i>{{patient.observacao}}</i> <br>
-        </div>
-        <hr>
-    </div>
-
-    <div class="row">
-        <div class="small-13 small-centered medium-12 medium-centered large-12 large-centered columns">
-            <div class="small-15 medium-7 large-7 columns">
-                <h3><b>Exames</b></h3>
-            </div>
-
-            <div class="small-15 medium-4 medium-offset-3 large-4 large-offset-3 columns right">
-                 <form action="/exame/novo/" method="POST">
-                    {% csrf_token %}
-                    <input type="hidden" value="{{patient.codigo}}" id="patient_id" name="patient_id">
-                    <button class="postfix"><i class="fi-page-add"></i> Novo Exame</button>
-                </form>
-            </div>
+        <div class="small-15 medium-4 medium-offset-3 large-4 large-offset-3 columns right">
+             <form action="/exame/novo/" method="POST">
+                {% csrf_token %}
+                <input type="hidden" value="{{patient.codigo}}" id="patient_id" name="patient_id">
+                <button class="postfix"><i class="fi-page-add"></i> Novo Exame</button>
+            </form>
         </div>
     </div>
+</div>
 
-    <div class="row">
-        <div class="small-13 small-centered medium-9 medium-centered large-9 large-centered columns">
-            <dl class="accordion" data-accordion>
-              {% for exam in exams %}  
-              <dd>
+<div class="row">
+    <div class="small-13 small-centered medium-9 medium-centered large-9 large-centered columns">
+        <dl class="accordion" data-accordion>
+            {% for exam in exams %}
+                <dd>
                 <a href="#exam{{exam.id}}"><i>{{exam.exam_type.description}}</i><br>{{exam.receipt_date}} </a>
                 <div id="exam{{exam.id}}" class="content">
                     <div class="row">
@@ -73,12 +48,11 @@
                         </div>
                     </div>
                 </div>
-              </dd>
-              {% endfor %}
-            </dl>
-            <hr>
-        </div>
+                </dd>
+            {% endfor %}
+        </dl>
+        <hr>
     </div>
-</body>
-</html>
+</div>
+
 {% endblock %}

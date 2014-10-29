@@ -1,0 +1,40 @@
+<div class="small-15 medium-13 large-13 small-centered columns">
+    <p><h4 class="title">{{patient.nome}}</h4></p>
+</div>
+
+<div class="small-13 small-centered medium-12 medium-centered large-9 large-centered columns">
+    <div class="small-15 medium-7 large-7 columns">
+        {% if patient.prontuario %}
+            <small><b>Código Prontuário:</b></small><br>
+            <i>{{patient.prontuario}}</i> <br>
+        {% endif %}
+        {% if patient.nro_cartao_saude %}
+            <small><b>Registro SUS:</b></small><br>
+            <i>{{patient.nro_cartao_saude}}</i> <br>
+        {% endif %}
+        {% if patient.nome_pai %}
+            <small><b>Nome do Pai:</b></small><br>
+            <i>{{patient.nome_pai}}</i> <br>
+        {% endif %}
+        {% if patient.nome_mae %}
+            <small><b>Nome da Mãe:</b></small><br>
+            <i>{{patient.nome_mae}}</i> <br>
+        {% endif %}
+    </div>
+
+    <div class="small-15 medium-offset-1 medium-7 large-7 large-offset-1 columns">
+        {% if patient.dt_nascimento %}
+            <small><b>Data Nascimento:</b></small><br>
+            <i>{{patient.dt_nascimento}}</i> <br>
+        {% endif %}
+        {% if patient.naturalidade %}
+            <small><b>Naturalidade:</b> </small><br>
+            <i>{{patient.naturalidade}}</i> <br>
+        {% endif %}
+        {% if patient.observacao %}
+            <small><b>Observação:</b></small><br>
+            <i>{{patient.observacao}}</i> <br>
+        {% endif %}
+    </div>
+    <hr>
+</div>
