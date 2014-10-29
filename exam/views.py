@@ -3,7 +3,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 
-from exam.models import ExamType
+from exam.models import ExamType, Exam
 from exam.forms import get_exam_form
 from exam.dynamic_import import create_specific_exam
 from patients.models import Paciente
@@ -41,5 +41,11 @@ def register_exam(request):
     )
 
 
-#@login_required(login_url='/', redirect_field_name='')
-# def visualize_exam(request, id_exam):
+@login_required(login_url='/', redirect_field_name='')
+ def visualize_exam(request, id_exam):
+    exam = Exam.objects.get(id=id_exam)
+    return render_to_response(
+        'visualize_exam.html',
+        {'exam':exam},
+        context_instance=RequestContext(request)
+    )
