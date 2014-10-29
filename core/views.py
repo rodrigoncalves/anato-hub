@@ -12,7 +12,4 @@ def home_search(request):
     )
 
 def user_belongs_to_groups(user, groups):
-    if user.groups.filter(name__in=groups).exists():
-        return True
-    else:
-        return False
+    return user.groups.filter(name__in=groups).exists()
