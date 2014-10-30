@@ -4,35 +4,7 @@
 
 {% block 'content' %}
 
-    <div class="small-15 medium-13 large-13 small-centered columns">
-        <p><h2 class="title">Anato - HUB</h2></p>
-        <hr>
-        <p><h4 class="title">{{patient.nome}}</h4></p>
-        <br>
-    </div>
-
-    <div class="small-13 small-centered medium-12 medium-centered large-9 large-centered columns">
-        <div class="small-15 medium-7 large-7 columns">
-            <small><b>Código Prontuário:</b></small><br>
-            <i>{{patient.prontuario}}</i> <br>
-            <small><b>Registro SUS:</b></small><br>
-            <i>{{patient.nro_cartao_saude}}</i> <br>
-            <small><b>Nome do Pai:</b></small><br>
-            <i>{{patient.nome_pai}}</i> <br>
-            <small><b>Nome da Mãe:</b></small><br>
-            <i>{{patient.nome_mae}}</i> <br>
-        </div>
-
-        <div class="small-15 medium-offset-1 medium-7 large-7 large-offset-1 columns">
-            <small><b>Data Nascimento:</b></small><br>
-            <i>{{patient.dt_nascimento}}</i> <br>
-            <small><b>Naturalidade:</b> </small><br>
-            <i>{{patient.naturalidade}}</i> <br>
-            <small><b>Observação:</b></small><br>
-            <i>{{patient.observacao}}</i> <br>
-        </div>
-        <hr>
-    </div>
+    {% include 'patient_information.html' %}
 
     <div class="small-15 medium-7 large-6 medium-centered large-centered columns">
         <p><h4 class="title">Cadastrar Novo Exame:</h4></p>

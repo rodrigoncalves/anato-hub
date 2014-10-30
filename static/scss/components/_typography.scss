@@ -26,6 +26,23 @@ $header-text-rendering: optimizeLegibility;
     text-shadow: 1px 1px ligthen($primary-color, 10);
 }
 
+.exam-data {
+    text-align: left;
+    font-weight: bold;
+    text-shadow: 1px 1px ligthen($primary-color, 10);
+}
+
+.exam-field {
+    @extend .exam-data;
+    font-weight: normal;
+    text-decoration: underline;
+}
+
+hr .dashed {
+    border-top: 1px dashed !important;
+    height: 1px;
+}
+
 @import "mixins.scss";
 
 .shadow {

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 
@@ -42,10 +42,16 @@ def register_exam(request):
 
 
 @login_required(login_url='/', redirect_field_name='')
- def visualize_exam(request, id_exam):
-    exam = Exam.objects.get(id=id_exam)
+def visualize_exam(request, exam_id):
+    exam = get_object_or_404(Exam, pk=exam_id)
+    exam_type = exam.exam_type.name_class
+    exam_type = 'visualize_' + exam_type.lower() + '.html'
+
     return render_to_response(
         'visualize_exam.html',
-        {'exam':exam},
+        {'exam': exam,
+         'patient': exam.patient_information,
+         'specific_exam': exam.specific_exam,
+         'exam_type': exam_type},
         context_instance=RequestContext(request)
     )

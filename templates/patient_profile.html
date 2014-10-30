@@ -6,35 +6,7 @@
 
 <html>
 <body>
-    <div class="small-15 medium-13 large-13 small-centered columns">
-        <p><h2 class="title">Anato - HUB</h2></p>
-        <hr>
-
-        <p><h4 class="title">{{patient.nome}}</h4></p>
-    </div>
-
-    <div class="small-13 small-centered medium-12 medium-centered large-9 large-centered columns">
-        <div class="small-15 medium-7 large-7 columns">
-            <small><b>Código Prontuário:</b></small><br>
-            <i>{{patient.prontuario}}</i> <br>
-            <small><b>Registro SUS:</b></small><br>
-            <i>{{patient.nro_cartao_saude}}</i> <br>
-            <small><b>Nome do Pai:</b></small><br>
-            <i>{{patient.nome_pai}}</i> <br>
-            <small><b>Nome da Mãe:</b></small><br>
-            <i>{{patient.nome_mae}}</i> <br>
-        </div>
-
-        <div class="small-15 medium-offset-1 medium-7 large-7 large-offset-1 columns">
-            <small><b>Data Nascimento:</b></small><br>
-            <i>{{patient.dt_nascimento}}</i> <br>
-            <small><b>Naturalidade:</b> </small><br>
-            <i>{{patient.naturalidade}}</i> <br>
-            <small><b>Observação:</b></small><br>
-            <i>{{patient.observacao}}</i> <br>
-        </div>
-        <hr>
-    </div>
+    {% include 'patient_information.html' %}
 
     <div class="row">
         <div class="small-13 small-centered medium-12 medium-centered large-12 large-centered columns">
@@ -55,26 +27,34 @@
     <div class="row">
         <div class="small-13 small-centered medium-9 medium-centered large-9 large-centered columns">
             <dl class="accordion" data-accordion>
-              {% for exam in exams %}  
-              <dd>
-                <a href="#exam{{exam.id}}"><i>{{exam.exam_type.description}}</i><br>{{exam.receipt_date}} </a>
-                <div id="exam{{exam.id}}" class="content">
-                    <div class="row">
-                        <div class="small-15 medium-9 large-9 columns">
-                            <small><b>Status:</b></small><br>
-                            <i id="Status">Em Macroscopia</i><br>
-                            <small><b>Médico Solicitante:</b></small><br>
-                            <i>{{exam.requesting_physician}}</i><br>
-                            <small><b>Médico Responsável:</b></small><br>
-                            <i>{{exam.responsible_physician}}</i><br>
-                        </div>
-                        <div class="small-15 medium-6 large-6 columns">
-                            <button class="postfix"><i class="fi-page-search"></i> Ver Exame</button>
+                {% if exams != None %}
+                  {% for exam in exams %}
+                  <dd>
+                    <a href="#exam{{exam.id}}"><i>{{exam.exam_type.description}}</i><br>{{exam.receipt_date}} </a>
+                    <div id="exam{{exam.id}}" class="content">
+                        <div class="row">
+                            <div class="small-15 medium-9 large-9 columns">
+                                <small><b>Status:</b></small><br>
+                                <i id="Status">{{exam.specific_exam.status.description}}</i><br>
+                                <small><b>Médico Solicitante:</b></small><br>
+                                <i>{{exam.requesting_physician}}</i><br>
+                                <small><b>Médico Responsável:</b></small><br>
+                                <i>{{exam.responsible_physician}}</i><br>
+                            </div>
+                            <div class="small-15 medium-6 large-6 columns">
+                                <form action="/exame/visualizar/{{exam.id}}">
+                                    <button class="postfix"><i class="fi-page-search"></i> Ver Exame</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
-              </dd>
-              {% endfor %}
+                  </dd>
+                  {% endfor %}
+                {% else %}
+                    <div class="row">
+                        <p align="center"><i>O paciente não possui exames registrados.</i></p>
+                    </div>
+                {% endif %}
             </dl>
             <hr>
         </div>
