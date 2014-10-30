@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from authentication.ldap_auth import ldap_authentication
 from auth_exceptions import LDAPUserDoesNotExist, LDAPConnectionError, \
     LDAPCredentialError
