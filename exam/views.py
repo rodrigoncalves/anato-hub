@@ -16,7 +16,7 @@ def new_exam(request):
     patient_id = request.POST.get("patient_id")
     patient = Paciente.objects.using("hub").get(codigo=patient_id)
 
-    if user_belongs_to_groups(request.user, ['Staff Doctor']):
+    if user_belongs_to_groups(request.user, ['Staff Doctor', 'Administrative', 'Assistant Medical', 'Resident Doctor']):
         return render_to_response(
            'new_exam.html',
             {"exam_types": exam_types,
