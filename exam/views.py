@@ -39,9 +39,12 @@ def register_exam(request):
     specific_exam.exam = exam
     specific_exam.save()
 
-    exam_types = ExamType.objects.all()
+    exam_type_id = request.POST['exam_type']
+    exam_type = ExamType.objects.get(pk=exam_type_id).name_class
+    template_exam = 'new_' + exam_type.lower() + '.html'
+
     return render_to_response(
-        'new_exam.html',
-        {'exam_saved': True, 'exam_types': exam_types},
+        template_exam,
         context_instance=RequestContext(request)
     )
+

@@ -16,7 +16,7 @@
         <form action="/exame/registrar/" method="post">
             {% csrf_token %}
             <input type="hidden" value="{{patient.codigo}}" name="patient_id" id="patient_id">
-
+            
             <div class="row">
                 <div class="row collapse prefix-radius">
                     <div class="large-7 columns">
