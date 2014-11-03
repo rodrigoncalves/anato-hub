@@ -45,6 +45,7 @@ def register_exam(request):
 
     return render_to_response(
         template_exam,
+        {"exam_id": exam.id},
         context_instance=RequestContext(request)
     )
 

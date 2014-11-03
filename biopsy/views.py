@@ -18,13 +18,14 @@ def new_biopsy(request):
 
 
 @login_required(login_url='/', redirect_field_name='')
-def add_biopsy(request):
+def register_biopsy(request):
     clinical_information = request.POST['clinical_information']
     macroscopic = request.POST['macroscopic']
     microscopic = request.POST['microscopic']
     conclusion = request.POST['conclusion']
     note = request.POST['note']
     footer = request.POST['footer']
+    exam_id = request.POST['exam_id']
 
     biopsy = Biopsy(
         clinical_information=clinical_information,
@@ -32,7 +33,8 @@ def add_biopsy(request):
         microscopic=microscopic,
         conclusion=conclusion,
         note=note,
-        footer=footer
+        footer=footer,
+        exam_id=exam_id
     )
 
     biopsy.save()
