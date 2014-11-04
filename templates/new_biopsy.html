@@ -22,9 +22,7 @@
                             <span class="prefix">Informações Clínicas:</span>
                         </div>
                         <div class="small-15 columns">
-                            <textarea rows="10" cols="100" form="new_biopsy" name="clinical_information">
-                                {{biopsy.clinical_information}}
-                            </textarea>
+                            <textarea rows="10" cols="100" form="new_biopsy" name="clinical_information">{{biopsy.clinical_information | default_if_none:""}}</textarea>
                         </div>
                     </div>
                 </div>
@@ -37,9 +35,7 @@
                             <span class="prefix">Macroscopia:</span>
                         </div>
                         <div class="small-15 columns">
-                            <textarea rows="10" cols="100" form="new_biopsy" name="macroscopic">
-                                {{biopsy.macroscopic}}  
-                            </textarea>
+                            <textarea rows="10" cols="100" form="new_biopsy" name="macroscopic">{{biopsy.macroscopic | default_if_none:""}}</textarea>
                         </div>
                     </div>
                 </div>
@@ -52,9 +48,7 @@
                             <span class="prefix">Microscopia:</span>
                         </div>
                         <div class="small-15 columns">
-                            <textarea rows="10" cols="100" form="new_biopsy" name="microscopic">
-                                {{biopsy.microscopic}}
-                            </textarea>
+                            <textarea rows="10" cols="100" form="new_biopsy" name="microscopic">{{biopsy.microscopic | default_if_none:""}}</textarea>
                         </div>
                     </div>
                 </div>
@@ -67,9 +61,7 @@
                             <span class="prefix">Conclusão:</span>
                         </div>
                         <div class="small-15 columns">
-                            <textarea rows="10" cols="100" form="new_biopsy" name="conclusion">
-                                 {{biopsy.conclusion}}
-                            </textarea>
+                            <textarea rows="10" cols="100" form="new_biopsy" name="conclusion">{{biopsy.conclusion | default_if_none:""}}</textarea>
                         </div>
                     </div>
                 </div>
@@ -82,9 +74,7 @@
                             <span class="prefix">Notas:</span>
                         </div>
                         <div class="small-15 columns">
-                            <textarea rows="10" cols="100" form="new_biopsy" name="note">
-                                {{biopsy.note}}  
-                            </textarea>
+                            <textarea rows="10" cols="100" form="new_biopsy" name="note">{{biopsy.note | default_if_none:""}}</textarea>
                         </div>
                     </div>
                 </div>
@@ -97,9 +87,7 @@
                             <span class="prefix">Legenda:</span>
                         </div>
                         <div class="small-15 columns">
-                            <textarea rows="10" cols="100" form="new_biopsy" name="footer">
-                                {{biopsy.footer}}
-                            </textarea>
+                            <textarea rows="10" cols="100" form="new_biopsy" name="footer">{{biopsy.footer | default_if_none:""}}</textarea>
                         </div>
                     </div>
                 </div>
