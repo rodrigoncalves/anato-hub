@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
+
 import ldap
 from auth_exceptions import LDAPConnectionError, LDAPCredentialError, \
     LDAPUserDoesNotExist
-from configs.ldap import LDAP_DOMAIN, LDAP_SERVER, DN, DN_SECRET, \
-    LDAP_BASE
+from configs.ldap import LDAP_DOMAIN, LDAP_SERVER, LDAP_BASE, \
+    DN, DN_SECRET
 
 
 def ldap_authentication(username, password):

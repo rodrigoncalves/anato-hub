@@ -1,29 +1,25 @@
 {% extends 'base.html' %}
 
-{% block 'title' %}Cadastro de Exame | Anato HUB{% endblock %}
+{% block 'title' %}Atualizar Exame | Anato HUB{% endblock %}
 
 {% block 'content' %}
-
-    <div class="small-15 medium-13 large-13 small-centered columns">
-        <p><h2 class="title">Anato - HUB</h2></p>
-        <hr>
-    </div>
 
     {% include 'patient_information.html' %}
 
     <div class="small-15 medium-7 large-6 medium-centered large-centered columns">
-        <p><h4 class="title">Cadastrar Novo Exame</h4></p>
-        <form action="/exame/registrar/" method="post">
+        <p><h4 class="title">Atualizar Exame:</h4></p>
+        <form action="/exame/registrar_atualizacao/" method="post">
             {% csrf_token %}
             <input type="hidden" value="{{patient.codigo}}" name="patient_id" id="patient_id">
-            
+            <input type="hidden" value="{{exam.id}}" name="exam_id" id="exam_id">
+
             <div class="row">
                 <div class="row collapse prefix-radius">
                     <div class="large-7 columns">
                         <span class="prefix">Data da Requisição:</span>
                     </div>
                     <div class="large-8 columns">
-                        <input type="date" class="form-input calendar" name="request_date" id="request_date" readonly data-date-format="dd/mm/yyyy">
+                        <input type="date" class="form-input calendar" name="request_date" id="request_date" value="{{exam.request_date}}" readonly data-date-format="dd/mm/yyyy">
                     </div>
                 </div>
             </div>
@@ -33,7 +29,7 @@
                         <span class="prefix">Recebimento do Material:</span>
                     </div>
                     <div class="large-8 columns">
-                        <input type="date" class="form-input calendar" name="receipt_date" id="receipt_date" readonly data-date-format="dd/mm/yyyy">
+                        <input type="date" class="form-input calendar" name="receipt_date" id="receipt_date" value="{{exam.receipt_date}}" readonly data-date-format="dd/mm/yyyy">
                     </div>
                 </div>
             </div>
@@ -43,7 +39,7 @@
                         <span class="prefix">Coleta do Material:</span>
                     </div>
                     <div class="large-8 columns">
-                        <input type="date" class="form-input calendar" name="speciment_collection_date" id="speciment_collection_date" readonly data-date-format="dd/mm/yyyy">
+                        <input type="date" class="form-input calendar" name="speciment_collection_date" id="speciment_collection_date"  value="{{exam.speciment_collection_date}}" readonly data-date-format="dd/mm/yyyy">
                     </div>
                 </div>
             </div>
@@ -53,7 +49,7 @@
                         <span class="prefix">Material Recebido:</span>
                     </div>
                     <div class="large-8 columns">
-                        <input type="text" class="form-input" name="received_speciment" id="received_speciment" required>
+                        <input type="text" class="form-input" value="{{exam.received_speciment}}" name="received_speciment" id="received_speciment" required>
                     </div>
                 </div>
             </div>
@@ -63,7 +59,7 @@
                         <span class="prefix">Hora do Exame:</span>
                     </div>
                     <div class="large-8 columns">
-                        <input type="text" class="form-input hour" name="examination_time" id="examination_time" required>
+                        <input type="text" class="form-input hour" value="{{exam.examination_time}}" name="examination_time" id="examination_time" required>
                     </div>
                 </div>
             </div>
@@ -73,7 +69,7 @@
                         <span class="prefix">Médico Requisitante:</span>
                     </div>
                     <div class="large-8 columns">
-                        <input type="text" class="form-input" name="requesting_physician" id="requesting_physician" required>
+                        <input type="text" class="form-input" value="{{exam.requesting_physician}}" name="requesting_physician" id="requesting_physician" required>
                     </div>
                 </div>
             </div>
@@ -83,7 +79,7 @@
                         <span class="prefix">Médico Responsável:</span>
                     </div>
                     <div class="large-8 columns">
-                        <input type="text" class="form-input" name="responsible_physician" id="responsible_physician" required>
+                        <input type="text" class="form-input" value="{{exam.responsible_physician}}" name="responsible_physician" id="responsible_physician" required>
                     </div>
                 </div>
             </div>
@@ -94,16 +90,14 @@
                     </div>
                     <div class="large-8 columns">
                         <select name="exam_type" id="exam_type">
-                            {% for type in exam_types %}
-                                <option value="{{type.id}}">{{type.description}}</option>
-                            {% endfor %}
+                                <option value="{{exam_type.id}}">{{exam_type.description}}</option>
                         </select>
                     </div>
                 </div>
             </div>
 
             <div class="small-14 small-centered medium-8 medium-centered large-7 large-centered columns">
-                <input class="button small expand" type="submit" value="Enviar" />
+                <input class="button small expand" type="submit" value="Atualizar" />
             </div>
         </form>
     </div>
@@ -120,4 +114,9 @@
                 $('.hour').inputmask('99:99')
             })
         </script>
+        {% if exam_saved %}
+            <script>
+                $('#exam_saved').foundation('reveal', 'open');
+            </script>
+        {% endif %}
 {% endblock %}

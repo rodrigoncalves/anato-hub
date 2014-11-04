@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 import csv
 import os
 from anato import settings
@@ -22,8 +23,6 @@ def import_exam_type():
             exam_type.name_class = row[2]
             exam_type.save()
 
-    print 'Done!'
-
 
 def import_report_status():
     from exam.models import ReportStatus
@@ -37,8 +36,6 @@ def import_report_status():
             report_status.id = row[0]
             report_status.description = row[1]
             report_status.save()
-
-    print 'Done!'
 
 
 def import_group():
@@ -54,8 +51,6 @@ def import_group():
             group.name = row[1]
             group.save()
 
-    print 'Done!'
-
 
 def import_biopsy_status():
     from biopsy.models import BiopsyStatus
@@ -69,8 +64,6 @@ def import_biopsy_status():
             report_status.id = row[0]
             report_status.description = row[1]
             report_status.save()
-
-    print 'Done!'
 
 
 def import_necropsy_status():
@@ -86,8 +79,6 @@ def import_necropsy_status():
             report_status.description = row[1]
             report_status.save()
 
-    print 'Done!'
-
 
 def import_cytology_status():
     from cytology.models import CytologyStatus
@@ -101,8 +92,6 @@ def import_cytology_status():
             report_status.id = row[0]
             report_status.description = row[1]
             report_status.save()
-
-    print 'Done!'
 
 
 def import_immunohistochemical_status():
@@ -118,7 +107,6 @@ def import_immunohistochemical_status():
             report_status.description = row[1]
             report_status.save()
 
-    print 'Done!'
 
 
 def import_all():
@@ -129,3 +117,4 @@ def import_all():
     import_necropsy_status()
     import_exam_type()
     import_report_status()
+    print 'Done!'

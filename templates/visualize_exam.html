@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block 'title' %}Visualizar Exame | Anato{% endblock %}
+
+{% block 'content' %}
+    {% include 'patient_information.html' %}
+
+    <div class="row">
+        <h3 class="title">{{exam.exam_type.description}} #{{exam.id}} - {{exam.request_date}}</h3><br>
+    </div>
+
+    <div class="row">
+        <div class="small-14 medium-12 large-12 small-centered large-centered medium-centered columns">
+            <div class="row">
+                <div class="small-15 medium-11 large-11 columns">
+                    <h5 class="exam-data">Dados Gerais:</h5>
+                </div>
+                <div class="small-15 medium-4 large-4 columns">
+                    <a href="/exame/atualizar/{{exam.id}}" class="button postfix"><i class="fi-page-edit"></i> Editar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="small-13 small-centered medium-12 medium-centered large-9 large-centered columns">
+        <div class="small-15 medium-7 large-7 columns">
+            <small><b>Data da Requisição:</b></small><br>
+            <i>{{exam.request_date}}</i> <br>
+            <small><b>Data de Recebimento do Material:</b></small><br>
+            <i>{{exam.receipt_date}}</i> <br>
+            <small><b>Data de Coleta do Material:</b></small><br>
+            <i>{{exam.speciment_collection_date}}</i> <br>
+            <small><b>Material Recebido:</b></small><br>
+            <i>{{exam.received_speciment}}</i> <br>
+        </div>
+
+        <div class="small-15 medium-offset-1 medium-7 large-7 large-offset-1 columns">
+            <small><b>Hora do Exame:</b></small><br>
+            <i>{{exam.examination_time}}</i> <br>
+            <small><b>Médico Requisitante:</b></small><br>
+            <i>{{exam.requesting_physician}}</i> <br>
+            <small><b>Médico Responsável:</b></small><br>
+            <i>{{exam.responsible_physician}}</i> <br>
+            <small><b>Tipo do Exame:</b></small><br>
+            <i>{{exam.exam_type.description}}</i> <br>
+        </div>
+        <hr>
+    </div>
+
+    <div class="row">
+        <div class="small-14 medium-12 large-12 small-centered large-centered medium-centered columns">
+            <div class="row">
+                <div class="small-15 medium-11 large-11 columns">
+                    <h5 class="exam-data">Dados da {{exam.exam_type.description}} -  Em {{exam.specific_exam.status.description}}</h5>
+                </div>
+                <div class="small-15 medium-4 large-4 columns">
+                    <a href="#" class="button postfix"><i class="fi-page-edit"></i> Editar</a>
+                </div>
+            </div>
+
+            <div class="small-14 medium-12 large-12 small-centered large-centered medium-centered columns">
+                <div class="row">
+                    {% include exam_type %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

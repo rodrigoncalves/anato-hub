@@ -1,4 +1,5 @@
 # -*- conding: utf-8 -*-
+
 from django.db import models
 from exam.models import Exam, ReportStatus
 

@@ -54,7 +54,7 @@ INSTALLED_APPS = (
     'importer',
 )
 
-TEST_RUNNER = 'django_behave.runner.DjangoBehaveTestSuiteRunner'
+# TEST_RUNNER = 'django_behave.runner.DjangoBehaveTestSuiteRunner'
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -102,3 +102,6 @@ STATICFILES_DIRS = (
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, "templates"),
 )
+
+LOGIN_URL = '/'
+LOGOUT_URL = '/sair/'

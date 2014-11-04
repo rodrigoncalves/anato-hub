@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 from django.db import models
 from exam.models import Exam, ReportStatus
 
@@ -17,7 +18,7 @@ class ImmunoHistochemical(models.Model):
     conclusion = models.TextField(null=True, blank=True)
     note = models.TextField(null=True, blank=True)
     footer = models.TextField(null=True, blank=True)
-    status = models.ForeignKey(ImmunoHistochemicalStatus)
+    status = models.ForeignKey(ImmunoHistochemicalStatus, default=1)
     exam = models.ForeignKey(Exam)
     antibodies = property(exam_antibodies)
 

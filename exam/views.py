@@ -1,33 +1,36 @@
 # -*- coding: utf-8 -*-
-from django.shortcuts import render_to_response, redirect
+
+from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
-
-from exam.models import ExamType
-from exam.forms import get_exam_form
+from exam.models import ExamType, Exam
+from exam.forms import get_exam_form, update_exam_form
 from exam.dynamic_import import create_specific_exam
 from patients.models import Paciente
 from core.views import user_belongs_to_groups
 
 
-@login_required(login_url='/', redirect_field_name='')
+@login_required()
 def new_exam(request):
     exam_types = ExamType.objects.all()
-    patient_id = request.POST.get("patient_id")
+    patient_id = request.POST["patient_id"]
     patient = Paciente.objects.using("hub").get(codigo=patient_id)
 
-    if user_belongs_to_groups(request.user, ['Staff Doctor', 'Administrative', 'Assistant Medical', 'Resident Doctor']):
-        return render_to_response(
-           'new_exam.html',
-            {"exam_types": exam_types,
-            "patient": patient},
-            context_instance=RequestContext(request)
-        )
-
     return render_to_response(
-       '403.html',
+        'new_exam.html',
+        {"exam_types": exam_types,
+         "patient": patient},
         context_instance=RequestContext(request)
     )
+
+
+@login_required(login_url='/', redirect_field_name='')
+def register_update_exam(request):
+    exam = update_exam_form(request)
+    exam.save()
+
+    return redirect('/exame/visualizar/'+request.POST['exam_id'])
+
 
 @login_required(login_url='/', redirect_field_name='')
 def register_exam(request):
@@ -52,3 +55,38 @@ def register_exam(request):
         context_instance=RequestContext(request)
     )
 
+
+@login_required(login_url='/', redirect_field_name='')
+def visualize_exam(request, exam_id):
+    exam = get_object_or_404(Exam, pk=exam_id)
+    exam_type = exam.exam_type.name_class
+    exam_type = 'visualize_' + exam_type.lower() + '.html'
+
+    return render_to_response(
+        'visualize_exam.html',
+        {'exam': exam,
+         'patient': exam.patient_information,
+         'specific_exam': exam.specific_exam,
+         'exam_type': exam_type},
+        context_instance=RequestContext(request)
+    )
+
+
+@login_required(login_url='/', redirect_field_name='')
+def update_exam(request, exam_id):
+    exam = get_object_or_404(Exam, pk=exam_id)
+
+    exam_type = exam.exam_type
+
+    exam.request_date = exam.request_date.strftime('%d/%m/%Y')
+    exam.receipt_date = exam.receipt_date.strftime('%d/%m/%Y')
+    exam.speciment_collection_date = exam.speciment_collection_date.strftime('%d/%m/%Y')
+    exam.examination_time = exam.examination_time.strftime('%d/%m/%Y')
+
+    return render_to_response(
+        'update_exam.html',
+        {'patient': exam.patient_information,
+        'exam':exam,
+        'exam_type': exam_type},
+        context_instance=RequestContext(request)
+    )

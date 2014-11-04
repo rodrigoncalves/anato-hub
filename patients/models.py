@@ -2,10 +2,13 @@ from __future__ import unicode_literals
 
 from django.db import models
 
+
 class Paciente(models.Model):
-    codigo = models.IntegerField(blank=True, primary_key = True) #removido null=True.
-    nome = models.CharField(max_length=255, blank=True) #Valor maximo
-    cpf = models.CharField(max_length=12, blank=True) ##1 digito a mais de CPF, por garantia.
+    # removido null=True.
+    codigo = models.IntegerField(blank=True, primary_key=True)
+    nome = models.CharField(max_length=255, blank=True)  # Valor maximo
+    # 1 digito a mais de CPF, por garantia.
+    cpf = models.CharField(max_length=12, blank=True)
     nome_mae = models.CharField(max_length=255, blank=True)
     nome_pai = models.CharField(max_length=255, blank=True)
     dt_nascimento = models.DateTimeField(blank=True, null=True)
@@ -20,7 +23,7 @@ class Paciente(models.Model):
     prnt_ativo = models.CharField(max_length=255, blank=True)
     sexo_biologico = models.CharField(max_length=50, blank=True)
     nro_cartao_saude = models.BigIntegerField(blank=True, null=True)
-    class Meta:
-        managed = False
-        db_table = 'paciente'
 
+    class Meta:
+        # managed = False
+        db_table = 'paciente'

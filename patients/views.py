@@ -69,7 +69,9 @@ def search_patient(patient_name, report_id, birth_date, mother_name):
 @login_required(login_url='/', redirect_field_name='')
 def patient_profile(request, patient_id):
     patient = Paciente.objects.using("hub").get(codigo=patient_id)
-    exams = Exam.objects.filter(patient=patient.codigo)
+    exams = Exam.objects.filter(
+        patient=patient.codigo).order_by('-request_date')
+
     return render_to_response(
         'patient_profile.html',
         {'patient': patient,

@@ -3,7 +3,6 @@ from behave import given, when, then
 from selenium import webdriver
 from should_dsl import should, should_not
 
-
 @given(u'que o Usuario se autentica')
 def authentication(context):
     context.driver = webdriver.Firefox()
@@ -85,6 +84,28 @@ def step_impl(context):
 def step_impl(context):
     assert False
 
+@when(u'o usuario digita o nome, prontuario e nome da mae')
+def typing_patient_name_report_mothername(context):
+    name_input = context.driver.find_element_by_id('patient')
+    report_input = context.driver.find_element_by_id('report')
+    mothername_input = context.driver.find_element_by_id('mother_name')
+    
+    name_input.send_keys('Queilane')
+    report_input.send_keys('417899')
+    mothername_input.send_keys('Nao')
+
+@then(u'o sistema retorna os Pacientes com o nome, prontuario e nome da mae digitado')
+def return_name_report_mothername(context):
+    patient_name = context.driver.find_element_by_class_name('fi-male')
+    patient_report = context.driver.find_element_by_class_name('fi-clipboard-notes')
+    patient_mothername = context.driver.find_element_by_class_name('fi-torso-female')
+
+    patient_name.text | should | equal_to('QUEILANE BXXXISTA')
+    patient_report.text | should | equal_to('417899')
+    patient_mothername.text | should | equal_to('NAO XXXXXXMADO')
+
+    context.driver.close()
+
 @then(u'o sistema retorna os Pacientes com a nome e prontuario digitado')
 def step_impl(context):
     assert False
@@ -120,10 +141,12 @@ def step_impl(context):
 @then(u'o sistema retorna os Pacientes com a prontuario e data nascimento digitado')
 def step_impl(context):
     assert False
-
+#Implementando
 @when(u'o usuario digita o nome da mae e data nascimento do Paciente')
 def step_impl(context):
-    assert False
+    context.driver.find_element_by_id("date").click()
+    context.driver.find_element_by_xpath("//div[2]/div[3]/table/tbody/tr[3]/td[2]").click()
+    context.driver.close()
 
 @then(u'o sistema retorna os Pacientes com a nome da mae e data nascimento digitado')
 def step_impl(context):

@@ -7,6 +7,7 @@ from django.template.context import RequestContext
 from django.contrib.auth.decorators import login_required
 from models import Cytology
 
+
 @login_required(login_url='/', redirect_field_name='')
 def new_cytology(request):
 	cytology = Cytology()
@@ -16,6 +17,7 @@ def new_cytology(request):
 		},
 		context_instance = RequestContext(request)
 	)
+
 
 @login_required(login_url='/', redirect_field_name='')
 def add_cytology(request):

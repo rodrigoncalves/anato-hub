@@ -16,14 +16,33 @@
   text-shadow: 1px 1px ligthen(#336e7b, 10);
 }
 
-/* line 31, ../scss/components/_typography.scss */
+/* line 29, ../scss/components/_typography.scss */
+.exam-data, .exam-field {
+  text-align: left;
+  font-weight: bold;
+  text-shadow: 1px 1px ligthen(#336e7b, 10);
+}
+
+/* line 35, ../scss/components/_typography.scss */
+.exam-field {
+  font-weight: normal;
+  text-decoration: underline;
+}
+
+/* line 41, ../scss/components/_typography.scss */
+hr .dashed {
+  border-top: 1px dashed !important;
+  height: 1px;
+}
+
+/* line 48, ../scss/components/_typography.scss */
 .shadow {
   -webkit-box-shadow: 0px 1px 2px #336e7b;
   -moz-box-shadow: 0px 1px 2px #336e7b;
   box-shadow: 0px 1px 2px #336e7b;
 }
 
-/* line 35, ../scss/components/_typography.scss */
+/* line 52, ../scss/components/_typography.scss */
 .icon-topbar {
   font-weight: bold;
 }

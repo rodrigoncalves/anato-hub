@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-
 class ModelDoesNotExist(Exception):
 
     def __init__(self, message):

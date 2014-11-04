@@ -1,5 +1,5 @@
 <div class="small-15 medium-13 large-13 small-centered columns">
-    <p><h4 class="title">{{patient.nome}}</h4></p>
+    <p><h4 class="title"><a href="/paciente/{{patient.codigo}}">{{patient.nome}}</a></h4></p>
 </div>
 
 <div class="small-13 small-centered medium-12 medium-centered large-9 large-centered columns">
@@ -33,7 +33,7 @@
         {% endif %}
         {% if patient.observacao %}
             <small><b>Observação:</b></small><br>
-            <i>{{patient.observacao}}</i> <br>
+            <i>{{patient.observacao}}</i><br>
         {% endif %}
     </div>
     <hr>

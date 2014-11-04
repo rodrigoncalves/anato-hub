@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-SECRET_KEY = ''
+SECRET_KEY = 'qwerty'
 DEBUG = True
 TEMPLATE_DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
