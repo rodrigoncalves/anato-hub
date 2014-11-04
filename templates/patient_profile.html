@@ -30,7 +30,7 @@
 <div class="row">
     <div class="small-13 small-centered medium-9 medium-centered large-9 large-centered columns">
         <dl class="accordion" data-accordion>
-            {% if exams == '[]' %}
+            {% if exams %}
                 {% for exam in exams %}
                     <dd>
                     <a href="#exam{{exam.id}}"><i>{{exam.exam_type.description}}</i><br>{{exam.receipt_date}} </a>
