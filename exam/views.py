@@ -2,6 +2,7 @@
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
+from core.decorators import permission_required_with_403
 
 from exam.models import ExamType
 from exam.forms import get_exam_form
@@ -10,22 +11,17 @@ from patients.models import Paciente
 from core.views import user_belongs_to_groups
 
 
+@permission_required_with_403('add_exam')
 @login_required(login_url='/', redirect_field_name='')
 def new_exam(request):
     exam_types = ExamType.objects.all()
     patient_id = request.POST.get("patient_id")
     patient = Paciente.objects.using("hub").get(codigo=patient_id)
 
-    if user_belongs_to_groups(request.user, ['Staff Doctor', 'Administrative', 'Assistant Medical', 'Resident Doctor']):
-        return render_to_response(
-           'new_exam.html',
-            {"exam_types": exam_types,
-            "patient": patient},
-            context_instance=RequestContext(request)
-        )
-
     return render_to_response(
-       '403.html',
+       'new_exam.html',
+        {"exam_types": exam_types,
+        "patient": patient},
         context_instance=RequestContext(request)
     )
 

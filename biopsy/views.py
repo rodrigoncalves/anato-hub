@@ -3,9 +3,11 @@
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
 from django.contrib.auth.decorators import login_required
+from core.decorators import permission_required_with_403
 from models import Biopsy
 
 
+@permission_required_with_403('add_biopsy')
 @login_required(login_url='/', redirect_field_name='')
 def new_biopsy(request):
     biopsy = Biopsy()
