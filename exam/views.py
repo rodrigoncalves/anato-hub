@@ -11,7 +11,7 @@ from patients.models import Paciente
 from core.views import user_belongs_to_groups
 
 
-@permission_required_with_403('add_exam')
+@permission_required_with_403('exam.add_exam')
 @login_required(login_url='/', redirect_field_name='')
 def new_exam(request):
     exam_types = ExamType.objects.all()
