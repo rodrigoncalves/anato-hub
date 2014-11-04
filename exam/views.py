@@ -39,23 +39,16 @@ def register_exam(request):
     specific_exam.exam = exam
     specific_exam.save()
 
+    patient_id = request.POST.get("patient_id")
     exam_type_id = request.POST['exam_type']
 
-    if exam_type_id == '1':
-        return redirect('/biopsia/nova/')
-    elif exam_type_id == '2':
-        return redirect('/necropsia/novo')
-    elif exam_type_id == '3':
-        return redirect('/citologia/nova')
-    elif exam_type_id == '4':
-        return redirect('/imunohistoquimica/nova')
+    exam_type = ExamType.objects.get(pk=exam_type_id).name_class
+    template_exam = 'new_' + exam_type.lower() + '.html'
 
-    # exam_type = ExamType.objects.get(pk=exam_type_id).name_class
-    # template_exam = 'new_' + exam_type.lower() + '.html'
-
-    # return render_to_response(
-    #     template_exam,
-    #     {"exam_id": exam.id},
-    #     context_instance=RequestContext(request)
-    # )
+    return render_to_response(
+        template_exam, {
+        "exam_id": exam.id,
+        "patient_id": patient_id},
+        context_instance=RequestContext(request)
+    )
 

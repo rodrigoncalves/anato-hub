@@ -4,6 +4,8 @@ from django.shortcuts import render_to_response
 from django.template.context import RequestContext
 from django.contrib.auth.decorators import login_required
 from models import Biopsy
+from exam.models import Exam
+from patients.models import Paciente
 
 
 @login_required(login_url='/', redirect_field_name='')
@@ -39,7 +41,15 @@ def register_biopsy(request):
 
     biopsy.save()
 
+    patient_id = request.POST.get("patient_id")
+    patient = Paciente.objects.using("hub").get(codigo=patient_id)
+
+    exams = Exam.objects.filter(patient=patient_id)
+
     return render_to_response(
-        'home_search.html',
+        'patient_profile.html',
+        {"exam_saved": True,
+        "patient": patient,
+        "exams": exams},
         context_instance=RequestContext(request)
     )
