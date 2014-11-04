@@ -71,8 +71,8 @@ def patient_profile(request, patient_id):
     patient = Paciente.objects.using("hub").get(codigo=patient_id)
     exams = Exam.objects.filter(patient=patient.codigo)
     return render_to_response(
-        'patient_profile.html', {
-            'patient': patient,
-            'exams': exams},
+        'patient_profile.html',
+        {'patient': patient,
+        'exams': exams},
         context_instance=RequestContext(request)
     )

@@ -12,11 +12,11 @@
     {% include 'tags/patient_information.html' %}
 
     <div class="small-15 medium-7 large-6 medium-centered large-centered columns">
-        <p><h4 class="title">Cadastrar Novo Exame:</h4></p>
+        <p><h4 class="title">Cadastrar Novo Exame</h4></p>
         <form action="/exame/registrar/" method="post">
             {% csrf_token %}
             <input type="hidden" value="{{patient.codigo}}" name="patient_id" id="patient_id">
-
+            
             <div class="row">
                 <div class="row collapse prefix-radius">
                     <div class="large-7 columns">
@@ -120,9 +120,4 @@
                 $('.hour').inputmask('99:99')
             })
         </script>
-        {% if exam_saved %}
-            <script>
-                $('#exam_saved').foundation('reveal', 'open');
-            </script>
-        {% endif %}
 {% endblock %}

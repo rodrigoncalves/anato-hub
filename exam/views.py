@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 
@@ -39,9 +39,16 @@ def register_exam(request):
     specific_exam.exam = exam
     specific_exam.save()
 
-    exam_types = ExamType.objects.all()
+    patient_id = request.POST.get("patient_id")
+    exam_type_id = request.POST['exam_type']
+
+    exam_type = ExamType.objects.get(pk=exam_type_id).name_class
+    template_exam = 'new_' + exam_type.lower() + '.html'
+
     return render_to_response(
-        'new_exam.html',
-        {'exam_saved': True, 'exam_types': exam_types},
+        template_exam, {
+        "exam_id": exam.id,
+        "patient_id": patient_id},
         context_instance=RequestContext(request)
     )
+

@@ -7,25 +7,23 @@
     <div class="small-15 medium-13 large-13 small-centered columns">
         <p><h2 class="title">Anato - HUB</h2></p>
         <hr>
-        <p><h4 class="title">Exame Biopsia:</h4></p>
-        <br>
     </div>
 
     <div class="small-15 medium-7 large-6 medium-centered large-centered columns">
-        <form action="" method="post">
+        <p><h4 class="title">Exame Biópsia</h4></p>
+        <form action="/biopsia/" method="post" id="new_biopsy">
             {% csrf_token %}
-
+            <input type="hidden" name="exam_id" value="{{exam_id}}">
+            <input type="hidden" name="patient_id" value="{{patient_id}}">
 
             <div class="row">
                 <div class="large-15 columns">
                     <div class="row collapse prefix-radius">
                         <div class="small-6 columns">
-                            <span class="prefix">Informacoes Clinicas:</span>
+                            <span class="prefix">Informações Clínicas:</span>
                         </div>
                         <div class="small-15 columns">
-                            <textarea rows="10" cols="100">
-                                {{biopsy.clinical_information}}
-                            </textarea>
+                            <textarea rows="5" cols="100" form="new_biopsy" name="clinical_information">{{biopsy.clinical_information | default_if_none:""}}</textarea>
                         </div>
                     </div>
                 </div>
@@ -38,9 +36,7 @@
                             <span class="prefix">Macroscopia:</span>
                         </div>
                         <div class="small-15 columns">
-                            <textarea rows="10" cols="100">
-                                {{biopsy.macroscopic}}  
-                            </textarea>
+                            <textarea rows="5" cols="100" form="new_biopsy" name="macroscopic">{{biopsy.macroscopic | default_if_none:""}}</textarea>
                         </div>
                     </div>
                 </div>
@@ -50,12 +46,10 @@
                 <div class="large-15 columns">
                     <div class="row collapse prefix-radius">
                         <div class="small-6 columns">
-                        <span class="prefix">Microscopia:</span>
+                            <span class="prefix">Microscopia:</span>
                         </div>
                         <div class="small-15 columns">
-                            <textarea rows="10" cols="100">
-                                {{biopsy.microscopic}}
-                            </textarea>
+                            <textarea rows="5" cols="100" form="new_biopsy" name="microscopic">{{biopsy.microscopic | default_if_none:""}}</textarea>
                         </div>
                     </div>
                 </div>
@@ -65,12 +59,10 @@
                 <div class="large-15 columns">
                     <div class="row collapse prefix-radius">
                         <div class="small-6 columns">
-                        <span class="prefix">Conclusao:</span>
+                            <span class="prefix">Conclusão:</span>
                         </div>
                         <div class="small-15 columns">
-                            <textarea rows="10" cols="100">
-                                 {{biopsy.conclusion}}
-                            </textarea>
+                            <textarea rows="5" cols="100" form="new_biopsy" name="conclusion">{{biopsy.conclusion | default_if_none:""}}</textarea>
                         </div>
                     </div>
                 </div>
@@ -80,12 +72,10 @@
                 <div class="large-15 columns">
                     <div class="row collapse prefix-radius">
                         <div class="small-6 columns">
-                        <span class="prefix">Notas:</span>
+                            <span class="prefix">Notas:</span>
                         </div>
                         <div class="small-15 columns">
-                            <textarea rows="10" cols="100">
-                                {{biopsy.note}}  
-                            </textarea>
+                            <textarea rows="5" cols="100" form="new_biopsy" name="note">{{biopsy.note | default_if_none:""}}</textarea>
                         </div>
                     </div>
                 </div>
@@ -95,18 +85,18 @@
                 <div class="large-15 columns">
                     <div class="row collapse prefix-radius">
                         <div class="small-6 columns">
-                        <span class="prefix">Legenda:</span>
+                            <span class="prefix">Legenda:</span>
                         </div>
                         <div class="small-15 columns">
-                            <textarea rows="10" cols="100">
-                                {{biopsy.footer}}
-                            </textarea>
+                            <textarea rows="5" cols="100" form="new_biopsy" name="footer">{{biopsy.footer | default_if_none:""}}</textarea>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <input type="submit" value="Submit" />
+            <div class="small-14 small-centered medium-8 medium-centered large-7 large-centered columns">
+                <input class="button small expand" type="submit" value="Enviar" />
+            </div>
         </form>
     </div>
 

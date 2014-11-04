@@ -56,3 +56,11 @@
 </div>
 
 {% endblock %}
+
+{% block 'footer-scripts' %}
+    {% if exam_saved %}
+        <script>
+            $('#exam_saved').foundation('reveal', 'open');
+        </script>
+    {% endif %}
+{% endblock %}
