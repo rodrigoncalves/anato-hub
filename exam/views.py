@@ -5,12 +5,14 @@ from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from exam.models import ExamType, Exam
 from exam.forms import get_exam_form, update_exam_form
+from core.decorators import permission_required_with_403
 from exam.dynamic_import import create_specific_exam
 from patients.models import Paciente
 from core.views import user_belongs_to_groups
 
 
-@login_required()
+@permission_required_with_403('exam.add_exam')
+@login_required(login_url='/', redirect_field_name='')
 def new_exam(request):
     exam_types = ExamType.objects.all()
     patient_id = request.POST["patient_id"]
@@ -18,8 +20,8 @@ def new_exam(request):
 
     return render_to_response(
         'new_exam.html',
-        {"exam_types": exam_types,
-         "patient": patient},
+        {'exam_types': exam_types,
+         'patient': patient},
         context_instance=RequestContext(request)
     )
 
@@ -29,7 +31,9 @@ def register_update_exam(request):
     exam = update_exam_form(request)
     exam.save()
 
-    return redirect('/exame/visualizar/'+request.POST['exam_id'])
+    exam_id = request.POST['exam_id']
+
+    return redirect('/exame/visualizar/' + exam_id)
 
 
 @login_required(login_url='/', redirect_field_name='')
@@ -49,9 +53,9 @@ def register_exam(request):
     template_exam = 'new_' + exam_type.lower() + '.html'
 
     return render_to_response(
-        template_exam, {
-        "exam_id": exam.id,
-        "patient_id": patient_id},
+        template_exam,
+        {'exam_id': exam.id,
+         'patient_id': patient_id},
         context_instance=RequestContext(request)
     )
 
@@ -86,7 +90,7 @@ def update_exam(request, exam_id):
     return render_to_response(
         'update_exam.html',
         {'patient': exam.patient_information,
-        'exam':exam,
-        'exam_type': exam_type},
+         'exam':exam,
+         'exam_type': exam_type},
         context_instance=RequestContext(request)
     )
