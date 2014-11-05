@@ -94,3 +94,17 @@ def update_exam(request, exam_id):
          'exam_type': exam_type},
         context_instance=RequestContext(request)
     )
+
+@login_required(login_url='/', redirect_field_name='')
+def update_specific_exam(request, exam_id):
+    exam = get_object_or_404(Exam, pk=exam_id)
+    exam_type = exam.exam_type
+    template_exam = 'update_' + exam_type.name_class.lower() + '.html',
+
+    return render_to_response(
+        template_exam,
+        {'exam_id': exam.id,
+         'patient_id': exam.patient_information.pk,
+         'exam_type': exam_type},
+        context_instance=RequestContext(request)
+    )
