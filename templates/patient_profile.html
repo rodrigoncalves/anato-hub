@@ -27,29 +27,29 @@
     <div class="row">
         <div class="small-13 small-centered medium-9 medium-centered large-9 large-centered columns">
             <dl class="accordion" data-accordion>
-                {% if exams != None %}
-                  {% for exam in exams %}
-                  <dd>
-                    <a href="#exam{{exam.id}}"><i>{{exam.exam_type.description}}</i><br>{{exam.receipt_date}} </a>
-                    <div id="exam{{exam.id}}" class="content">
-                        <div class="row">
-                            <div class="small-15 medium-9 large-9 columns">
-                                <small><b>Status:</b></small><br>
-                                <i id="Status">{{exam.specific_exam.status.description}}</i><br>
-                                <small><b>Médico Solicitante:</b></small><br>
-                                <i>{{exam.requesting_physician}}</i><br>
-                                <small><b>Médico Responsável:</b></small><br>
-                                <i>{{exam.responsible_physician}}</i><br>
-                            </div>
-                            <div class="small-15 medium-6 large-6 columns">
-                                <form action="/exame/visualizar/{{exam.id}}">
-                                    <button class="postfix"><i class="fi-page-search"></i> Ver Exame</button>
-                                </form>
+                {% if exams %}
+                    {% for exam in exams %}
+                        <dd>
+                        <a href="#exam{{exam.id}}"><i>{{exam.exam_type.description}}</i><br>{{exam.receipt_date}} </a>
+                        <div id="exam{{exam.id}}" class="content">
+                            <div class="row">
+                                <div class="small-15 medium-9 large-9 columns">
+                                    <small><b>Status:</b></small><br>
+                                    <i id="Status">{{exam.specific_exam.status.description}}</i><br>
+                                    <small><b>Médico Solicitante:</b></small><br>
+                                    <i>{{exam.requesting_physician}}</i><br>
+                                    <small><b>Médico Responsável:</b></small><br>
+                                    <i>{{exam.responsible_physician}}</i><br>
+                                </div>
+                                <div class="small-15 medium-6 large-6 columns">
+                                    <form action="/exame/visualizar/{{exam.id}}">
+                                        <button class="postfix"><i class="fi-page-search"></i> Ver Exame</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                  </dd>
-                  {% endfor %}
+                      </dd>
+                    {% endfor %}
                 {% else %}
                     <div class="row">
                         <p align="center"><i>O paciente não possui exames registrados.</i></p>
