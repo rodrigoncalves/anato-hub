@@ -54,7 +54,7 @@ INSTALLED_APPS = (
     'importer',
 )
 
-# TEST_RUNNER = 'django_behave.runner.DjangoBehaveTestSuiteRunner'
+TEST_RUNNER = 'django_behave.runner.DjangoBehaveTestSuiteRunner'
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

@@ -5,9 +5,20 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from should_dsl import should, should_not
 
+def authentication(context):
+    context.driver = webdriver.Firefox()
+    context.driver.get('http://localhost:8000/')
+
+    username = context.driver.find_element_by_id('username')
+    username.send_keys('ana')
+    password = context.driver.find_element_by_id('password')
+    password.send_keys('root')
+    submit = context.driver.find_element_by_id('enter-button')
+    submit.click()
 
 @given(u'que o auxiliar acessa o sistema e esta autenticado')
 def accessing_the_system(context):
+    authentication(context)
     context.driver = webdriver.Firefox()
     context.driver.get('http://127.0.0.1:8000/exame/novo/')
 
