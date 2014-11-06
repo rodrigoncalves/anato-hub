@@ -32,7 +32,7 @@ def register_update_exam(request):
 
     exam_id = request.POST['exam_id']
 
-    return redirect('/exame/visualizar/' + exam_id)
+    return redirect('/exame/' + exam_id)
 
 
 @login_required(login_url='/', redirect_field_name='')

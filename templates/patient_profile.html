@@ -33,7 +33,7 @@
                 {% if exams %}
                     {% for exam in exams %}
                         <dd>
-                        <a href="#exam{{exam.id}}"><i>{{exam.exam_type.description}}</i><br>{{exam.receipt_date}} </a>
+                        <a href="#exam{{exam.id}}"><i>{{exam.exam_type.description}}</i><br>{{exam.receipt_date}}</a>
                         <div id="exam{{exam.id}}" class="content">
                             <div class="row">
                                 <div class="small-15 medium-9 large-9 columns">
@@ -45,9 +45,9 @@
                                     <i>{{exam.responsible_physician}}</i><br>
                                 </div>
                                 <div class="small-15 medium-6 large-6 columns">
-                                    <form action="/exame/visualizar/{{exam.id}}">
+                                    <a href="/exame/{{exam.id}}">
                                         <button class="postfix"><i class="fi-page-search"></i> Ver Exame</button>
-                                    </form>
+                                    </a>
                                 </div>
                             </div>
                         </div>
