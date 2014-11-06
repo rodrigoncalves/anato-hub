@@ -25,7 +25,7 @@ ALLOWED_HOSTS = server.ALLOWED_HOSTS
 
 # Application definition
 
-DJANGO_WYSIWYG_FLAVOR = "tinymce"
+DJANGO_WYSIWYG_FLAVOR = "tinymce_advanced"
 
 INSTALLED_APPS = (
     'django.contrib.admin',

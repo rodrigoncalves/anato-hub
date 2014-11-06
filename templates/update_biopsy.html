@@ -26,7 +26,7 @@
                             <span class="prefix">Informações Clínicas:</span>
                         </div>
                         <div class="small-15 columns">
-                            <textarea rows="5" cols="100" form="new_biopsy" id="clinical_information" name="clinical_information">{{biopsy.clinical_information | default_if_none:"" }}</textarea>
+                            <textarea rows="5" cols="100" form="new_biopsy" id="clinical_information" name="clinical_information">{{specific_exam.clinical_information | default_if_none:"" }}</textarea>
                             {% wysiwyg_editor "clinical_information" %}
                         </div>
                     </div>
@@ -40,7 +40,7 @@
                             <span class="prefix">Macroscopia:</span>
                         </div>
                         <div class="small-15 columns">
-                            <textarea rows="5" cols="100" form="new_biopsy" id="macroscopic" name="macroscopic">{{biopsy.macroscopic | default_if_none:""}}</textarea>
+                            <textarea rows="5" cols="100" form="new_biopsy" id="macroscopic" name="macroscopic">{{specific_exam.macroscopic | default_if_none:""}}</textarea>
                             {% wysiwyg_editor "macroscopic" %}
                         </div>
                     </div>
@@ -54,7 +54,7 @@
                             <span class="prefix">Microscopia:</span>
                         </div>
                         <div class="small-15 columns">
-                            <textarea rows="5" cols="100" form="new_biopsy" id="microscopic" name="microscopic">{{biopsy.microscopic | default_if_none:""}}</textarea>
+                            <textarea rows="5" cols="100" form="new_biopsy" id="microscopic" name="microscopic">{{specific_exam.microscopic | default_if_none:""}}</textarea>
                             {% wysiwyg_editor "microscopic" %}
                         </div>
                     </div>
@@ -68,7 +68,7 @@
                             <span class="prefix">Conclusão:</span>
                         </div>
                         <div class="small-15 columns">
-                            <textarea rows="5" cols="100" form="new_biopsy" id="conclusion" name="conclusion">{{biopsy.conclusion | default_if_none:""}}</textarea>
+                            <textarea rows="5" cols="100" form="new_biopsy" id="conclusion" name="conclusion">{{specific_exam.conclusion | default_if_none:""}}</textarea>
                             {% wysiwyg_editor "conclusion" %}
                         </div>
                     </div>
@@ -82,7 +82,7 @@
                             <span class="prefix">Notas:</span>
                         </div>
                         <div class="small-15 columns">
-                            <textarea rows="5" cols="100" form="new_biopsy" id="note" name="note">{{biopsy.note | default_if_none:""}}</textarea>
+                            <textarea rows="5" cols="100" form="new_biopsy" id="note" name="note">{{specific_exam.note | default_if_none:""}}</textarea>
                             {% wysiwyg_editor "note" %}
                         </div>
                     </div>
@@ -96,7 +96,7 @@
                             <span class="prefix">Legenda:</span>
                         </div>
                         <div class="small-15 columns">
-                            <textarea rows="5" cols="100" form="new_biopsy" id="footer" name="footer">{{biopsy.footer | default_if_none:""}}</textarea>
+                            <textarea rows="5" cols="100" form="new_biopsy" id="footer" name="footer">{{specific_exam.footer | default_if_none:""}}</textarea>
                             {% wysiwyg_editor "footer" %}
                         </div>
                     </div>
