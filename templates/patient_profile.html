@@ -4,8 +4,11 @@
 
 {% block 'content' %}
 
-<html>
-<body>
+    <div class="small-15 medium-13 large-13 small-centered columns">
+        <p><h2 class="title">Anato - HUB</h2></p>
+        <hr>
+    </div>
+
     {% include 'patient_information.html' %}
 
     <div class="row">
@@ -35,7 +38,7 @@
                             <div class="row">
                                 <div class="small-15 medium-9 large-9 columns">
                                     <small><b>Status:</b></small><br>
-                                    <i id="Status">{{exam.specific_exam.status.description}}</i><br>
+                                    <i id="status">{{exam.specific_exam.status.description}}</i><br>
                                     <small><b>Médico Solicitante:</b></small><br>
                                     <i>{{exam.requesting_physician}}</i><br>
                                     <small><b>Médico Responsável:</b></small><br>
@@ -59,6 +62,12 @@
             <hr>
         </div>
     </div>
-</body>
-</html>
+{% endblock %}
+
+{% block 'footer-scripts' %}
+    {% if exam_saved %}
+        <script>
+            $('#exam_saved').foundation('reveal', 'open');
+        </script>
+    {% endif %}
 {% endblock %}
