@@ -105,3 +105,7 @@ TEMPLATE_DIRS = (
 
 LOGIN_URL = '/'
 LOGOUT_URL = '/sair/'
+
+TINYMCE_DEFAULT_CONFIG = {
+    'height': '50px',
+}
