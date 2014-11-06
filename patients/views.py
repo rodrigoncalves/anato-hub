@@ -43,17 +43,18 @@ def search_patient(patient_name, report_id, birth_date, mother_name):
         prontuario__istartswith=report_id) & Paciente.objects.using('hub').filter(
         nome_mae__istartswith=mother_name)
 
-    # Executa somente se uma data foi informada pelo usuario.
+    # Executes only if a date was infomed by the user
     if birth_date != "":
         birth_date = birth_date[6] + birth_date[7] + birth_date[8] + \
             birth_date[9] + "-" + birth_date[3] + birth_date[4] + \
             "-" + birth_date[0] + birth_date[1]
+
         patients_temp = patients_temp & Paciente.objects.using('hub').filter(
             dt_nascimento__range=[
                 birth_date + " 00:00:00",
                 birth_date + " 23:59:59"])
 
-    # Selecionando somente os 10 primeiros pacientes.
+    # Selecting only the first 10 patients
     patients = patients_temp[0:10]
 
     if patients.count() > 0:
