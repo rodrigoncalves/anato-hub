@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, redirect
 from django.template.context import RequestContext
 from django.contrib.auth.decorators import login_required
 from core.decorators import permission_required_with_403
@@ -36,14 +36,14 @@ def register_biopsy(request):
     patient_id = request.POST.get("patient_id")
     patient = Paciente.objects.using("hub").get(codigo=patient_id)
 
-    exams = Exam.objects.filter(patient=patient_id)
+    # exams = Exam.objects.filter(patient=patient_id)
 
-    return render_to_response(
-        'patient_profile.html',
-        {"exam_saved": True,
-         "patient": patient,
-         "exams": exams},
-        context_instance=RequestContext(request)
-    )
+    return redirect('/paciente/' + str(patient.codigo))
 
-    
+    # return render_to_response(
+    #     'patient_profile.html',
+    #     {"exam_saved": True,
+    #      "patient": patient,
+    #      "exams": exams},
+    #     context_instance=RequestContext(request)
+    # )

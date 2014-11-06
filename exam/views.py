@@ -45,7 +45,7 @@ def register_exam(request):
     specific_exam.exam = exam
     specific_exam.save()
 
-    template_exam = 'new_' + exam.exam_type.name_class.lower() + '.html'
+    template_exam = 'update_' + exam.exam_type.name_class.lower() + '.html'
 
     return render_to_response(
         template_exam,
@@ -92,16 +92,21 @@ def update_exam(request, exam_id):
         context_instance=RequestContext(request)
     )
 
+
 @login_required(login_url='/', redirect_field_name='')
 def update_specific_exam(request, exam_id):
     exam = get_object_or_404(Exam, pk=exam_id)
     exam_type = exam.exam_type
+    specific_exam = exam.specific_exam
     template_exam = 'update_' + exam_type.name_class.lower() + '.html',
+
+    print exam_type.name_class.lower()
 
     return render_to_response(
         template_exam,
-        {'exam_id': exam.id,
-         'patient_id': exam.patient_information.pk,
-         'exam_type': exam_type},
+        {'exam': exam,
+         'patient': exam.patient_information,
+         'exam_type': exam_type,
+         exam_type.name_class.lower(): specific_exam},
         context_instance=RequestContext(request)
     )
