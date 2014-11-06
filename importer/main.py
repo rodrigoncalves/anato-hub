@@ -38,10 +38,10 @@ def import_report_status():
             report_status.save()
 
 
-def import_group():
-    from django.contrib.auth.models import Group
+def import_group_permissions():
+    from django.contrib.auth.models import Group, Permission
 
-    with open_csv('profile_type') as csv_file:
+    with open_csv('groups_permissions') as csv_file:
         data = csv.reader(csv_file)
 
         print 'Importing groups...'
@@ -50,6 +50,10 @@ def import_group():
             group.id = row[0]
             group.name = row[1]
             group.save()
+
+            for perm in row[2:]:
+                permission = Permission.objects.get(name=perm)
+                group.permissions.add(permission)
 
 
 def import_biopsy_status():
@@ -110,7 +114,7 @@ def import_immunohistochemical_status():
 
 
 def import_all():
-    import_group()
+    import_group_permissions()
     import_biopsy_status()
     import_cytology_status()
     import_immunohistochemical_status()
