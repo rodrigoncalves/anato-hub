@@ -14,9 +14,8 @@ from patients.models import Paciente
 def new_biopsy(request):
     biopsy = Biopsy()
     return render_to_response(
-        'new_biopsy.html', {
-            "biopsy": biopsy
-        },
+        'new_biopsy.html',
+        {"biopsy": biopsy},
         context_instance=RequestContext(request)
     )
 

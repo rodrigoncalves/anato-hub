@@ -82,7 +82,7 @@ def update_exam(request, exam_id):
     exam.receipt_date = exam.receipt_date.strftime('%d/%m/%Y')
     exam.speciment_collection_date = exam.speciment_collection_date.strftime(
         '%d/%m/%Y')
-    exam.examination_time = exam.examination_time.strftime('%d/%m/%Y')
+    exam.examination_time = exam.examination_time.strftime('%H:%M')
 
     return render_to_response(
         'update_exam.html',
@@ -96,12 +96,10 @@ def update_exam(request, exam_id):
 def update_specific_exam(request, exam_id):
     exam = get_object_or_404(Exam, pk=exam_id)
     exam_type = exam.exam_type
-    template_exam = 'update_' + exam_type.name_class.lower() + '.html',
+    template_exam = 'new_' + exam_type.name_class.lower() + '.html',
 
     return render_to_response(
         template_exam,
-        {'exam_id': exam.id,
-         'patient_id': exam.patient_information.pk,
-         'exam_type': exam_type},
+        {'exam': exam},
         context_instance=RequestContext(request)
     )
