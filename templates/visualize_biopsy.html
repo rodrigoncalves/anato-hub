@@ -29,6 +29,13 @@
     <hr>
 </div>
 <div class="row">
+    <h6 class="exam-field">Notas</h6>
+    <div class="row">
+        {{specific_exam.note | default:"<i>Nenhuma informação adicionada.</i>"}}
+    </div>
+    <hr>
+</div>
+<div class="row">
     <h6 class="exam-field">Legenda</h6>
     <div class="row">
         {{specific_exam.footer | default:"<i>Nenhuma informação adicionada.</i>"}}

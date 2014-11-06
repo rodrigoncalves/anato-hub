@@ -5,8 +5,6 @@ from django.template.context import RequestContext
 from django.contrib.auth.decorators import login_required
 from core.decorators import permission_required_with_403
 from models import Biopsy
-from exam.models import Exam
-from patients.models import Paciente
 
 
 @permission_required_with_403('add_biopsy')
@@ -32,7 +30,4 @@ def register_biopsy(request):
 
     biopsy.save()
 
-    patient_id = request.POST.get("patient_id")
-    patient = Paciente.objects.using("hub").get(codigo=patient_id)
-
-    return redirect('/paciente/' + str(patient.codigo))
+    return redirect('/exame/visualizar/' + str(biopsy.exam.id))
