@@ -44,5 +44,3 @@ def register_biopsy(request):
          "exams": exams},
         context_instance=RequestContext(request)
     )
-
-    

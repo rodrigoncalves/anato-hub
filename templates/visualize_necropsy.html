@@ -1,0 +1,60 @@
+{% autoescape off %}
+
+<div class="row">
+    <h6 class="exam-field">Informações Clínicas</h6>
+    <div class="row">
+        {{specific_exam.clinical_information | default:"<i>Nenhuma informação adicionada.</i>"}}
+    </div>
+    <hr>
+</div>
+<div class="row">
+    <h6 class="exam-field">Doença principal</h6>
+    <div class="row">
+        {{specific_exam.main_disease | default:"<i>Nenhuma informação adicionada.</i>"}}
+    </div>
+    <hr>
+</div>
+<div class="row">
+    <h6 class="exam-field">Doença consequência final</h6>
+    <div class="row">
+        {{specific_exam.consequential_final_disease | default:"<i>Nenhuma informação adicionada.</i>"}}
+    </div>
+    <hr>
+</div>
+<div class="row">
+    <h6 class="exam-field">Doenças contribuintes</h6>
+    <div class="row">
+        {{specific_exam.contributors_disease | default:"<i>Nenhuma informação adicionada.</i>"}}
+    </div>
+    <hr>
+</div>
+<div class="row">
+    <h6 class="exam-field">Doença consequência</h6>
+    <div class="row">
+        {{specific_exam.consequential_disease | default:"<i>Nenhuma informação adicionada.</i>"}}
+    </div>
+    <hr>
+</div>
+<div class="row">
+    <h6 class="exam-field">Outras doenças</h6>
+    <div class="row">
+        {{specific_exam.other_diseases | default:"<i>Nenhuma informação adicionada.</i>"}}
+    </div>
+    <hr>
+</div>
+<div class="row">
+    <h6 class="exam-field">Notas</h6>
+    <div class="row">
+        {{specific_exam.note | default:"<i>Nenhuma informação adicionada.</i>"}}
+    </div>
+    <hr>
+</div>
+<div class="row">
+    <h6 class="exam-field">Legenda</h6>
+    <div class="row">
+        {{specific_exam.footer | default:"<i>Nenhuma informação adicionada.</i>"}}
+    </div>
+    <hr>
+</div>
+
+{% endautoescape %}

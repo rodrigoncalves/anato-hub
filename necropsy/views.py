@@ -3,7 +3,9 @@
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
 from django.contrib.auth.decorators import login_required
+from exam.models import Exam
 from necropsy.models import Necropsy
+from patients.models import Paciente
 
 
 @login_required(login_url='/', redirect_field_name='')
@@ -15,26 +17,28 @@ def new_necropsy(request):
 
 
 @login_required(login_url='/', redirect_field_name='')
-def add_necropsy(request):
-    clinical_information = request.POST['clinical_information']
-    macroscopic = request.POST['macroscopic']
-    microscopic = request.POST['microscopic']
-    conclusion = request.POST['conclusion']
-    notes = request.POST['notes']
-    footer = request.POST['footer']
-
-    necropsy = Necropsy(
-        clinical_information=clinical_information,
-        macroscopic=macroscopic,
-        microscopic=microscopic,
-        conclusion=conclusion,
-        notes=notes,
-        footer=footer
-    )
+def register_necropsy(request):
+    necropsy = Necropsy.objects.get(pk=request.POST['necropsy_id'])
+    necropsy.clinical_information = request.POST['clinical_information']
+    necropsy.main_disease = request.POST['main_disease']
+    necropsy.consequential_final_disease = request.POST['consequential_final_disease']
+    necropsy.contributors_disease = request.POST['contributors_disease']
+    necropsy.consequential_disease = request.POST['consequential_disease']
+    necropsy.other_diseases = request.POST['other_diseases']
+    necropsy.note = request.POST['note']
+    necropsy.footer = request.POST['footer']
 
     necropsy.save()
 
+    patient_id = request.POST.get("patient_id")
+    patient = Paciente.objects.using("hub").get(codigo=patient_id)
+
+    exams = Exam.objects.filter(patient=patient_id)
+
     return render_to_response(
-        'home_search.html',
+        'patient_profile.html',
+        {"exam_saved": True,
+         "patient": patient,
+         "exams": exams},
         context_instance=RequestContext(request)
     )
