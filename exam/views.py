@@ -6,9 +6,8 @@ from django.contrib.auth.decorators import login_required
 from exam.models import ExamType, Exam
 from exam.forms import get_exam_form, update_exam_form
 from core.decorators import permission_required_with_403
-from exam.dynamic_import import create_specific_exam
+from core.dynamic_import import create_specific_exam
 from patients.models import Paciente
-from core.views import user_belongs_to_groups
 
 
 @permission_required_with_403('exam.add_exam')
@@ -46,16 +45,13 @@ def register_exam(request):
     specific_exam.exam = exam
     specific_exam.save()
 
-    patient_id = request.POST.get("patient_id")
-    exam_type_id = request.POST['exam_type']
-
-    exam_type = ExamType.objects.get(pk=exam_type_id).name_class
-    template_exam = 'new_' + exam_type.lower() + '.html'
+    template_exam = 'new_' + exam.exam_type.name_class.lower() + '.html'
 
     return render_to_response(
         template_exam,
-        {'exam_id': exam.id,
-         'patient_id': patient_id},
+        {'exam': exam,
+         'patient': exam.patient_information,
+         'specific_exam': specific_exam},
         context_instance=RequestContext(request)
     )
 
@@ -84,13 +80,28 @@ def update_exam(request, exam_id):
 
     exam.request_date = exam.request_date.strftime('%d/%m/%Y')
     exam.receipt_date = exam.receipt_date.strftime('%d/%m/%Y')
-    exam.speciment_collection_date = exam.speciment_collection_date.strftime('%d/%m/%Y')
+    exam.speciment_collection_date = exam.speciment_collection_date.strftime(
+        '%d/%m/%Y')
     exam.examination_time = exam.examination_time.strftime('%d/%m/%Y')
 
     return render_to_response(
         'update_exam.html',
         {'patient': exam.patient_information,
-         'exam':exam,
+         'exam': exam,
+         'exam_type': exam_type},
+        context_instance=RequestContext(request)
+    )
+
+@login_required(login_url='/', redirect_field_name='')
+def update_specific_exam(request, exam_id):
+    exam = get_object_or_404(Exam, pk=exam_id)
+    exam_type = exam.exam_type
+    template_exam = 'update_' + exam_type.name_class.lower() + '.html',
+
+    return render_to_response(
+        template_exam,
+        {'exam_id': exam.id,
+         'patient_id': exam.patient_information.pk,
          'exam_type': exam_type},
         context_instance=RequestContext(request)
     )

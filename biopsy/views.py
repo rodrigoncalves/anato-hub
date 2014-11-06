@@ -23,23 +23,13 @@ def new_biopsy(request):
 
 @login_required(login_url='/', redirect_field_name='')
 def register_biopsy(request):
-    clinical_information = request.POST['clinical_information']
-    macroscopic = request.POST['macroscopic']
-    microscopic = request.POST['microscopic']
-    conclusion = request.POST['conclusion']
-    note = request.POST['note']
-    footer = request.POST['footer']
-    exam_id = request.POST['exam_id']
-
-    biopsy = Biopsy(
-        clinical_information=clinical_information,
-        macroscopic=macroscopic,
-        microscopic=microscopic,
-        conclusion=conclusion,
-        note=note,
-        footer=footer,
-        exam_id=exam_id
-    )
+    biopsy = Biopsy.objects.get(pk=request.POST['biopsy_id'])
+    biopsy.clinical_information = request.POST['clinical_information']
+    biopsy.macroscopic = request.POST['macroscopic']
+    biopsy.microscopic = request.POST['microscopic']
+    biopsy.conclusion = request.POST['conclusion']
+    biopsy.note = request.POST['note']
+    biopsy.footer = request.POST['footer']
 
     biopsy.save()
 
@@ -51,7 +41,9 @@ def register_biopsy(request):
     return render_to_response(
         'patient_profile.html',
         {"exam_saved": True,
-        "patient": patient,
-        "exams": exams},
+         "patient": patient,
+         "exams": exams},
         context_instance=RequestContext(request)
     )
+
+    

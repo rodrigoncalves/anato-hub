@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
-{% block 'title' %}Cadastro de Exame | Anato{% endblock %}
+{% block 'title' %}Atualizar Biópsia | Anato-HUB{% endblock %}
 
 {% block 'content' %}
 
     <div class="small-15 medium-13 large-13 small-centered columns">
-        <p><h2 class="title">Anato - HUB</h2></p>
+        <p><h2 class="title">Atualizar Biópsia - HUB</h2></p>
         <hr>
     </div>
 
@@ -13,95 +13,86 @@
         <p><h4 class="title">Exame Biópsia</h4></p>
         <form action="/biopsia/" method="post" id="new_biopsy">
             {% csrf_token %}
-            {% load wysiwyg %}
-            {% wysiwyg_setup  %}
-            <input type="hidden" name="exam_id" value="{{exam.id}}">
-            <input type="hidden" name="patient_id" value="{{patient.codigo}}">
-            <input type="hidden" name="biopsy_id" value="{{specific_exam.id}}">
+            <input type="hidden" name="exam_id" value="{{exam_id}}">
+            <input type="hidden" name="patient_id" value="{{patient_id}}">
 
-            <p><p><div class="row">
+            <div class="row">
                 <div class="large-15 columns">
                     <div class="row collapse prefix-radius">
                         <div class="small-6 columns">
                             <span class="prefix">Informações Clínicas:</span>
                         </div>
                         <div class="small-15 columns">
-                            <textarea rows="5" cols="100" form="new_biopsy" id="clinical_information" name="clinical_information">{{biopsy.clinical_information | default_if_none:"" }}</textarea>
-                            {% wysiwyg_editor "clinical_information" %}
+                            <textarea rows="5" cols="100" form="new_biopsy" name="clinical_information">{{exam_type.clinical_information}}</textarea>
                         </div>
                     </div>
                 </div>
-            </div></p>
+            </div>
         
-            <p><div class="row">
+            <div class="row">
                 <div class="large-15 columns">
                     <div class="row collapse prefix-radius">
                         <div class="small-6 columns">
                             <span class="prefix">Macroscopia:</span>
                         </div>
                         <div class="small-15 columns">
-                            <textarea rows="5" cols="100" form="new_biopsy" id="macroscopic" name="macroscopic">{{biopsy.macroscopic | default_if_none:""}}</textarea>
-                            {% wysiwyg_editor "macroscopic" %}
+                            <textarea rows="5" cols="100" form="new_biopsy" name="macroscopic">{{exam_type.macroscopic}}</textarea>
                         </div>
                     </div>
                 </div>
-            </div></p>
+            </div>
 
-            <p><div class="row">
+            <div class="row">
                 <div class="large-15 columns">
                     <div class="row collapse prefix-radius">
                         <div class="small-6 columns">
                             <span class="prefix">Microscopia:</span>
                         </div>
                         <div class="small-15 columns">
-                            <textarea rows="5" cols="100" form="new_biopsy" id="microscopic" name="microscopic">{{biopsy.microscopic | default_if_none:""}}</textarea>
-                            {% wysiwyg_editor "microscopic" %}
+                            <textarea rows="5" cols="100" form="new_biopsy" name="microscopic">{{exam_type.macroscopic}}</textarea>
                         </div>
                     </div>
                 </div>
-            </div></p>
+            </div>
     
-            <p><div class="row">
+            <div class="row">
                 <div class="large-15 columns">
                     <div class="row collapse prefix-radius">
                         <div class="small-6 columns">
                             <span class="prefix">Conclusão:</span>
                         </div>
                         <div class="small-15 columns">
-                            <textarea rows="5" cols="100" form="new_biopsy" id="conclusion" name="conclusion">{{biopsy.conclusion | default_if_none:""}}</textarea>
-                            {% wysiwyg_editor "conclusion" %}
+                            <textarea rows="5" cols="100" form="new_biopsy" name="conclusion">{{exam_type.conclusion}}</textarea>
                         </div>
                     </div>
                 </div>
-            </div></p>
+            </div>
 
-            <p><div class="row">
+            <div class="row">
                 <div class="large-15 columns">
                     <div class="row collapse prefix-radius">
                         <div class="small-6 columns">
                             <span class="prefix">Notas:</span>
                         </div>
                         <div class="small-15 columns">
-                            <textarea rows="5" cols="100" form="new_biopsy" id="note" name="note">{{biopsy.note | default_if_none:""}}</textarea>
-                            {% wysiwyg_editor "note" %}
+                            <textarea rows="5" cols="100" form="new_biopsy" name="note">{{exam_type.note}}</textarea>
                         </div>
                     </div>
                 </div>
-            </div></p>
+            </div>
 
-            <p><div class="row">
+            <div class="row">
                 <div class="large-15 columns">
                     <div class="row collapse prefix-radius">
                         <div class="small-6 columns">
                             <span class="prefix">Legenda:</span>
                         </div>
                         <div class="small-15 columns">
-                            <textarea rows="5" cols="100" form="new_biopsy" id="footer" name="footer">{{biopsy.footer | default_if_none:""}}</textarea>
-                            {% wysiwyg_editor "footer" %}
+                            <textarea rows="5" cols="100" form="new_biopsy" name="footer">{{exam_type.footer}}</textarea>
                         </div>
                     </div>
                 </div>
-            </div></p>
+            </div>
 
             <div class="small-14 small-centered medium-8 medium-centered large-7 large-centered columns">
                 <input class="button small expand" type="submit" value="Enviar" />
@@ -114,6 +105,5 @@
 {% block 'footer-scripts' %}
     {% load staticfiles %}
         <script src="{% static "js/foundation-datepicker.js" %}"></script>
-        <script src="{% static "js/wysiwyg-format.js" %}"></script>
 {% endblock %}
     
