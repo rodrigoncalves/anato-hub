@@ -30,4 +30,4 @@ def register_biopsy(request):
 
     biopsy.save()
 
-    return redirect('/exame/visualizar/' + str(biopsy.exam.id))
+    return redirect('/exame/' + str(biopsy.exam.id))
