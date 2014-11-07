@@ -4,7 +4,7 @@ from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from exam.models import ExamType, Exam
-from exam.forms import get_exam_form
+from exam.forms import get_exam_form, update_exam_form
 from core.decorators import permission_required_with_403
 from core.dynamic_import import create_specific_exam
 from patients.models import Paciente
@@ -27,10 +27,9 @@ def new_exam(request):
 
 @login_required(login_url='/', redirect_field_name='')
 def register_update_exam(request):
-    exam_id = request.POST['exam_id']
-    exam = Exam.objects.get(id=exam_id)
-    exam = get_exam_form(request, exam)
+    exam = update_exam_form(request)
     exam.save()
+    exam_id = request.POST['exam_id']
 
     return redirect('/exame/' + exam_id)
 

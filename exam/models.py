@@ -12,7 +12,7 @@ class Exam(models.Model):
 
     
     def get_specific_exam(self):
-        from exam.dynamic_import import import_class
+        from core.dynamic_import import import_class
         class_ = import_class(self.exam_type)
         return class_.objects.get(exam=self)
 
