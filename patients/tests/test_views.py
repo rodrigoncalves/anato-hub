@@ -1,34 +1,74 @@
 # -*- coding: utf-8 -*-
 from django.test import TestCase, Client
-#from should_dsl import should, should_not
-#from django.db.models.query import QuerySet
-#from patients.views import search_patient
-#from patients import Patient
+from patients.views import search_patient
+from patients.models import Paciente
+from core.tests.db_mock import DatabaseMock
+from django.utils import timezone
+from sys import stderr
+from should_dsl import should, should_not
 
-class TestPatient(TestCase):
-
+class TestViews(TestCase):
     def setUp(self):
+        self.my_type = '[Patients - Views]'
+        stderr.write(self.__str__())
+        self.db_mock = DatabaseMock()
+        self.db_mock.create_patient()
+        self.db_mock.create_user()
         self.client = Client()
+        self.client.login(username='test_user', password='123456')
 
-        #Valores de testes:
-        #Testar para 1 Paciente retornado.
-        #Testar para mais de 1 Paciente retornado.
-        #Testar para nenhum Paciente retornado.
+    def test_search_results(self):
+        response = self.client.get('/resultados/')
+        self.assertEqual(response.status_code, 302)
 
-    def test_search_patients(self):
-        #Deixei o teste "passando", pq estava atrapalhando 
-        #na visualização do log dos outros testes
-        #Responsável por este teste, apagar esse assert depois, por favor
-        self.assertEquals("anato","anato")
-        #Tentando contar quantos objetos o QuerySet contem.
-        ##p = Paciente.objects.using('test_hub').all()
-        ##p['patients'].count()
-        #string = p['patients'][0].nome
-        #p['patients'] |should| have(1).elements
-        #len(p['patients']) |should| have(1).elements
+        response = self.client.post('/resultados/', {'patient':'Queilane', 'report':'417899', 'date':'', 'mother_name':''})
+        response.status_code | should | be(200)      
 
-        #p = search_patient("", "", "", "Idelia")
-        #p['patients'] |should| have(4).elements
 
-    #def test_search_results(self):
+    def test_search_patient(self):
+        #Search for 1 Patient.
+        patients_result = search_patient('Test Patient', '', '', '')
+        patients_result["empty_results"] | should | be(False)    
+        patients_result["empty_fields"] | should | be(False)
+        patients_result["patients"].count() | should | be(1)
+        self.assertEqual(patients_result["patients"][0].nome, 'Test Patient') 
+        
+        #Search for more than 1 Patient.
+        patient = Paciente()
+        patient.codigo = 2
+        patient.nome = 'Test Patient2'
+        patient.cpf = '11111111111'
+        patient.nome_mae = 'Patient Mother'
+        patient.nome_pai = 'Patient Father'
+        patient.dt_nascimento = timezone.now()
+        patient.nac_codigo = 1
+        patient.cor = 'Test Color'
+        patient.sexo = 'Male'
+        patient.naturalidade = 'Test'
+        patient.prontuario = 111111111
+        patient.dt_obito = timezone.now()
+        patient.rg = '111'
+        patient.observacao = ''
+        patient.prnt_ativo = 'Active'
+        patient.sexo_biologico = 'Male'
+        patient.nro_cartao_saude = 1111111
+        patient.save(using='hub')
+        patients_result = search_patient('Test','','','')
+        patients_result["empty_results"] | should | be(False)    
+        patients_result["empty_fields"] | should | be(False)
+        patients_result["patients"].count() | should | be(2)
+        self.assertEqual(patients_result["patients"][0].nome, 'Test Patient') 
+        self.assertEqual(patients_result["patients"][1].nome, 'Test Patient2') 
+        
+        #Search for 0 Patient.
+        patients_result = search_patient('Nothing','','','')
+        patients_result["empty_results"] | should | be(True)    
+        patients_result["empty_fields"] | should | be(False)
+        patients_result["patients"].count() | should | be(0)
+
+        #Search for empty fields
+        patients_result = search_patient('','','','')
+        patients_result["empty_fields"] | should | be(True)
+
+        
 
