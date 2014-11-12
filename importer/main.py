@@ -98,24 +98,9 @@ def import_cytology_status():
             report_status.save()
 
 
-def import_immunohistochemical_status():
-    from immunohistochemical.models import ImmunoHistochemicalStatus
-
-    with open_csv('immunohistochemical_status') as csv_file:
-        data = csv.reader(csv_file)
-
-        print 'Importing immunohistochemical status...'
-        for row in data:
-            report_status = ImmunoHistochemicalStatus()
-            report_status.id = row[0]
-            report_status.description = row[1]
-            report_status.save()
-
-
 def import_all():
     import_biopsy_status()
     import_cytology_status()
-    import_immunohistochemical_status()
     import_necropsy_status()
     import_exam_type()
     import_report_status()
