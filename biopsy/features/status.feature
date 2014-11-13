@@ -37,11 +37,6 @@ Para saber em que parte da analise ele se encontra.
     Então abre os dados do exame
     E mostra o status como Liberado
 
-    Cenário: O auxiliar cadastra um nova biopsia com sucesso
-    Dado que o auxiliar acessa o sistema e esta autenticado
-    E aparece a tela de cadastro de biopsia
-    Quando o auxiliar digita todos os campos corretamente
-    E clica em cadastrar
-    Então o sistema cadastra a biopsia 
+    
 
     
