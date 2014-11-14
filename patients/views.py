@@ -55,12 +55,9 @@ def search_patient(patient_name, report_id, birth_date, mother_name):
                 birth_date + " 23:59:59"])
 
     # Selecting only the first 10 patients
-    patients = patients_temp[0:10]
+    patients = patients_temp[:10]
 
-    if patients.count() > 0:
-        empty_results = False
-    else:
-        empty_results = True
+    empty_results = False if patients.count() else True
 
     return {"empty_fields": empty_fields,
             "empty_results": empty_results,

@@ -9,14 +9,6 @@ from patients.models import Paciente
 
 
 @login_required(login_url='/', redirect_field_name='')
-def new_necropsy(request):
-    return render_to_response(
-        'new_necropsy.html',
-        context_instance=RequestContext(request)
-    )
-
-
-@login_required(login_url='/', redirect_field_name='')
 def register_necropsy(request):
     necropsy = Necropsy.objects.get(pk=request.POST['necropsy_id'])
     necropsy.clinical_information = request.POST['clinical_information']

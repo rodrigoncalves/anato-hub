@@ -7,19 +7,7 @@ from models import ImmunoHistochemical
 
 
 @login_required(login_url='/', redirect_field_name='')
-def new_immunohistochemical(request):
-    immunohistochemical = ImmunoHistochemical()
-    return render_to_response(
-        'new_immunohistochemical.html', {
-            "immunohistochemical": immunohistochemical
-        },
-        context_instance=RequestContext(request)
-    )
-
-
-@login_required(login_url='/', redirect_field_name='')
-def add_immunohistochemical(request):
-
+def register_immunohistochemical(request):
     clinical_information = request.POST.get('clinical_information')
     previous_biopsy = request.POST.get('previous_biopsy')
     conclusion = request.POST.get('conclusion')
@@ -36,7 +24,4 @@ def add_immunohistochemical(request):
 
     immunohistochemical.save()
 
-    return render_to_response(
-        'home_search.html',
-        context_instance=RequestContext(request)
-    )
+    return redirect('/exame/%d' % immunohistochemical.exam.id)

@@ -7,17 +7,6 @@ from core.decorators import permission_required_with_403
 from models import Biopsy
 
 
-@permission_required_with_403('add_biopsy')
-@login_required(login_url='/', redirect_field_name='')
-def new_biopsy(request):
-    biopsy = Biopsy()
-    return render_to_response(
-        'new_biopsy.html',
-        {"biopsy": biopsy},
-        context_instance=RequestContext(request)
-    )
-
-
 @login_required(login_url='/', redirect_field_name='')
 def register_biopsy(request):
     biopsy = Biopsy.objects.get(pk=request.POST['biopsy_id'])
