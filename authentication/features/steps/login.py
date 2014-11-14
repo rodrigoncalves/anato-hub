@@ -31,12 +31,7 @@ def click_enter(context):
 
 @then(u'autentica o usuario com sucesso')
 def authenticate_user(context):
-    assert False
-
-
-@then(u'retorna uma mensagem "{mensagem}"')
-def returns_message(context, mensagem):
-    assert False
+    context.driver.title | should | equal_to('Home | Anato HUB')
 
 
 @then(u'o sistema retorna a mensagem de erro "{mensagem}"')
