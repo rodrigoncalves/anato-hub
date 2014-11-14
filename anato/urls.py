@@ -12,6 +12,7 @@ urlpatterns = patterns(
     url(r'^', include('authentication.urls')),
     url(r'^exame/', include('exam.urls')),
     url(r'^biopsia/', include('biopsy.urls')),
+    url(r'^congelamento/', include('freezing.urls')),
     url(r'^citologia/', include('cytology.urls')),
     url(r'^necropsia/', include('necropsy.urls')),
     url(r'^imunohistoquimica/', include('immunohistochemical.urls')),

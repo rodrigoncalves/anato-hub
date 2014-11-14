@@ -41,6 +41,7 @@ def register_exam(request):
 
     specific_exam = create_specific_exam(
         exam.exam_type.name_class)
+    print exam.exam_type.name_class
     specific_exam.exam = exam
     specific_exam.save()
 

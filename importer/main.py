@@ -112,6 +112,20 @@ def import_immunohistochemical_status():
             report_status.save()
 
 
+def import_freezing_status():
+    from freezing.models import FreezingStatus
+
+    with open_csv('freezing_status') as csv_file:
+        data = csv.reader(csv_file)
+
+        print 'Importing freezing status...'
+        for row in data:
+            report_status = FreezingStatus()
+            report_status.id = row[0]
+            report_status.description = row[1]
+            report_status.save()
+
+
 def import_all():
     import_biopsy_status()
     import_cytology_status()

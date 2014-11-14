@@ -1,0 +1,46 @@
+{% autoescape off %}
+
+<div class="row">
+    <h6 class="exam-field">Informações Clínicas</h6>
+    <div class="row">
+        {{specific_exam.clinical_information | default:"<i>Nenhuma informação adicionada.</i>"}}
+    </div>
+    <hr>
+</div>
+<div class="row">
+    <h6 class="exam-field">Macroscopia</h6>
+    <div class="row">
+        {{specific_exam.macroscopic | default:"<i>Nenhuma informação adicionada.</i>"}}
+    </div>
+    <hr>
+</div>
+<div class="row">
+    <h6 class="exam-field">Microscopia</h6>
+    <div class="row">
+        {{specific_exam.microscopic | default:"<i>Nenhuma informação adicionada.</i>"}}
+    </div>
+    <hr>
+</div>
+<div class="row">
+    <h6 class="exam-field">Conclusões</h6>
+    <div class="row">
+        {{specific_exam.conclusion | default:"<i>Nenhuma informação adicionada.</i>"}}
+    </div>
+    <hr>
+</div>
+<div class="row">
+    <h6 class="exam-field">Notas</h6>
+    <div class="row">
+        {{specific_exam.note | default:"<i>Nenhuma informação adicionada.</i>"}}
+    </div>
+    <hr>
+</div>
+<div class="row">
+    <h6 class="exam-field">Legenda</h6>
+    <div class="row">
+        {{specific_exam.footer | default:"<i>Nenhuma informação adicionada.</i>"}}
+    </div>
+    <hr>
+</div>
+
+{% endautoescape %}
