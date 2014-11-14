@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, redirect
 from django.template.context import RequestContext
 from django.contrib.auth.decorators import login_required
 from exam.models import Exam
@@ -27,18 +27,6 @@ def register_necropsy(request):
     necropsy.other_diseases = request.POST['other_diseases']
     necropsy.note = request.POST['note']
     necropsy.footer = request.POST['footer']
-
     necropsy.save()
 
-    patient_id = request.POST.get("patient_id")
-    patient = Paciente.objects.using("hub").get(codigo=patient_id)
-
-    exams = Exam.objects.filter(patient=patient_id)
-
-    return render_to_response(
-        'patient_profile.html',
-        {"exam_saved": True,
-         "patient": patient,
-         "exams": exams},
-        context_instance=RequestContext(request)
-    )
+    return redirect('/exame/%d' % necropsy.exam.id)
