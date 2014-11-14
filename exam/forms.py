@@ -13,7 +13,6 @@ def get_exam_form(request):
     exam.speciment_collection_date = convert_date_format(
         request.POST['speciment_collection_date'])
     exam.received_speciment = request.POST['received_speciment']
-    exam.examination_time = request.POST['examination_time']
     exam.requesting_physician = request.POST['requesting_physician']
     exam.responsible_physician = request.POST['responsible_physician']
     exam_type_id = request.POST['exam_type']
@@ -31,7 +30,6 @@ def update_exam_form(request):
     exam.speciment_collection_date = convert_date_format(
         request.POST['speciment_collection_date'])
     exam.received_speciment = request.POST['received_speciment']
-    exam.examination_time = request.POST['examination_time']
     exam.requesting_physician = request.POST['requesting_physician']
     exam.responsible_physician = request.POST['responsible_physician']
     exam_type_id = request.POST['exam_type']

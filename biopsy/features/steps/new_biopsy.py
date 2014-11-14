@@ -2,90 +2,56 @@
 
 from behave import given, when, then
 from selenium import webdriver
-from should_dsl import should, should_not 
-from core.tests.db_mock import DatabaseMock
+from should_dsl import should, should_not
 from core.tests.utils import authentication
 
-@given(u'que o Usuario esta autenticado')
-def accessing_the_system(context):
-    context.driver = webdriver.Firefox()
+
+@given(u'que o usuario entra no sistema')
+def user_enter(context):
     authentication(context)
 
-    mock=DatabaseMock()
-    mock.create_patient()
 
-@given(u'que o Usuario esta na tela de busca de pacientes')
-def is_on_home_search(context):
-    context.driver.get('http://localhost:8000/consulta/')
-    context.driver.title | should | equal_to('Home | Anato')
+@given(u'realiza uma busca de paciente')
+def patient_search(context):
+    context.driver.title | should | equal_to("Home | Anato")
+    patient = context.driver.find_element_by_id('patient')
+    patient.send_keys("Maria")
+    search = context.driver.find_element_by_id('search-button')
+    search.click()
 
-@when(u'o usuario digita o nome do Paciente')
-def typing_pacient_name(context):
-    pacient_name_input = context.driver.find_element_by_id('patient')
-    pacient_name_input.send_keys('Maria')
-
-@when(u'clica em buscar')
-def click_search_button(context):
-    search_button = context.driver.find_element_by_id('search-button')
-    search_button.click()
-
-@then(u'o sistema retorna os Pacientes com o nome digitado')
-def return_pacient_name(context):
-    pacient_name = context.driver.find_element_by_class_name('fi-male')
-    pacient_name.text | should | equal_to('MARIA GXXXXXXXXXXXILVA')
-    context.driver.close()
-
-#@given(u'aparece a tela de busca de paciente')
-#def showing_registration_examination(context):
-   # assert False
-    #driver.find_element_by_id("patient").clear()
-    #driver.find_element_by_id("patient").send_keys("maria")
-    #driver.find_element_by_id("search-button").click()
-    #context.driver.title | should | equal_to('Cadastro de Exame | Anato HUB')
-
-@given(u'que o auxiliar acessa o sistema e esta autenticado')
-def accessing_the_system(context):
-    authentication(context)
-    context.driver = webdriver.Firefox()
-    context.driver.get('http://localhost:8000/novo/exame/')
-
-@given(u'aparece a tela de cadastro de exame')
-def showing_registration_examination(context):
-    context.driver.title | should | equal_to('Cadastro de Exame | Anato HUB')
+@given(u'escolhe o paciente')
+def select_patient(context):
+    search = context.driver.find_element_by_css_selector('button.postfix')
+    search.click()
 
 
-@when(u'o auxiliar digita todos os campos corretamente')
-def insert_examination(context):
-    driver.find_element_by_xpath("//div[@id='sizzle-1415806506192']/div/table/tbody/tr[3]/td[4]").click()
-    driver.find_element_by_xpath("//div[@id='sizzle-1415806506192']/div/table/tbody/tr[3]/td[5]").click()
-    driver.find_element_by_xpath("//div[@id='sizzle-1415806506192']/div/table/tbody/tr[3]/td[3]").click()
-    driver.find_element_by_id("received_speciment").clear()
-    driver.find_element_by_id("received_speciment").send_keys("material")
-    driver.find_element_by_id("requesting_physician").clear()
-    driver.find_element_by_id("requesting_physician").send_keys("fulano")
-    driver.find_element_by_id("responsible_physician").clear()
-    driver.find_element_by_id("responsible_physician").send_keys("ciclano")
-    driver.find_element_by_xpath("//input[@value='Enviar']").click()
+@given(u'cadastra um exame do tipo Biopsia')
+def register_exam(context):
+    context.driver.find_element_by_id('speciment_collection_date').click()
+    context.driver.find_element_by_xpath("//div[9]/div/table/tbody/tr[4]/td[5]").click()
+    context.driver.find_element_by_id('request_date').click()
+    context.driver.find_element_by_xpath("//div[10]/div/table/tbody/tr[4]/td[5]").click()
+    context.driver.find_element_by_id('receipt_date').click()
+    context.driver.find_element_by_xpath("//div[11]/div/table/tbody/tr[4]/td[5]").click()
+    context.driver.find_element_by_id('received_speciment').send_keys('materia1')
+    context.driver.find_element_by_id('requesting_physician').send_keys('medico1')
+    context.driver.find_element_by_id('responsible_physician').send_keys('medico2')
+    context.driver.find_element_by_xpath("//select[@id='exam_type']/option[text()='Biópsia']").click()
+     
+    context.driver.find_element_by_id('send-button').click()
+    
     
 
-@when(u'clica em enviar')
-def registration(context):
-    context.driver.find_element_by_xpath("//input[@value='Enviar']").click()
-    #driver.find_element_by_xpath("//input[@value='Enviar']").click()
-    #examination = context.driver.find_element_by_name("Cadastrar")
-    #actions = ActionChains(driver)
-   # actions.click(examination)
+@when(u'aparece a tela de cadastro de biopsia')
+def register_biopsy_screen(context):
+    context.driver.find_element_by_xpath("//body[@id='tinymce']").send_keys('informacao')
+    context.driver.find_element_by_id('macroscopic').send_keys('informacao2')
+    context.driver.find_element_by_id('microscopic').send_keys('informacao3')
+    context.driver.find_element_by_id('conclusion').send_keys('informacao4')
+    context.driver.find_element_by_id('note').send_keys('informacao5')
+    context.driver.find_element_by_id('footer').send_keys('informacao6')
+    
 
-@given(u'aparece a tela de cadastro de biopsia')
-def showing_registration_examination(context):
-    #context.driver.title | should | equal_to('Cadastro de Exame | Anato HUB')
-    assert False
-
-@when(u'o auxiliar digita todos os campos corretamente')
-def insert_examination(context):
-    assert False
-
-@then(u'o sistema cadastra')
-def registration_examitation(context):
-    assert False
-
+@then(u'o sistema cadastra a biopsia')
+def register_biopsy(context):
+    context.driver.find_element_by_id('send-biopsy').click()
