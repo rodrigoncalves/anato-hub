@@ -7,17 +7,6 @@ from core.decorators import permission_required_with_403
 from models import Freezing
 
 
-@permission_required_with_403('add_freezing')
-@login_required(login_url='/', redirect_field_name='')
-def new_freezing(request):
-    freezing = Freezing()
-    return render_to_response(
-        'new_freezing.html',
-        {"freezing": freezing},
-        context_instance=RequestContext(request)
-    )
-
-
 @login_required(login_url='/', redirect_field_name='')
 def register_freezing(request):
     freezing = Freezing.objects.get(pk=request.POST['freezing_id'])
