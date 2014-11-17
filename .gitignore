@@ -61,3 +61,5 @@ configs/*
 
 # Others
 .sass-cache/
+
+.sonar/
