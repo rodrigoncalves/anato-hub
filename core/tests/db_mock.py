@@ -7,8 +7,12 @@ class DatabaseMock():
     
     def create_user(self):
         from django.contrib.auth.models import User
-        return User.objects.create_user(
+        user = User.objects.create_user(
             'test_user', 'test@email.com', '123456')
+	user.is_superuser = True
+	user.is_staff = True
+	user.save()
+	return user
 
 
     def create_patient(self):
