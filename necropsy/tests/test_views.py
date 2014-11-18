@@ -18,7 +18,7 @@ class TestViews(TestCase):
         self.client.login(username='test_user', password='123456')
 
     #Setting biopsy with all fields correctly.
-    def test_register_biopsy(self):
+    def test_register_necropsy(self):
         response = self.client.post('/biopsia/', {'necropsy_id':'1', 'clinical_information': 'teste exame de necropsia', 'main_disease': 'Doenca Principal', 'consequential_final_disease': 'Consequencia da Doenca', 'contributors_disease': 'Doencas Contribuintes', 'consequential_disease': 'Consequencia da Doenca', 'other_diseases': 'Outras Doencas'})
         biopsy_registered = Biopsy.objects.get(clinical_information="teste exame de necropsia")
 
