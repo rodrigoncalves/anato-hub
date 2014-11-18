@@ -16,13 +16,21 @@ class TestViews(TestCase):
         self.db_mock.create_user()
         self.client = Client()
         self.client.login(username='test_user', password='123456')
+    
+    def test_patient_profile(self):
+        patient = Paciente.objects.using('hub').get(codigo = 1)
+        response = self.client.get('/paciente/' + str(patient.codigo))
+        response.status_code | should | equal_to(200)
+        #Verifying if the patient name is on HTML content.
+        self.assertContains(response, patient.nome)
 
     def test_search_results(self):
+        patient = Paciente.objects.using('hub').get(codigo = 1)
         response = self.client.get('/resultados/')
-        self.assertEqual(response.status_code, 302)
-
-        response = self.client.post('/resultados/', {'patient':'Queilane', 'report':'417899', 'date':'', 'mother_name':''})
-        response.status_code | should | be(200)      
+        response.status_code | should | equal_to(302)
+        response = self.client.post('/resultados/', {'patient':patient.nome, 'report':patient.prontuario, 'date':'', 'mother_name':''})
+        response.status_code | should | equal_to(200)      
+        self.assertContains(response, patient.nome)
 
 
     def test_search_patient(self):
@@ -31,8 +39,8 @@ class TestViews(TestCase):
         patients_result["empty_results"] | should | be(False)    
         patients_result["empty_fields"] | should | be(False)
         patients_result["patients"].count() | should | be(1)
-        self.assertEqual(patients_result["patients"][0].nome, 'Test Patient') 
-        
+        patients_result["patients"][0].nome | should | equal_to('Test Patient')        
+
         #Search for more than 1 Patient.
         patient = Paciente()
         patient.codigo = 2
@@ -57,9 +65,9 @@ class TestViews(TestCase):
         patients_result["empty_results"] | should | be(False)    
         patients_result["empty_fields"] | should | be(False)
         patients_result["patients"].count() | should | be(2)
-        self.assertEqual(patients_result["patients"][0].nome, 'Test Patient') 
-        self.assertEqual(patients_result["patients"][1].nome, 'Test Patient2') 
-        
+        patients_result["patients"][0].nome | should | equal_to('Test Patient')
+        patients_result["patients"][1].nome | should | equal_to('Test Patient2')          
+
         #Search for 0 Patient.
         patients_result = search_patient('Nothing','','','')
         patients_result["empty_results"] | should | be(True)    
