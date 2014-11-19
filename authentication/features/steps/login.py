@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import os
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "anato.settings")
 
 from behave import given, when, then
 from selenium import webdriver
@@ -31,17 +33,15 @@ def click_enter(context):
 
 @then(u'autentica o usuario com sucesso')
 def authenticate_user(context):
-    assert False
-
-
-@then(u'retorna uma mensagem "{mensagem}"')
-def returns_message(context, mensagem):
-    assert False
+    page_loaded = context.driver.title
+    page_loaded | should | equal_to('Home | Anato HUB')
+    context.driver.close()
 
 
 @then(u'o sistema retorna a mensagem de erro "{mensagem}"')
 def returns_error_message(context, mensagem):
-    text = context.driver.find_element_by_id('error-message').text
+    text = context.driver.find_element_by_xpath(
+        "//p[@id='error-message']/b").text
     text | should | equal_to(mensagem)
 
 
