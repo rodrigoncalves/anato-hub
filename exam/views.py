@@ -41,10 +41,10 @@ def register_exam(request):
 
     specific_exam = create_specific_exam(
         exam.exam_type.name_class)
-    print exam.exam_type.name_class
     specific_exam.exam = exam
     specific_exam.save()
 
+    # specific_exam.examination_time = specific_exam.examination_time.strftime('%H:%M')
     template_exam = 'update_' + exam.exam_type.name_class.lower() + '.html'
 
     return render_to_response(
@@ -98,6 +98,7 @@ def update_specific_exam(request, exam_id):
     exam_type = exam.exam_type
     specific_exam = exam.specific_exam
     template_exam = 'update_' + exam_type.name_class.lower() + '.html',
+    specific_exam.examination_time = specific_exam.examination_time.strftime('%H:%M')
 
     return render_to_response(
         template_exam,

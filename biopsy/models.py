@@ -9,6 +9,8 @@ class BiopsyStatus(models.Model):
 
 
 class Biopsy(models.Model):
+    examination_time = models.TimeField(
+        null=True, blank=True)
     clinical_information = models.TextField(
         null=True, blank=True)
     macroscopic = models.TextField(

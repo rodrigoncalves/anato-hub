@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block 'title' %}Exame Necrópsia | Anato HUB{% endblock 'title' %}
+{% block 'title' %}Exame Autópsia | Anato HUB{% endblock 'title' %}
 
 {% block 'content' %}
 
@@ -10,7 +10,7 @@
     </div>
 
     <div class="small-15 medium-8 large-8 medium-centered large-centered columns">
-        <p><h4 class="title">Exame Necrópsia</h4></p>
+        <p><h4 class="title">Exame Autópsia</h4></p>
         <form action="/autopsia/" method="post" id="necropsy_form">
             {% csrf_token %}
             {% load wysiwyg %}
@@ -19,7 +19,20 @@
             <input type="hidden" name="patient_id" value="{{exam.patient}}">
             <input type="hidden" name="necropsy_id" value="{{exam.specific_exam.id}}">
 
-             <p><div class="row">
+            <p><div class="row">
+                <div class="large-15 columns">
+                    <div class="row collapse prefix-radius">
+                        <div class="large-7 columns">
+                            <span class="prefix">Hora do Exame:</span>
+                        </div>
+                        <div class="large-8 columns">
+                            <input type="text" class="form-input hour" name="examination_time" id="examination_time">
+                        </div>
+                    </div>
+                </div>
+            </div></p>
+
+            <p><div class="row">
                 <div class="large-15 columns">
                     <div class="row collapse prefix-radius">
                         <div class="small-15 columns">

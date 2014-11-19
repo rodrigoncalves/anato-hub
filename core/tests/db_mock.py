@@ -117,11 +117,11 @@ class DatabaseMock():
             name_class='Biopsy')
         ExamType.objects.create(
             id=2,
-            description='Necrópsia',
+            description='Autópsia',
             name_class='Necropsy')
         ExamType.objects.create(
             id=3,
-            description='Imuno-Histoquimica',
+            description='Imuno-Histoquímica',
             name_class='ImmunoHistochemical')
         ExamType.objects.create(
             id=4,
