@@ -21,7 +21,7 @@
                 </div>
 
                 <div class="small-15 medium-8 columns">
-                    <input type="date" class="form-input calendar" name="date" id="date" readonly data-date-format="dd/mm/yyyy" placeholder="Data de Nascimento">
+                    <input type="date" class="form-input calendar" name="date" id="date" placeholder="Data de Nascimento">
                 </div>
 
                 <div class="small-15 columns">
@@ -40,13 +40,10 @@
 
 {% block 'footer-scripts' %}
     {% load staticfiles %}
-        <script src="{% static "js/foundation-datepicker.js" %}"></script>
         <script src="/static/js/jquery.inputmask.js"></script>
-        <script src="/static/js/foundation-datepicker.js"></script>
         <script type="text/javascript">
             $(document).ready( function(){
-                $('.calendar').fdatepicker();
-                $('.hour').inputmask('99:99')
+                //$('.calendar').inputmask('99/99/9999');
             })
         </script>
 {% endblock %}
