@@ -52,4 +52,49 @@ def click_update_button(context):
 
 @then(u'o sistema apresenta a tela de informacoes do exame')
 def step_impl(context):
-    assert False
+	context.driver.title | should | equal_to('Visualizar Exame | Anato')
+
+@when(u'atualiza todos os campos e deixa o material recebido em branco')
+def update_all_less_material(context):
+	context.driver.find_element_by_id("received_speciment").clear()
+	context.driver.find_element_by_id("examination_time").clear()
+	context.driver.find_element_by_id("examination_time").send_keys("0000")
+	context.driver.find_element_by_id("requesting_physician").clear()
+	context.driver.find_element_by_id("requesting_physician").send_keys("Medico")
+	context.driver.find_element_by_id("responsible_physician").clear()
+	context.driver.find_element_by_id("responsible_physician").send_keys("Responsavel")
+
+@then(u'o sistema apresenta uma mensagem de erro e nao volta pra tela de informacoes do exame')
+def step_impl(context):
+	context.driver.title | should | equal_to('Atualizar Exame | Anato HUB')
+
+
+@when(u'atualiza todos os campos e deixa a hora do exame em branco')
+def update_all_less_examination_time(context):
+	context.driver.find_element_by_id("received_speciment").clear()
+	context.driver.find_element_by_id("received_speciment").send_keys("Material")
+	context.driver.find_element_by_id("examination_time").clear()
+	context.driver.find_element_by_id("requesting_physician").clear()
+	context.driver.find_element_by_id("requesting_physician").send_keys("Medico")
+	context.driver.find_element_by_id("responsible_physician").clear()
+	context.driver.find_element_by_id("responsible_physician").send_keys("Responsavel")
+
+@when(u'atualiza todos os campos e deixa o medico requisitante em branco')
+def update_all_less_requesting_physician(context):
+	context.driver.find_element_by_id("received_speciment").clear()
+	context.driver.find_element_by_id("received_speciment").send_keys("Material")
+	context.driver.find_element_by_id("examination_time").clear()
+	context.driver.find_element_by_id("examination_time").send_keys("0000")
+	context.driver.find_element_by_id("requesting_physician").clear()
+	context.driver.find_element_by_id("responsible_physician").clear()
+	context.driver.find_element_by_id("responsible_physician").send_keys("Responsavel")
+
+@when(u'atualiza todos os campos e deixa o medico responsavel em branco')
+def update_all_less_requesting_physician(context):
+	context.driver.find_element_by_id("received_speciment").clear()
+	context.driver.find_element_by_id("received_speciment").send_keys("Material")
+	context.driver.find_element_by_id("examination_time").clear()
+	context.driver.find_element_by_id("examination_time").send_keys("0000")
+	context.driver.find_element_by_id("requesting_physician").clear()
+	context.driver.find_element_by_id("requesting_physician").send_keys("Medico")
+	context.driver.find_element_by_id("responsible_physician").clear()
