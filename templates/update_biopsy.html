@@ -26,7 +26,7 @@
                             <span class="prefix">Hora do Exame:</span>
                         </div>
                         <div class="large-8 columns">
-                            <input type="text" class="form-input hour" name="examination_time" id="examination_time">
+                            <input type="text" class="form-input hour" value="{{specific_exam.examination_time}}" name="examination_time" id="examination_time">
                         </div>
                     </div>
                 </div>
@@ -128,5 +128,11 @@
     {% load staticfiles %}
         <script src="{% static "js/foundation-datepicker.js" %}"></script>
         <script src="{% static "js/wysiwyg-format.js" %}"></script>
+        <script src="{% static "js/jquery.inputmask.js" %}"></script>
+        <script type="text/javascript">
+            $(document).ready( function(){
+                $('.hour').inputmask('99:99')
+            })
+        </script>
 {% endblock %}
     
