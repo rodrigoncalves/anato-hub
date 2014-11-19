@@ -2,10 +2,14 @@ Funcionalidade: Eu como usuario
 				Desejo visualizar o exame completo do paciente 
 				Para poder atualiza-lo
 
-	Cenario: O usuario visualiza o exame completo de um paciente
-			 Dado que o usuario acessa o perfil do paciente
-        	 Quando ele clica no exame desejado
-        	 E clica em Ver Exame
-        	 Entao o sistema exibe o exame completo do paciente
+	Contexto: Acessar o sistema
+			  Dado que o usuario acessa a url "http://localhost:8000" 
+			  E efetua o login no sistema
+			  E realiza uma busca pelo nome do paciente "Maria"
+			  E clica em Ver Paciente
+
+	Cenario: O paciente nao possui exames cadastrados
+        	 Quando o paciente nao possui exames
+        	 Entao o sistema exibe a mensagem "O paciente não possui exames registrados."
 
 
