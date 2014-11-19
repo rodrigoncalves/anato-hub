@@ -46,18 +46,22 @@ def patient_whithout_exam(context):
 def system_return_message(context, message):
     system_message = context.driver.find_element_by_id('message')
     system_message.text | should | equal_to(message)
+    context.driver.close()
 
 @when(u'o usuario visualiza os exames do paciente')
 def visualize_patients_exam(context):
-    pass
+    url = context.driver.current_url
+    patient_id = url.split('/')[-1]
+    context.mock.create_exam_biopsy(patient_id = patient_id)
+    context.driver.refresh()
 
 @when(u'clica em um exame escolhido')
 def select_exam_click(context):
-    pass
+    context.driver.find_element_by_xpath("//dd/a").click()
 
 @when(u'clica em Ver Exame')
 def visualize_exam_click(context):
-    pass
+    context.driver.find_element_by_xpath("//a/button").click()
 
 @then(u'o sistema retorna o exame completo do paciente')
 def visualize_full_exam(context):

@@ -34,22 +34,6 @@ class DatabaseMock():
         patient.nro_cartao_saude = 1111111
         patient.save(using='hub')
 
-
-    def create_exam_biopsy(self, patient_id = 1):
-        from exam.models import Exam
-
-        exam = Exam()
-        exam.id = 1
-        exam.request_date = timezone.now()
-        exam.receipt_date = timezone.now()
-        exam.received_speciment = 'Speciment'
-        exam.requesting_physician = 'Request Physician'
-        exam.responsible_physician = 'Responsible Physician'
-        exam.exam_type_id = 1
-        exam.patient = patient_id
-        exam.save()
-
-
     def create_biopsy(self, exam_id):
         from biopsy.models import Biopsy
         biopsy = Biopsy()
@@ -62,6 +46,20 @@ class DatabaseMock():
         biopsy.exam_id = exam_id
         biopsy.save()
 
+    def create_exam_biopsy(self, patient_id = 1):
+        from exam.models import Exam
+
+        exam = Exam()
+        exam.request_date = timezone.now()
+        exam.receipt_date = timezone.now() 
+        exam.speciment_collection_date = timezone.now()
+        exam.received_speciment = 'Speciment'
+        exam.requesting_physician = 'Request Physician'
+        exam.responsible_physician = 'Responsible Physician'
+        exam.exam_type_id = 1
+        exam.patient = patient_id
+        exam.save()
+        self.create_biopsy(exam.id)
 
     def create_biopsy_status(self):
         from biopsy.models import BiopsyStatus
@@ -129,6 +127,9 @@ class DatabaseMock():
 
 
     def delete_exams(self, patient_id):
+        from exam.models import Exam
+        from core.dynamic_import import import_class
+
         exams = Exam.objects.filter(patient=patient_id)
         for exam in exams:
             specific_exam = import_class(exam.exam_type)
