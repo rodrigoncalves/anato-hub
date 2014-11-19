@@ -44,7 +44,6 @@ class DatabaseMock():
         exam.receipt_date = timezone.now()
         exam.speciment_collection_date = timezone.now()
         exam.received_speciment = 'Speciment'
-        exam.examination_time = '00:00:00'
         exam.requesting_physician = 'Request Physician'
         exam.responsible_physician = 'Responsible Physician'
         exam.exam_type_id = 1

@@ -43,7 +43,6 @@ class TestViews(FormatTest, TestCase):
         response = self.client.post('/exame/registrar/', {
             'patient_id': '1',
             'receipt_date': '01/01/2000',
-            'examination_time': '00:00',
             'request_date': '01/01/2000',
             'speciment_collection_date': '01/01/2000',
             'requesting_physician': 'Requesting Physician',
@@ -67,7 +66,6 @@ class TestViews(FormatTest, TestCase):
         response = self.client.post('/exame/registrar/', {
             'patient_id': '1',
             'receipt_date': '01/01/2000',
-            'examination_time': '00:00',
             'request_date': '01/01/2000',
             'speciment_collection_date': '01/01/2000',
             'requesting_physician': 'Requesting Physician',
@@ -92,7 +90,6 @@ class TestViews(FormatTest, TestCase):
         response = self.client.post('/exame/registrar/', {
             'patient_id': '1',
             'receipt_date': '01/01/2000',
-            'examination_time': '00:00',
             'request_date': '01/01/2000',
             'speciment_collection_date': '01/01/2000',
             'requesting_physician': 'Requesting Physician',
@@ -118,7 +115,6 @@ class TestViews(FormatTest, TestCase):
         response = self.client.post('/exame/registrar/', {
             'patient_id': '1',
             'receipt_date': '01/01/2000',
-            'examination_time': '00:00',
             'request_date': '01/01/2000',
             'speciment_collection_date': '01/01/2000',
             'requesting_physician': 'Requesting Physician',
@@ -145,7 +141,6 @@ class TestViews(FormatTest, TestCase):
         response = self.client.post('/exame/registrar/', {
             'patient_id': '1',
             'receipt_date': '01/01/2000',
-            'examination_time': '00:00',
             'request_date': '01/01/2000',
             'speciment_collection_date': '01/01/2000',
             'requesting_physician': 'Requesting Physician',

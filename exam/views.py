@@ -82,7 +82,6 @@ def update_exam(request, exam_id):
     exam.receipt_date = exam.receipt_date.strftime('%d/%m/%Y')
     exam.speciment_collection_date = exam.speciment_collection_date.strftime(
         '%d/%m/%Y')
-    exam.examination_time = exam.examination_time.strftime('%H:%M')
 
     return render_to_response(
         'update_exam.html',

@@ -38,8 +38,6 @@ def insert_examination(context):
     context.driver.find_element_by_xpath("//div[10]/div/table/tbody/tr[3]/td[2]").click()
     context.driver.find_element_by_id("received_speciment").clear()
     context.driver.find_element_by_id("received_speciment").send_keys("Material")
-    context.driver.find_element_by_id("examination_time").clear()
-    context.driver.find_element_by_id("examination_time").send_keys("0000")
     context.driver.find_element_by_id("requesting_physician").clear()
     context.driver.find_element_by_id("requesting_physician").send_keys("Medico")
     context.driver.find_element_by_id("responsible_physician").clear()
