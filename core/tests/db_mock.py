@@ -51,7 +51,6 @@ class DatabaseMock():
         exam.patient = 1
         exam.save()
 
-
     def create_biopsy(self, exam_id):
         from biopsy.models import Biopsy
         biopsy = Biopsy()
@@ -64,7 +63,6 @@ class DatabaseMock():
         biopsy.exam_id = exam_id
         biopsy.save()
 
-
     def create_biopsy_status(self):
         from biopsy.models import BiopsyStatus
 
@@ -75,6 +73,45 @@ class DatabaseMock():
             id=2,
             description='Processamento')
 
+    def create_exam_necropsy(self):
+        from exam.models import Exam
+
+        exam = Exam()
+        exam.id = 1
+        exam.request_date = timezone.now()
+        exam.receipt_date = timezone.now()
+        exam.speciment_collection_date = timezone.now()
+        exam.received_speciment = 'Speciment'
+        exam.examination_time = '00:00:00'
+        exam.requesting_physician = 'Request Physician'
+        exam.responsible_physician = 'Responsible Physician'
+        exam.exam_type_id = 2
+        exam.patient = 1
+        exam.save()
+
+    def create_necropsy(self, exam_id):
+        from necropsy.models import Necropsy
+        necropsy = Necropsy()
+        necropsy.clinical_information = 'Clinical Information'
+        necropsy.main_disease = 'Main Disease'
+        necropsy.consequential_final_disease = 'Consequential Final Disease'
+        necropsy.contributors_disease = 'Contributors Disease'
+        necropsy.consequential_disease = 'Consequential Disease'
+        necropsy.other_diseases = 'Other Diseases'
+        necropsy.note = 'Note'
+        necropsy.footer = 'Footer'
+        necropsy.exam_id = exam_id
+        necropsy.save()
+
+    def create_necropsy_status(self):
+        from necropsy.models import NecropsyStatus
+
+        NecropsyStatus.objects.create(
+            id=1,
+            description='Macroscopia')
+        NecropsyStatus.objects.create(
+            id=2,
+            description='Processamento')
 
     def create_immunohistochemical_status(self):
         from immunohistochemical.models import ImmunoHistochemicalStatus
@@ -94,17 +131,6 @@ class DatabaseMock():
             id=1,
             description='Macroscopia')
         CytologyStatus.objects.create(
-            id=2,
-            description='Processamento')
-
-
-    def create_necropsy_status(self):
-        from necropsy.models import NecropsyStatus
-
-        NecropsyStatus.objects.create(
-            id=1,
-            description='Macroscopia')
-        NecropsyStatus.objects.create(
             id=2,
             description='Processamento')
 
