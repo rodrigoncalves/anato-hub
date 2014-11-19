@@ -9,6 +9,7 @@ class NecropsyStatus(models.Model):
 
 
 class Necropsy(models.Model):
+    examination_time = models.TimeField(null=True, blank=True)
     clinical_information = models.TextField(null=True, blank=True)
     main_disease = models.TextField(null=True, blank=True)
     consequential_final_disease = models.TextField(null=True, blank=True)

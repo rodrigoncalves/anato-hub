@@ -1,6 +1,13 @@
 {% autoescape off %}
 
 <div class="row">
+    <h6 class="exam-field">Hora do exame</h6>
+    <div class="row">
+        {{specific_exam.examination_time | default:"<i>Nenhuma informação adicionada.</i>"}}
+    </div>
+    <hr>
+</div>
+<div class="row">
     <h6 class="exam-field">Informações Clínicas</h6>
     <div class="row">
         {{specific_exam.clinical_information | default:"<i>Nenhuma informação adicionada.</i>"}}

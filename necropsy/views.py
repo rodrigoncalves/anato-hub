@@ -11,6 +11,7 @@ from patients.models import Paciente
 @login_required(login_url='/', redirect_field_name='')
 def register_necropsy(request):
     necropsy = Necropsy.objects.get(pk=request.POST['necropsy_id'])
+    necropsy.examination_time = request.POST['examination_time']
     necropsy.clinical_information = request.POST['clinical_information']
     necropsy.main_disease = request.POST['main_disease']
     necropsy.consequential_final_disease = request.POST['consequential_final_disease']
@@ -19,6 +20,7 @@ def register_necropsy(request):
     necropsy.other_diseases = request.POST['other_diseases']
     necropsy.note = request.POST['note']
     necropsy.footer = request.POST['footer']
+    
     necropsy.save()
 
     return redirect('/exame/%d' % necropsy.exam.id)
