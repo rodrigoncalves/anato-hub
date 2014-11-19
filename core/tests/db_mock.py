@@ -3,8 +3,7 @@
 from django.utils import timezone
 
 
-class DatabaseMock():
-    
+class DatabaseMock():    
     def create_user(self):
         from django.contrib.auth.models import User
         return User.objects.create_user(

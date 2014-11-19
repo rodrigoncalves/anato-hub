@@ -6,8 +6,10 @@ from core.tests.db_mock import DatabaseMock
 from django.utils import timezone
 from sys import stderr
 from should_dsl import should, should_not
+from core.tests.format_test import FormatTest
 
-class TestViews(TestCase):
+
+class TestViews(FormatTest, TestCase):
     def setUp(self):
         self.my_type = '[Patients - Views]'
         stderr.write(self.__str__())

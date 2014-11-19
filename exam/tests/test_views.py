@@ -3,14 +3,12 @@
 from django.test import TestCase, Client
 from should_dsl import should, should_not
 
-from core.tests.format_test import FormatTest
 from sys import stderr
+from core.tests.format_test import FormatTest
 from core.tests.db_mock import DatabaseMock
 
 
 class TestViews(FormatTest, TestCase):
-
-    
     def setUp(self):
         self.my_type = '[Exam - Views]'
         stderr.write(self.__str__())
