@@ -35,19 +35,18 @@ class DatabaseMock():
         patient.save(using='hub')
 
 
-    def create_exam_biopsy(self):
+    def create_exam_biopsy(self, patient_id = 1):
         from exam.models import Exam
 
         exam = Exam()
         exam.id = 1
         exam.request_date = timezone.now()
         exam.receipt_date = timezone.now()
-        exam.speciment_collection_date = timezone.now()
         exam.received_speciment = 'Speciment'
         exam.requesting_physician = 'Request Physician'
         exam.responsible_physician = 'Responsible Physician'
         exam.exam_type_id = 1
-        exam.patient = 1
+        exam.patient = patient_id
         exam.save()
 
 
@@ -127,3 +126,12 @@ class DatabaseMock():
             id=4,
             description='Citologia',
             name_class='Cytology')
+
+
+    def delete_exams(self, patient_id):
+        exams = Exam.objects.filter(patient=patient_id)
+        for exam in exams:
+            specific_exam = import_class(exam.exam_type)
+            specific_exam.objects.filter(exam_id = exam.id).delete()
+        exams.delete()
+

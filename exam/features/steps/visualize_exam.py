@@ -1,13 +1,17 @@
 # -*- coding: utf-8 -*-
+import os
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "anato.settings")
 from behave import given, when, then
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from should_dsl import should, should_not
 from exam.models import Exam
 from core.dynamic_import import import_class
+from core.tests.db_mock import DatabaseMock
 
 @given(u'que o usuario acessa a url "{url}"')
 def acessing_system(context, url):
+    context.mock = DatabaseMock()
     context.driver = webdriver.Firefox()
     context.driver.get(url)   
 
@@ -33,16 +37,28 @@ def visualize_patient(context):
 
 @when(u'o paciente nao possui exames')
 def patient_whithout_exam(context):
-    pass
-    #url = context.driver.current_url
-    #patient_id = url.split('/')[-1]
-    #exams = Exam.objects.filter(patient=patient_id)
-    #for exam in exams:
-        #specif_exam = import_class(exam.exam_type)
-        #specific_exam.objects.filter(exam_id = exam.id).delete()
-    #exams.delete()
+    url = context.driver.current_url
+    patient_id = url.split('/')[-1]
+    context.mock.delete_exams(patient_id)
+    context.driver.refresh()
 
 @then(u'o sistema exibe a mensagem "{message}"')
 def system_return_message(context, message):
     system_message = context.driver.find_element_by_id('message')
     system_message.text | should | equal_to(message)
+
+@when(u'o usuario visualiza os exames do paciente')
+def visualize_patients_exam(context):
+    pass
+
+@when(u'clica em um exame escolhido')
+def select_exam_click(context):
+    pass
+
+@when(u'clica em Ver Exame')
+def visualize_exam_click(context):
+    pass
+
+@then(u'o sistema retorna o exame completo do paciente')
+def visualize_full_exam(context):
+    pass
