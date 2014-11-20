@@ -55,7 +55,6 @@ INSTALLED_APPS = (
     'freezing',
 )
 
-TEST_RUNNER = 'django_behave.runner.DjangoBehaveTestSuiteRunner'
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

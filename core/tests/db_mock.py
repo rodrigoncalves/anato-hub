@@ -3,12 +3,16 @@
 from django.utils import timezone
 
 
-class DatabaseMock():    
+class DatabaseMock():
+
     def create_user(self):
         from django.contrib.auth.models import User
-        return User.objects.create_user(
+        user = User.objects.create_user(
             'test_user', 'test@email.com', '123456')
-
+        user.is_staff = True
+        user.is_superuser = True
+        user.save()
+        return user
 
     def create_patient(self):
         from patients.models import Paciente
@@ -45,12 +49,12 @@ class DatabaseMock():
         biopsy.exam_id = exam_id
         biopsy.save()
 
-    def create_exam_biopsy(self, patient_id = 1):
+    def create_exam_biopsy(self, patient_id=1):
         from exam.models import Exam
 
         exam = Exam()
         exam.request_date = timezone.now()
-        exam.receipt_date = timezone.now() 
+        exam.receipt_date = timezone.now()
         exam.speciment_collection_date = timezone.now()
         exam.received_speciment = 'Speciment'
         exam.requesting_physician = 'Request Physician'
@@ -70,7 +74,6 @@ class DatabaseMock():
             id=2,
             description='Processamento')
 
-
     def create_immunohistochemical_status(self):
         from immunohistochemical.models import ImmunoHistochemicalStatus
 
@@ -80,7 +83,6 @@ class DatabaseMock():
         ImmunoHistochemicalStatus.objects.create(
             id=2,
             description='Processamento')
-
 
     def create_cytology_status(self):
         from cytology.models import CytologyStatus
@@ -92,7 +94,6 @@ class DatabaseMock():
             id=2,
             description='Processamento')
 
-
     def create_necropsy_status(self):
         from necropsy.models import NecropsyStatus
 
@@ -102,7 +103,6 @@ class DatabaseMock():
         NecropsyStatus.objects.create(
             id=2,
             description='Processamento')
-
 
     def create_exam_type(self):
         from exam.models import ExamType
@@ -124,7 +124,6 @@ class DatabaseMock():
             description='Citologia',
             name_class='Cytology')
 
-
     def delete_exams(self, patient_id):
         from exam.models import Exam
         from core.dynamic_import import import_class
@@ -132,6 +131,5 @@ class DatabaseMock():
         exams = Exam.objects.filter(patient=patient_id)
         for exam in exams:
             specific_exam = import_class(exam.exam_type)
-            specific_exam.objects.filter(exam_id = exam.id).delete()
+            specific_exam.objects.filter(exam_id=exam.id).delete()
         exams.delete()
-
