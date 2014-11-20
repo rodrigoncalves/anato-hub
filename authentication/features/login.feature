@@ -2,37 +2,30 @@ Funcionalidade: Eu, como usuario,
 Desejo efetuar login no sistema
 Para poder utiliza-lo
 
+    Contexto: Acessar o sistema
+    Dado que o usuario acessa a url "http://localhost:8000/" e aparece a tela de login
+
     Cenário: Usuario se autentica no sistema com sucesso
-        Dado que o usuario acessa o sistema
-        E aparece a tela de login
-        Quando o usuario digita seu nome
-        E digita a sua senha
+        Quando o usuario digita seu nome: "admin"
+        E digita a sua senha: "1234"
+        E clica em Entrar
         Então autentica o usuario com sucesso
 
-    Cenário: Usuario digita um login invalido
-        Dado que o usuario acessa o sistema
-        E aparece a tela de login
-        Quando o usuario digita seu nome
-        E digita a sua senha
-        Então o sistema nao consegue autenticar o usuario no LDAP
-        E retorna uma mensagem "Nome de usuário ou senha incorretos."
-
-    Cenário: Sistema não consegue se conectar ao LDAP
-        Dado que o usuario acessa o sistema
-        E aparece a tela de login
-        Quando o usuario digita seu nome
-        E digita a sua senha
-        Então o sistema nao consegue conectar no LDAP
-        E retorna a mensagem de erro "Ocorreu um erro na conexão. Tente novamente."
-
     Cenário: Usuario digita apenas o nome de usuario
-        Dado que o usuario acessa o sistema
-        E aparece a tela de login
-        Quando o usuario digita seu nome
+        Quando o usuario digita seu nome: "admin"
         Então o sistema nao permite que o botao entrar seja clicado
 
+    Esquema do Cenário: Usuario digita um par usuario/senha invalido
+        Quando o usuario digita seu nome: "<user>"
+        E digita a sua senha: "<password>"
+        E clica em Entrar
+        Então o sistema retorna a mensagem de erro "Nome de usuário ou senha incorretos."
+
+        Exemplos:
+        | user                  | password          |
+        | admin                 | 123               |
+        | adm                   | 1234              |
+
     Cenário: Usuario digita apenas a senha
-        Dado que o usuario acessa o sistema
-        E aparece a tela de login
-        Quando digita a sua senha
+        Quando digita a sua senha: "1234"
         Então o sistema nao permite que o botao entrar seja clicado

@@ -1,56 +1,52 @@
 # -*- coding: utf-8 -*-
+import os
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "anato.settings")
 
 from behave import given, when, then
 from selenium import webdriver
-from should_dsl import should
+from should_dsl import should, should_not
 
 
-@given(u'que o usuario acessa o sistema')
-def accessing_the_system(context):
+@given(u'que o usuario acessa a url "{url}" e aparece a tela de login')
+def accessing_the_system(context, url):
     context.driver = webdriver.Firefox()
-    context.driver.get('http://localhost:8000/')
-
-
-@given(u'aparece a tela de login')
-def showing_login(context):
+    context.driver.get(url)
     context.driver.title | should | equal_to('Login | Anato HUB')
 
 
-@when(u'o usuario digita seu nome')
-def insert_username(context):
+@when(u'o usuario digita seu nome: "{user}"')
+def insert_username(context, user):
     username_input = context.driver.find_element_by_id('username')
-    username_input.send_keys('test_user')
+    username_input.send_keys(user)
 
 
-@when(u'digita a sua senha')
-def insert_password(context):
+@when(u'digita a sua senha: "{password}"')
+def insert_password(context, password):
     username_input = context.driver.find_element_by_id('password')
-    username_input.send_keys('123456')
+    username_input.send_keys(password)
+
+
+@when(u'clica em Entrar')
+def enter_click(context):
+    context.driver.find_element_by_id('enter-button').click()
 
 
 @then(u'autentica o usuario com sucesso')
 def authenticate_user(context):
-    assert False
+    page_loaded = context.driver.title
+    page_loaded | should | equal_to('Home | Anato HUB')
+    context.driver.close()
 
 
-@then(u'o sistema nao consegue autenticar o usuario no LDAP')
-def authenticate_user_fail(context):
-    assert False
-
-
-@then(u'retorna uma mensagem "{mensagem}"')
-def returns_message(context, mensagem):
-    assert False
-
-
-@then(u'o sistema nao consegue conectar no LDAP')
-def cant_connect_ldap(context):
-    assert False
-
-
-@then(u'retorna a mensagem de erro "{mensagem}"')
-def returns_error_message(context, mensagem):
-    assert False
+@then(u'o sistema retorna a mensagem de erro "{message}"')
+def returns_error_message(context, message):
+    try:
+        text = context.driver.find_element_by_xpath(
+            "//*[contains(text(), '" + message + "')]")
+    except:
+        text = None
+    text | should_not | be(None)
+    context.driver.close()
 
 
 @then(u'o sistema nao permite que o botao entrar seja clicado')

@@ -129,7 +129,6 @@ def import_freezing_status():
 def import_all():
     import_biopsy_status()
     import_cytology_status()
-    import_immunohistochemical_status()
     import_necropsy_status()
     import_exam_type()
     import_report_status()
