@@ -74,6 +74,47 @@ class DatabaseMock():
             id=2,
             description='Processamento')
 
+
+    def create_exam_freezing(self):
+        from exam.models import Exam
+
+        exam = Exam()
+        exam.id = 1
+        exam.request_date = timezone.now()
+        exam.receipt_date = timezone.now()
+        exam.speciment_collection_date = timezone.now()
+        exam.received_speciment = 'Speciment'
+        exam.examination_time = '00:00:00'
+        exam.requesting_physician = 'Request Physician'
+        exam.responsible_physician = 'Responsible Physician'
+        exam.exam_type_id = 1
+        exam.patient = 1
+        exam.save()
+
+
+    def create_freezing(self, exam_id):
+        from freezing.models import Freezing
+        freezing = Freezing()
+        freezing.clinical_information = 'Clinical Information'
+        freezing.macroscopic = 'Macroscopic'
+        freezing.microscopic = 'Microscopic'
+        freezing.conclusion = 'Conclusion'
+        freezing.note = 'Note'
+        freezing.footer = 'Footer'
+        freezing.exam_id = exam_id
+        freezing.save()
+
+    def create_freezing_status(self):
+        from freezing.models import FreezingStatus
+
+        FreezingStatus.objects.create(
+            id=1,
+            description='Macroscopia')
+        FreezingStatus.objects.create(
+            id=2,
+            description='Processamento')
+
+
     def create_immunohistochemical_status(self):
         from immunohistochemical.models import ImmunoHistochemicalStatus
 
