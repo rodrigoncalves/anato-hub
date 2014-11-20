@@ -4,6 +4,10 @@ from django.db import models
 from exam.models import Exam
 
 
+class ImmunoHistochemicalStatus(models.Model):
+    description = models.CharField(max_length=50)
+
+
 class ImmunoHistochemical(models.Model):
 
     def exam_antibodies(self):

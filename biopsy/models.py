@@ -28,6 +28,8 @@ class Biopsy(models.Model):
 
 
 class BiopsyReport(models.Model):
+    examination_time = models.TimeField(
+        null=True, blank=True)
     clinical_information = models.CharField(
         max_length=255, null=True, blank=True)
     macroscopic = models.CharField(
