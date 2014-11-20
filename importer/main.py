@@ -38,24 +38,6 @@ def import_report_status():
             report_status.save()
 
 
-def import_group_permissions():
-    from django.contrib.auth.models import Group, Permission
-
-    with open_csv('groups_permissions') as csv_file:
-        data = csv.reader(csv_file)
-
-        print 'Importing groups...'
-        for row in data:
-            group = Group()
-            group.id = row[0]
-            group.name = row[1]
-            group.save()
-
-            for perm in row[2:]:
-                permission = Permission.objects.get(name=perm)
-                group.permissions.add(permission)
-
-
 def import_biopsy_status():
     from biopsy.models import BiopsyStatus
 
@@ -126,11 +108,31 @@ def import_freezing_status():
             report_status.save()
 
 
+def import_group_permissions():
+    from django.contrib.auth.models import Group, Permission
+
+    with open_csv('groups_permissions') as csv_file:
+        data = csv.reader(csv_file)
+
+        print 'Importing groups...'
+        for row in data:
+            group = Group()
+            group.id = row[0]
+            group.name = row[1]
+            group.save()
+
+            for perm in row[2:]:
+                permission = Permission.objects.get(name=perm)
+                group.permissions.add(permission)
+
+
 def import_all():
-    import_biopsy_status()
-    import_cytology_status()
-    import_necropsy_status()
     import_exam_type()
     import_report_status()
+    import_biopsy_status()
+    import_necropsy_status()
+    import_cytology_status()
+    import_immunohistochemical_status()
+    import_freezing_status()
     import_group_permissions()
     print 'Done!'
