@@ -26,11 +26,8 @@ class TestViews(FormatTest, TestCase):
         response = self.client.post('/exame/novo/', {
             'patient_id': '1',
         })
-        exam_types = list(response.context[-1]['exam_types'])
 
         response.status_code | should | be(200)
-        exam_types | should_not | be_empty
-        exam_types | should | have(4).heterogeneous_things
 
     def test_register_exam(self):
         from exam.models import Exam

@@ -4,7 +4,6 @@ from django.utils import timezone
 
 
 class DatabaseMock():
-
     def create_user(self):
         from django.contrib.auth.models import User
         user = User.objects.create_user(
@@ -13,6 +12,7 @@ class DatabaseMock():
         user.is_superuser = True
         user.save()
         return user
+
 
     def create_patient(self):
         from patients.models import Paciente
@@ -37,6 +37,7 @@ class DatabaseMock():
         patient.nro_cartao_saude = 1111111
         patient.save(using='hub')
 
+
     def create_biopsy(self, exam_id):
         from biopsy.models import Biopsy
         biopsy = Biopsy()
@@ -48,6 +49,7 @@ class DatabaseMock():
         biopsy.footer = 'Footer'
         biopsy.exam_id = exam_id
         biopsy.save()
+
 
     def create_exam_biopsy(self, patient_id=1):
         from exam.models import Exam
@@ -63,6 +65,7 @@ class DatabaseMock():
         exam.patient = patient_id
         exam.save()
         self.create_biopsy(exam.id)
+
 
     def create_biopsy_status(self):
         from biopsy.models import BiopsyStatus
@@ -94,6 +97,7 @@ class DatabaseMock():
 
     def create_freezing(self, exam_id):
         from freezing.models import Freezing
+
         freezing = Freezing()
         freezing.clinical_information = 'Clinical Information'
         freezing.macroscopic = 'Macroscopic'
@@ -125,6 +129,7 @@ class DatabaseMock():
             id=2,
             description='Processamento')
 
+
     def create_cytology_status(self):
         from cytology.models import CytologyStatus
 
@@ -135,6 +140,7 @@ class DatabaseMock():
             id=2,
             description='Processamento')
 
+
     def create_necropsy_status(self):
         from necropsy.models import NecropsyStatus
 
@@ -144,6 +150,7 @@ class DatabaseMock():
         NecropsyStatus.objects.create(
             id=2,
             description='Processamento')
+
 
     def create_exam_type(self):
         from exam.models import ExamType
@@ -164,6 +171,7 @@ class DatabaseMock():
             id=4,
             description='Citologia',
             name_class='Cytology')
+
 
     def delete_exams(self, patient_id):
         from exam.models import Exam
