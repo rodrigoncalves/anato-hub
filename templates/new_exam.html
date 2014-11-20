@@ -103,7 +103,7 @@
             </div>
 
             <div class="small-14 small-centered medium-8 medium-centered large-7 large-centered columns">
-                <input class="button small expand" type="submit" value="Enviar" />
+                <input class="button_small_expand" type="submit" value="Enviar" />
             </div>
         </form>
     </div>
@@ -116,8 +116,7 @@
         <script src="{% static "js/foundation-datepicker.js" %}"></script>
         <script type="text/javascript">
             $(document).ready( function(){
-                $('.calendar').fdatepicker();
-                $('.hour').inputmask('99:99')
+                $('.calendar').fdatepicker()
             })
         </script>
 {% endblock %}
