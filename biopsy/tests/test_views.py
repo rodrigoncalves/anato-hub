@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import datetime
 from django.test import TestCase, Client
 from should_dsl import should
 from sys import stderr
@@ -7,7 +8,6 @@ from core.tests.db_mock import DatabaseMock
 from biopsy.models import Biopsy
 from south.utils import datetime_utils as datetime
 from core.tests.format_test import FormatTest
-
 
 class TestViews(FormatTest, TestCase):
     def setUp(self):
@@ -17,7 +17,6 @@ class TestViews(FormatTest, TestCase):
         self.db_mock.create_user()
         self.db_mock.create_patient()
         self.db_mock.create_exam_biopsy()
-        self.db_mock.create_biopsy(1)
         self.client = Client()
         self.client.login(username='test_user', password='123456')
 

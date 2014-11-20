@@ -12,4 +12,11 @@ Funcionalidade: Eu como usuario
         	 Quando o paciente nao possui exames
         	 Entao o sistema exibe a mensagem "O paciente não possui exames registrados."
 
+    Cenario: O usuario visualiza o exame completo do paciente
+    		 Quando o usuario visualiza os exames do paciente
+    		 E clica em um exame escolhido
+    		 E clica em Ver Exame
+    		 Entao o sistema retorna o exame completo do paciente
+
+
 
