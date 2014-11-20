@@ -27,7 +27,7 @@ def insert_password(context, password):
 
 
 @when(u'clica em Entrar')
-def click_enter(context):
+def enter_click(context):
     context.driver.find_element_by_id('enter-button').click()
 
 

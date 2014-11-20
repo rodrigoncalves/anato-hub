@@ -98,6 +98,7 @@ def import_cytology_status():
             report_status.save()
 
 
+<<<<<<< HEAD
 def import_immunohistochemical_status():
     from immunohistochemical.models import ImmunoHistochemicalStatus
 
@@ -126,6 +127,8 @@ def import_freezing_status():
             report_status.save()
 
 
+=======
+>>>>>>> 22210c13d7b3c7521c7d15d090a04bac1e38f30f
 def import_all():
     import_biopsy_status()
     import_cytology_status()
