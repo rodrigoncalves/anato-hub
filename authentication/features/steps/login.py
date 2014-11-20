@@ -4,7 +4,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "anato.settings")
 
 from behave import given, when, then
 from selenium import webdriver
-from should_dsl import should
+from should_dsl import should, should_not
 
 
 @given(u'que o usuario acessa a url "{url}" e aparece a tela de login')
@@ -38,11 +38,15 @@ def authenticate_user(context):
     context.driver.close()
 
 
-@then(u'o sistema retorna a mensagem de erro "{mensagem}"')
-def returns_error_message(context, mensagem):
-    text = context.driver.find_element_by_xpath(
-        "//p[@id='error-message']/b").text
-    text | should | equal_to(mensagem)
+@then(u'o sistema retorna a mensagem de erro "{message}"')
+def returns_error_message(context, message):
+    try:
+        text = context.driver.find_element_by_xpath(
+            "//*[contains(text(), '" + message + "')]")
+    except:
+        text = None
+    text | should_not | be(None)
+    context.driver.close()
 
 
 @then(u'o sistema nao permite que o botao entrar seja clicado')
