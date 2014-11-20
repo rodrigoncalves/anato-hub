@@ -4,8 +4,10 @@ from should_dsl import should
 from sys import stderr
 from core.tests.db_mock import DatabaseMock
 from biopsy.models import Biopsy
+from core.tests.format_test import FormatTest
+import datetime
 
-class TestViews(TestCase):
+class TestViews(FormatTest, TestCase):
     def setUp(self):
         self.my_type = '[Biopsy - Views]'
         stderr.write(self.__str__())
@@ -13,15 +15,15 @@ class TestViews(TestCase):
         self.db_mock.create_user()
         self.db_mock.create_patient()
         self.db_mock.create_exam_biopsy()
-        self.db_mock.create_biopsy(1)
         self.client = Client()
         self.client.login(username='test_user', password='123456')
 
     #Setting biopsy with all fields correctly.
     def test_register_biopsy(self):
-        response = self.client.post('/biopsia/', {'biopsy_id':'1', 'clinical_information': 'teste exame de biopsia', 'macroscopic': 'Macroscopia', 'microscopic': 'Microscopia', 'conclusion': 'Conclusao', 'note': 'Anotacao qualquer', 'footer': 'Legenda qualquer'})
+        response = self.client.post('/biopsia/', {'biopsy_id':'1', 'examination_time': '12:00', 'clinical_information': 'teste exame de biopsia', 'macroscopic': 'Macroscopia', 'microscopic': 'Microscopia', 'conclusion': 'Conclusao', 'note': 'Anotacao qualquer', 'footer': 'Legenda qualquer'})
         biopsy_registered = Biopsy.objects.get(clinical_information="teste exame de biopsia")
 
+        biopsy_registered.examination_time | should | equal_to(datetime.time(12, 0))
         biopsy_registered.clinical_information | should | equal_to('teste exame de biopsia')
         biopsy_registered.macroscopic | should | equal_to('Macroscopia')
         biopsy_registered.microscopic | should | equal_to('Microscopia')
