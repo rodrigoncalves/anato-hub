@@ -9,6 +9,7 @@ from core.tests.db_mock import DatabaseMock
 
 
 class TestViews(FormatTest, TestCase):
+
     def setUp(self):
         self.my_type = '[Exam - Views]'
         stderr.write(self.__str__())
@@ -20,7 +21,6 @@ class TestViews(FormatTest, TestCase):
         self.client = Client()
         self.client.login(username='test_user', password='123456')
 
-    
     def test_new_exam(self):
         self.mock.create_patient()
         response = self.client.post('/exame/novo/', {
@@ -32,7 +32,6 @@ class TestViews(FormatTest, TestCase):
         exam_types | should_not | be_empty
         exam_types | should | have(4).heterogeneous_things
 
-    
     def test_register_exam(self):
         from exam.models import Exam
         before_save_exam = list(Exam.objects.all())
@@ -55,7 +54,6 @@ class TestViews(FormatTest, TestCase):
         response.status_code | should | be(200)
         len(after_save_exam) | should | be_greater_than(len(before_save_exam))
 
-    
     def test_register_new_biopsy(self):
         from biopsy.models import Biopsy
         before_create_biopsy = list(Biopsy.objects.all())
@@ -79,7 +77,6 @@ class TestViews(FormatTest, TestCase):
         len(after_create_biopsy) | should | be_greater_than(
             len(before_create_biopsy))
 
-    
     def test_register_new_necropsy(self):
         from necropsy.models import Necropsy
         before_create_necropsy = list(Necropsy.objects.all())
@@ -103,7 +100,6 @@ class TestViews(FormatTest, TestCase):
         len(after_create_necropsy) | should | be_greater_than(
             len(before_create_necropsy))
 
-    
     def test_register_new_immunohistochemical(self):
         from immunohistochemical.models import ImmunoHistochemical
         before_create_immunohistochemical = list(
@@ -129,7 +125,6 @@ class TestViews(FormatTest, TestCase):
         len(after_create_immunohistochemical) | should | be_greater_than(
             len(before_create_immunohistochemical))
 
-    
     def test_register_new_cytology(self):
         from cytology.models import Cytology
         before_create_cytology = list(
