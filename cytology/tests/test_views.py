@@ -12,8 +12,8 @@ class TestViews(TestCase):
         self.db_mock = DatabaseMock()
         self.db_mock.create_user()
         self.db_mock.create_patient()
-        self.db_mock.create_exam_citology()
-        self.db_mock.create_citology(1)
+        self.db_mock.create_exam_cytology()
+        self.db_mock.create_cytology(1)
         self.client = Client()
         self.client.login(username='test_user', password='123456')
 
