@@ -50,7 +50,6 @@ class DatabaseMock():
         biopsy.exam_id = exam_id
         biopsy.save()
 
-
     def create_exam_biopsy(self, patient_id=1):
         from exam.models import Exam
 
@@ -67,7 +66,6 @@ class DatabaseMock():
         exam.save()
         self.create_biopsy(exam.id)
 
-
     def create_biopsy_status(self):
         from biopsy.models import BiopsyStatus
 
@@ -78,6 +76,19 @@ class DatabaseMock():
             id=2,
             description='Processamento')
 
+
+    def create_freezing(self, exam_id):
+        from freezing.models import Freezing
+
+        freezing = Freezing()
+        freezing.clinical_information = 'Clinical Information'
+        freezing.macroscopic = 'Macroscopic'
+        freezing.microscopic = 'Microscopic'
+        freezing.conclusion = 'Conclusion'
+        freezing.note = 'Note'
+        freezing.footer = 'Footer'
+        freezing.exam_id = exam_id
+        freezing.save()
 
     def create_exam_freezing(self):
         from exam.models import Exam
@@ -95,20 +106,6 @@ class DatabaseMock():
         exam.patient = 1
         exam.save()
 
-
-    def create_freezing(self, exam_id):
-        from freezing.models import Freezing
-
-        freezing = Freezing()
-        freezing.clinical_information = 'Clinical Information'
-        freezing.macroscopic = 'Macroscopic'
-        freezing.microscopic = 'Microscopic'
-        freezing.conclusion = 'Conclusion'
-        freezing.note = 'Note'
-        freezing.footer = 'Footer'
-        freezing.exam_id = exam_id
-        freezing.save()
-
     def create_freezing_status(self):
         from freezing.models import FreezingStatus
 
@@ -120,28 +117,20 @@ class DatabaseMock():
             description='Processamento')
 
 
-    def create_biopsy(self, exam_id):
-        from biopsy.models import Biopsy
-        biopsy = Biopsy()
-        biopsy.clinical_information = 'Clinical Information'
-        biopsy.macroscopic = 'Macroscopic'
-        biopsy.microscopic = 'Microscopic'
-        biopsy.conclusion = 'Conclusion'
-        biopsy.note = 'Note'
-        biopsy.footer = 'Footer'
-        biopsy.exam_id = exam_id
-        biopsy.save()
+    def create_necropsy(self, exam_id):
+        from necropsy.models import Necropsy
 
-    def create_biopsy_status(self):
-        from biopsy.models import BiopsyStatus
-
-        BiopsyStatus.objects.create(
-            id=1,
-            description='Macroscopia')
-        BiopsyStatus.objects.create(
-            id=2,
-            description='Processamento')
-
+        necropsy = Necropsy()
+        necropsy.clinical_information = 'Clinical Information'
+        necropsy.main_disease = 'Main Disease'
+        necropsy.consequential_final_disease = 'Consequential Final Disease'
+        necropsy.contributors_disease = 'Contributors Disease'
+        necropsy.consequential_disease = 'Consequential Disease'
+        necropsy.other_diseases = 'Other Diseases'
+        necropsy.note = 'Note'
+        necropsy.footer = 'Footer'
+        necropsy.exam_id = exam_id
+        necropsy.save()
 
     def create_exam_necropsy(self):
         from exam.models import Exam
@@ -159,21 +148,6 @@ class DatabaseMock():
         exam.patient = 1
         exam.save()
 
-    def create_necropsy(self, exam_id):
-        from necropsy.models import Necropsy
-
-        necropsy = Necropsy()
-        necropsy.clinical_information = 'Clinical Information'
-        necropsy.main_disease = 'Main Disease'
-        necropsy.consequential_final_disease = 'Consequential Final Disease'
-        necropsy.contributors_disease = 'Contributors Disease'
-        necropsy.consequential_disease = 'Consequential Disease'
-        necropsy.other_diseases = 'Other Diseases'
-        necropsy.note = 'Note'
-        necropsy.footer = 'Footer'
-        necropsy.exam_id = exam_id
-        necropsy.save()
-
     def create_necropsy_status(self):
         from necropsy.models import NecropsyStatus
 
@@ -183,6 +157,7 @@ class DatabaseMock():
         NecropsyStatus.objects.create(
             id=2,
             description='Processamento')
+
 
     def create_immunohistochemical_status(self):
         from immunohistochemical.models import ImmunoHistochemicalStatus
@@ -225,7 +200,6 @@ class DatabaseMock():
             id=4,
             description='Citologia',
             name_class='Cytology')
-
 
     def delete_exams(self, patient_id):
         from exam.models import Exam
