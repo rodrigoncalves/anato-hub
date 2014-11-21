@@ -55,6 +55,7 @@ class DatabaseMock():
         from exam.models import Exam
 
         exam = Exam()
+        exam.id = 1
         exam.request_date = timezone.now()
         exam.receipt_date = timezone.now()
         exam.speciment_collection_date = timezone.now()

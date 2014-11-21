@@ -9,6 +9,7 @@ from biopsy.models import Biopsy
 from south.utils import datetime_utils as datetime
 from core.tests.format_test import FormatTest
 
+
 class TestViews(FormatTest, TestCase):
     def setUp(self):
         self.my_type = '[Biopsy - Views]'
@@ -32,8 +33,8 @@ class TestViews(FormatTest, TestCase):
             'note': 'Anotacao qualquer',
             'footer': 'Legenda qualquer'
         })
-        biopsy_registered = Biopsy.objects.get(clinical_information="teste exame de biopsia")
 
+        biopsy_registered = Biopsy.objects.get(clinical_information="teste exame de biopsia")
         biopsy_registered.examination_time | should | equal_to(datetime.time(12, 0))
         biopsy_registered.clinical_information | should | equal_to('teste exame de biopsia')
         biopsy_registered.macroscopic | should | equal_to('Macroscopia')
