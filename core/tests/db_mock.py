@@ -50,6 +50,22 @@ class DatabaseMock():
         exam.patient = 1
         exam.save()
 
+    def create_exam_cytology(self):
+        from exam.models import Exam
+
+        exam = Exam()
+        exam.id = 1
+        exam.request_date = timezone.now()
+        exam.receipt_date = timezone.now()
+        exam.speciment_collection_date = timezone.now()
+        exam.received_speciment = 'Speciment'
+        exam.requesting_physician = 'Request Physician'
+        exam.responsible_physician = 'Responsible Physician'
+        exam.exam_type_id = 1
+        exam.patient = 1
+        exam.save()
+
+
 
     def create_biopsy(self, exam_id):
         from biopsy.models import Biopsy
