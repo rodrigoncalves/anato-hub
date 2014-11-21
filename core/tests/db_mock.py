@@ -50,7 +50,7 @@ class DatabaseMock():
         exam.patient = 1
         exam.save()
 
-    def create_exam_cytology(self):
+    def create_exam_citology(self):
         from exam.models import Exam
 
         exam = Exam()
