@@ -10,7 +10,6 @@ from south.utils import datetime_utils as datetime
 from core.tests.format_test import FormatTest
 
 
-
 class TestViews(FormatTest, TestCase):
     def setUp(self):
         self.my_type = '[Necropsy - Views]'
