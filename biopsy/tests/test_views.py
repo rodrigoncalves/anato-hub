@@ -17,7 +17,10 @@ class TestViews(FormatTest, TestCase):
         self.db_mock = DatabaseMock()
         self.db_mock.create_user()
         self.db_mock.create_patient()
+        self.db_mock.create_exam_type()
+        self.db_mock.create_biopsy_status()
         self.db_mock.create_exam_biopsy()
+        self.db_mock.create_biopsy(1)
         self.client = Client()
         self.client.login(username='test_user', password='123456')
 
@@ -45,4 +48,4 @@ class TestViews(FormatTest, TestCase):
 
         # If the method is executed sucessfully, the final instruction is to redirect
         # Status code 302 means sucessfully redirected
-        response.status_code | should| equal_to(302)
+        response.status_code | should | equal_to(302)
