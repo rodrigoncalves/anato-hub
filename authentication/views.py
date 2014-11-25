@@ -2,8 +2,12 @@
 
 from django.template import RequestContext
 from django.shortcuts import render_to_response, redirect
+from django.http import HttpResponse
+from django.core import serializers
 from django.contrib.auth import logout
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from core.decorators import permission_required_with_403
 from authentication.auth import authenticate_user_without_ldap, \
     SUCCESS, INACTIVE_USER, INVALID_LOGIN, LDAP_CONNECTION_ERROR
 
@@ -38,7 +42,7 @@ def sign_in(request):
     return render_to_response(
         'sign_in.html',
         {'login_error': warning_message,
-        'modal_error': True},
+         'modal_error': True},
         context_instance=RequestContext(request)
     )
 
@@ -48,3 +52,17 @@ def log_out(request):
     logout(request)
     return redirect('/')
 
+
+@permission_required_with_403('auth.change_user')
+@login_required(login_url='/', redirect_field_name='')
+def autorize_user(request):
+    return render_to_response(
+        'autorize_users.html',
+        context_instance=RequestContext(request)
+    )
+
+
+def search_user(request, cpf):
+    users = User.objects.filter(username__startswith=cpf)
+    json = serializers.serialize('json', users)
+    return HttpResponse(json, mimetype='application/json')
