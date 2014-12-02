@@ -15,7 +15,7 @@ Após baixar, extrair os arquivos-fonte do Anato, entre no diretório da aplica�
 
 1) Instale o pacote pip:
 ```
-# apt-get install pip
+$ sudo apt-get install pip
 ```
 
 2) Instale os pacotes necessários:
@@ -30,7 +30,7 @@ $ apt-get build-dep python-ldap
 
 4) Crie as tabelas do banco de dados e um super usuário do Django:
 ```
-$ python manage.py syncb
+$ python manage.py syncdb
 ```
 5) Rode a aplicação:
 ```
