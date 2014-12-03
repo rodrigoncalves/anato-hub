@@ -110,6 +110,17 @@ def update_specific_exam(request, exam_id):
     )
 
 @login_required(login_url='/', redirect_field_name='')
-def delete_specific_exam(request, exam_id):
+def delete_specific_exam(request, patient_id, exam_id):
     exam = get_object_or_404(Exam, pk=exam_id)
     exam.delete()
+
+    patient = Paciente.objects.using("hub").get(codigo=patient_id)
+    exams = Exam.objects.filter(
+        patient=patient.codigo).order_by('-request_date')
+
+    return render_to_response(
+        'patient_profile.html',
+        {'patient': patient,
+        'exams': exams},
+        context_instance=RequestContext(request)
+    )
