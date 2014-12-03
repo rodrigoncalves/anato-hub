@@ -108,3 +108,8 @@ def update_specific_exam(request, exam_id):
          'specific_exam': specific_exam},
         context_instance=RequestContext(request)
     )
+
+@login_required(login_url='/', redirect_field_name='')
+def delete_specific_exam(request, exam_id):
+    exam = get_object_or_404(Exam, pk=exam_id)
+    exam.delete()

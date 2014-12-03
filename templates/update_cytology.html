@@ -1,114 +1,137 @@
 {% extends 'base.html' %}
 
-{% block 'title' %}Cadastro de Exame | Anato{% endblock %}
+{% block 'title' %}Exame Citologia | Anato{% endblock %}
 
 {% block 'content' %}
 
 	<div class="small-15 medium-13 large-13 small-centered columns">
 		<p><h2 class="title">Anato - HUB</h2></p>
 		<hr>
-		<p><h4 class="title">Exame Citologia:</h4></p>
-		<br>
 	</div>
 
-	<div class="small-15 medium-7 large-6 medium-centered large-centered columns">
-		<form action="" method="post">
+	<div class="small-15 medium-8 large-8 medium-centered large-centered columns">
+		<p><h4 class="title">Exame Citologia</h4></p>
+		<form action="/citologia/" method="post" id="cytology_form">
 			{% csrf_token %}
-
+			{% load wysiwyg %}
+			{% wysiwyg_setup %}
+			<input type="hidden" name="exam_id" value="{{exam.id}}">
+			<input type="hidden" name="patient_id" value="{{patient.codigo}}">
+			<input type="hidden" name="cytology_id" value="{{specific_exam.id}}">
 			<input type="checkbox" name="gynecological" value="Bike"> Ginecologico<br>
 
-			<div class="row">
+			<p><div class="row">
+                <div class="large-15 columns">
+                    <div class="row collapse prefix-radius">
+                        <div class="large-7 columns">
+                            <span class="prefix">Hora do Exame:</span>
+                        </div>
+                        <div class="large-8 columns">
+                            <input type="text" class="form-input hour" value="{{specific_exam.examination_time}}" name="examination_time" id="examination_time">
+                        </div>
+                    </div>
+                </div>
+            </div></p>
+
+			<p><div class="row">
 				<div class="large-15 columns">
 					<div class="row collapse prefix-radius">
-						<div class="small-6 columns">
-							<span class="prefix">Informacoes Clinicas:</span>
+						<div class="small-15 columns">
+							<span class="prefix">Informações Clínicas:</span>
 						</div>
 						<div class="small-15 columns">
-							<textarea rows="10" cols="100">
-								{{cytology.clinical_information}}
+							<textarea rows="5" cols="100" form="cytology_form" id="clinical_information" name="clinical_information">
+								{{specific_exam.clinical_information | default_if_none:"" }}
 							</textarea>
+							{% wysiwyg_editor "clinical_information" %}
 						</div>
 					</div>
 				</div>
-			</div>
+			</div></p>
 
-			<div class="row">
+			<p><div class="row">
 				<div class="large-15 columns">
 					<div class="row collapse prefix-radius">
-						<div class="small-6 columns">
+						<div class="small-15 columns">
 							<span class="prefix">Quantidade:</span>
 						</div>
 						<div class="small-15 columns">
-							<textarea rows="10" cols="100">
-								{{cytology.quantity}}
+							<textarea rows="5" cols="100" form="cytology_form" id="quantity" name="quantity">
+								{{specific_exam.quantity | default_if_none:"" }}
 							</textarea>
+							{% wysiwyg_editor "quantity" %}
 						</div>
 					</div>
 				</div>
-			</div>
+			</div></p>
 
-			<div class="row">
+			<p><div class="row">
 				<div class="large-15 columns">
 					<div class="row collapse prefix-radius">
-						<div class="small-6 columns">
+						<div class="small-15 columns">
 							<span class="prefix">Microscopia:</span>
 						</div>
 						<div class="small-15 columns">
-							<textarea rows="10" cols="100">
-								{{cytology.microscopic}}
+							<textarea rows="5" cols="100" form="cytology_form" id="microscopic" name="microscopic">
+								{{specific_exam.microscopic | default_if_none:"" }}
 							</textarea>
+							{% wysiwyg_editor "microscopic" %}
 						</div>
 					</div>
 				</div>
-			</div>
+			</div></p>
 
-			<div class="row">
+			<p><div class="row">
 				<div class="large-15 columns">
 					<div class="row collapse prefix-radius">
-						<div class="small-6 columns">
-							<span class="prefix">Conclusao:</span>
+						<div class="small-15 columns">
+							<span class="prefix">Conclusão:</span>
 						</div>
 						<div class="small-15 columns">
-							<textarea rows="10" cols="100">
-								{{cytology.conclusion}}
+							<textarea rows="5" cols="100" form="cytology_form" id="conclusion" name="conclusion">
+								{{specific_exam.conclusion | default_if_none:"" }}
 							</textarea>
+							{% wysiwyg_editor "conclusion" %}
 						</div>
 					</div>
 				</div>
-			</div>
+			</div></p>
 
-			<div class="row">
+			<p><div class="row">
 				<div class="large-15 columns">
 					<div class="row collapse prefix-radius">
-						<div class="small-4 columns">
+						<div class="small-15 columns">
 							<span class="prefix">Notas:</span>
 						</div>
 						<div class="small-15 columns">
-							<textarea rows="10" cols="100">
-								{{cytology.note}}
+							<textarea rows="5" cols="100" form="cytology_form" id="note" name="note">
+								{{specific_exam.note | default_if_none:"" }}
 							</textarea>
+							{% wysiwyg_editor "note" %}
 						</div>
 					</div>
 				</div>
-			</div>
+			</div></p>
 
-			<div class="row">
+			<p><div class="row">
 				<div class="large-15 columns">
 					<div class="row collapse prefix-radius">
-						<div class="small-6 columns">
+						<div class="small-15 columns">
 							<span class="prefix">Legenda:</span>
 						</div>
 						<div class="small-15 columns">
-							<textarea rows="10" cols="100">
-								{{cytology.footer}}
+							<textarea rows="5" cols="100" form="cytology_form" id="footer" name="footer">
+								{{specific_exam.footer | default_if_none:"" }}
 							</textarea>
+							{% wysiwyg_editor "footer" %}
 						</div>
 					</div>
 				</div>
+			</div></p>
+
+			<div class="small-14 small-centered medium-8 medium-centered large-7 large-centered columns">
+				<input class="button small expand" type="submit" value="Enviar" id="send-cytology"/>
 			</div>
-
-			<input type="submit" value="Submit" />
-
 		</form>
 	</div>
 
@@ -117,4 +140,11 @@
 {% block 'footer-scripts' %}
 	{% load staticfiles %}
 		<script src="{% static "js/foundation-datepicker.js" %}"></script>
+		<script src="{% static "js/wysiwyg-format.js" %}"></script>
+		<script src="{% static "js/jquery.inputmask.js" %}"></script>
+		<script type="text/javascript">
+			$(document).ready( function(){
+				$('.hour').inputmask('99:99')
+			})
+		</script>
 {% endblock %}
