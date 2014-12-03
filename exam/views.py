@@ -99,7 +99,7 @@ def update_specific_exam(request, exam_id):
     specific_exam = exam.specific_exam
     
     template_exam = 'update_' + exam_type.name_class.lower() + '.html',
-    if exam_type.name_class != 'Freezing':
+    if exam_type.name_class != 'Freezing' and exam_type.name_class != 'ImmunoHistochemical':
         specific_exam.examination_time = specific_exam.examination_time.strftime('%H:%M')
 
 

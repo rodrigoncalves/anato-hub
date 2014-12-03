@@ -7,15 +7,17 @@
     <div class="small-15 medium-13 large-13 small-centered columns">
         <p><h2 class="title">Anato - HUB</h2></p>
         <hr>
-        <p><h4 class="title">Exame Imunohistoquimica:</h4></p>
-        <br>
     </div>
 
     <div class="small-15 medium-8 large-8 medium-centered large-centered columns">
-        <form action="/imunohistoquimica/" method="post">
+                <p><h4 class="title">Exame Imunohistoquimica:</h4></p>
+        <form action="/imunohistoquimica/" method="post" id="immunohistochemical_form">
             {% csrf_token %}
             {% load wysiwyg %}
             {% wysiwyg_setup  %}
+            <input type="hidden" name="exam_id" value="{{exam.id}}">
+            <input type="hidden" name="patient_id" value="{{patient.codigo}}">
+            <input type="hidden" name="immunohistochemical_id" value="{{specific_exam.id}}">
 
             <p><div class="row">
                 <div class="large-15 columns">
@@ -37,7 +39,7 @@
                         <span class="prefix">Biópsia Anterior:</span>
                     </div>
                     <div class="large-8 columns">
-                        <input type="text" class="form-input" value="{{immunohistochemical.previous_biopsy | default_if_none:""}}" name="previous_biopsy" id="previous_biopsy" required>
+                        <input type="text" class="form-input" value="{{specific_exam.previous_biopsy | default_if_none:""}}" name="previous_biopsy" id="previous_biopsy" required>
                     </div>
                 </div>
             </div></p>
@@ -111,6 +113,11 @@
 
             <div class="small-14 small-centered medium-8 medium-centered large-7 large-centered columns">
                 <input class="button small expand" type="submit" value="Enviar" id="send-immunohistochemical"/>
+            </div>
+        </form>
+        <form action="/exame/apagar/{{patient.codigo}}/{{exam.id}}" method="post"> {% csrf_token %}
+            <div class="small-14 small-centered medium-8 medium-centered large-7 large-centered columns">
+                <input class="button small expand" type="submit" value="Apagar"/>
             </div>
         </form>
     </div>
