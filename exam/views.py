@@ -97,8 +97,11 @@ def update_specific_exam(request, exam_id):
     exam = get_object_or_404(Exam, pk=exam_id)
     exam_type = exam.exam_type
     specific_exam = exam.specific_exam
+    
     template_exam = 'update_' + exam_type.name_class.lower() + '.html',
-    specific_exam.examination_time = specific_exam.examination_time.strftime('%H:%M')
+    if exam_type.name_class != 'Freezing':
+        specific_exam.examination_time = specific_exam.examination_time.strftime('%H:%M')
+
 
     return render_to_response(
         template_exam,
