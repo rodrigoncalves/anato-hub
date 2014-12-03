@@ -148,6 +148,11 @@
                 <input class="button small expand" type="submit" value="Enviar" />
             </div>
         </form>
+        <form action="/exame/apagar/{{patient.codigo}}/{{exam.id}}" method="post"> {% csrf_token %}
+            <div class="small-14 small-centered medium-8 medium-centered large-7 large-centered columns">
+                <input class="button small expand" type="submit" value="Apagar"/>
+            </div>
+        </form>
     </div>
 
 {% endblock %}
