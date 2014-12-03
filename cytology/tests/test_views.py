@@ -5,7 +5,7 @@ from django.test import TestCase, Client
 from should_dsl import should
 from sys import stderr
 from core.tests.db_mock import DatabaseMock
-from biopsy.models import Cytology
+from cytology.models import Cytology
 from south.utils import datetime_utils as datetime
 from core.tests.format_test import FormatTest
 
