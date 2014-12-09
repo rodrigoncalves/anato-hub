@@ -55,9 +55,11 @@ def log_out(request):
 
 @permission_required_with_403('auth.change_user')
 @login_required(login_url='/', redirect_field_name='')
-def autorize_user(request):
+def admin_painel(request):
+    users = User.objects.all()
     return render_to_response(
-        'autorize_users.html',
+        'admin_painel.html',
+        locals(),
         context_instance=RequestContext(request)
     )
 

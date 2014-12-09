@@ -5,7 +5,7 @@
     <div class="small-15 medium-13 large-13 small-centered columns">
         <p><h2 class="title">Anato - HUB</h2></p>
         <hr>
-        <p><h4 class="title">Autorizar Usuários</h4></p>
+        <p><h4 class="title">Painel administrativo</h4></p>
         <br>
     </div>
 
@@ -13,5 +13,20 @@
         <div class="small-14 small-centered medium-7 large-7 columns">
             <input type="text" name="search_user" id="search_user" placeholder="Digite o CPF desejado">
         </div>
+    </div>
+
+    <div class="small-15 medium-12 large-8 row">
+        {% for user in users %}
+            <table>
+                <tr>
+                    <td>Nome</td>
+                    <td>Ativo</td>
+                </tr>
+                <tr>
+                    <td>{{user.username}}</td>
+                    <td><input type="radio" {% if user.is_active %} checked {% endif %}></td>
+                </tr>
+            </table>
+        {% endfor %}
     </div>
 {% endblock 'content' %}
