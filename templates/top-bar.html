@@ -10,9 +10,14 @@
 
       <section class="top-bar-section">
         <ul class="right">
+          {% load has_group %}
+          {% if user|has_group:"Administrative" %}
+            <li class="divider"></li>
+            <li><a href="/painel/"><i class="fi-widget"></i> Painel Administrativo</a></li>
+          {% endif %}
           {% if user.is_authenticated %}
             <li class="divider"></li>
-            <li><a href="/consulta/"><i class="fi-magnifying-glass"></i> Nova Consulta</a></li>
+            <li><a href="/consulta/"><i class="fi-magnifying-glass"></i> Consultar Paciente</a></li>
             <li class="active"><a href="/sair">Sair</a></li>
           {% else %}
             <li class="active"><a href="/">Entrar</a></li>

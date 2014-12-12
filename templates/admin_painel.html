@@ -15,18 +15,12 @@
         </div>
     </div>
 
-    <div class="small-15 medium-12 large-8 row">
-        {% for user in users %}
-            <table>
-                <tr>
-                    <td>Nome</td>
-                    <td>Ativo</td>
-                </tr>
-                <tr>
-                    <td>{{user.username}}</td>
-                    <td><input type="radio" {% if user.is_active %} checked {% endif %}></td>
-                </tr>
-            </table>
-        {% endfor %}
+
     </div>
 {% endblock 'content' %}
+
+
+{% block 'footer-scripts' %}
+    {% load staticfiles %}
+        <script src={% static "js/user_search.js" %}></script>
+{% endblock 'footer-scripts' %}
