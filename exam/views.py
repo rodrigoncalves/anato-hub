@@ -97,8 +97,11 @@ def update_specific_exam(request, exam_id):
     exam = get_object_or_404(Exam, pk=exam_id)
     exam_type = exam.exam_type
     specific_exam = exam.specific_exam
+    
     template_exam = 'update_' + exam_type.name_class.lower() + '.html',
-    specific_exam.examination_time = specific_exam.examination_time.strftime('%H:%M')
+    if exam_type.name_class != 'Freezing' and exam_type.name_class != 'ImmunoHistochemical':
+        specific_exam.examination_time = specific_exam.examination_time.strftime('%H:%M')
+
 
     return render_to_response(
         template_exam,
@@ -106,5 +109,21 @@ def update_specific_exam(request, exam_id):
          'patient': exam.patient_information,
          'exam_type': exam_type,
          'specific_exam': specific_exam},
+        context_instance=RequestContext(request)
+    )
+
+@login_required(login_url='/', redirect_field_name='')
+def delete_specific_exam(request, patient_id, exam_id):
+    exam = get_object_or_404(Exam, pk=exam_id)
+    exam.delete()
+
+    patient = Paciente.objects.using("hub").get(codigo=patient_id)
+    exams = Exam.objects.filter(
+        patient=patient.codigo).order_by('-request_date')
+
+    return render_to_response(
+        'patient_profile.html',
+        {'patient': patient,
+        'exams': exams},
         context_instance=RequestContext(request)
     )

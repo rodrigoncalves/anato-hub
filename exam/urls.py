@@ -10,4 +10,5 @@ urlpatterns = patterns(
     url(r'^atualizar/(?P<exam_id>\d+)$', 'update_exam'),
     url(r'^atualizar/exame-especifico/(?P<exam_id>\d+)$', 'update_specific_exam'),
     url(r'^registrar_atualizacao/$', 'register_update_exam'),
+    url(r'^apagar/(?P<patient_id>\d+)/(?P<exam_id>\d+)$', 'delete_specific_exam'),
 )

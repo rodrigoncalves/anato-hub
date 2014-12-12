@@ -1,13 +1,6 @@
 {% autoescape off %}
 
 <div class="row">
-    <h6 class="exam-field">Hora do exame</h6>
-    <div class="row">
-        {{specific_exam.examination_time | default_if_none:"<i>Nenhuma informação adicionada.</i>"}}
-    </div>
-    <hr>
-</div>
-<div class="row">
     <h6 class="exam-field">Informações Clínicas</h6>
     <div class="row">
         {{specific_exam.clinical_information | default_if_none:"<i>Nenhuma informação adicionada.</i>"}}
@@ -15,16 +8,30 @@
     <hr>
 </div>
 <div class="row">
-    <h6 class="exam-field">Quantidade</h6>
+    <h6 class="exam-field">Biópsia Anterior</h6>
     <div class="row">
-        {{specific_exam.quantity | default_if_none:"<i>Nenhuma informação adicionada.</i>"}}
+        {{specific_exam.previous_biopsy | default_if_none:"<i>Nenhuma informação adicionada.</i>"}}
     </div>
     <hr>
 </div>
 <div class="row">
-    <h6 class="exam-field">Microscopia</h6>
+    <h6 class="exam-field">Anticorpos</h6>
     <div class="row">
-        {{specific_exam.microscopic | default_if_none:"<i>Nenhuma informação adicionada.</i>"}}
+        {{specific_exam.antibodies.antibody | default_if_none:"<i>Nenhuma informação adicionada.</i>"}}
+    </div>
+    <hr>
+</div>
+<div class="row">
+    <h6 class="exam-field">Clone</h6>
+    <div class="row">
+        {{specific_exam.antibodies.clone | default_if_none:"<i>Nenhuma informação adicionada.</i>"}}
+    </div>
+    <hr>
+</div>
+<div class="row">
+    <h6 class="exam-field">Resultados</h6>
+    <div class="row">
+        {{specific_exam.antibodies.result | default_if_none:"<i>Nenhuma informação adicionada.</i>"}}
     </div>
     <hr>
 </div>
@@ -49,5 +56,4 @@
     </div>
     <hr>
 </div>
-
 {% endautoescape %}
