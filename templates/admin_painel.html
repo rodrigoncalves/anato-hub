@@ -23,9 +23,17 @@
                 <td>Ativo</td>
             </tr>
             {% for user in users %}
+                {% load has_group %}
                 <tr>
-                    <td>{{user.username}}</td>
-                    <td><input type="checkbox" name="{{user.id}}" {% if user.is_active %}checked{% endif %}></td>
+                    <td>
+                        {% ifequal user.username current_username %}<b>{% endifequal %}
+                        {{user.username}}
+                        {% ifequal user.username current_username %}</b>{% endifequal %}
+                    </td>
+                    <td>
+                        <input type="checkbox" name="{{user.id}}" {% if user.is_active %}checked{% endif %}
+                            {% if user|has_group:"Administrative" or user.username == current_username%}readonly="on"{% endif %} />
+                    </td>
                 </tr>
             {% endfor %}
         </table>
