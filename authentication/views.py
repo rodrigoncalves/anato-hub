@@ -57,6 +57,12 @@ def log_out(request):
 @login_required(login_url='/', redirect_field_name='')
 def admin_painel(request):
     users = User.objects.all()
+
+    if request.method == 'POST':
+        for u in users:
+            u.is_active = str(u.id) in request.POST
+            u.save()
+
     return render_to_response(
         'admin_painel.html',
         locals(),
