@@ -126,6 +126,24 @@ def import_group_permissions():
                 group.permissions.add(permission)
 
 
+def create_random_users():
+    from django.contrib.auth.models import User
+    from random import random
+
+    for i in range(0, 1000):
+        cpf = int(random()*(10**11))
+        user = User.objects.create_user(str(cpf), None, '123')
+        user.is_active = False
+        user.save()
+
+    for i in range(0, 1000):
+        cpf = int(random()*(10**11))
+        user = User.objects.create_user(str(cpf), None, '123')
+        user.is_active = True
+        user.save()
+
+
+
 def import_all():
     import_exam_type()
     import_report_status()
