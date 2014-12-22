@@ -58,17 +58,25 @@ def log_out(request):
 @permission_required_with_403('auth.change_user')
 @login_required(login_url='/', redirect_field_name='')
 def admin_painel(request):
-    # users = User.objects.all()
-    # current_username = request.user.username
-
-    # if request.method == 'POST':
-    #     for u in users:
-    #         u.is_active = str(u.id) in request.POST
-    #         u.save()
-
     return render_to_response(
         'admin_painel.html',
         locals(),
+        context_instance=RequestContext(request)
+    )
+
+
+@permission_required_with_403('auth.change_user')
+@login_required(login_url='/', redirect_field_name='')
+def update_user(request, id_user):
+    user = User.objects.get(pk=id_user)
+
+    if request.method == 'POST':
+        user.is_active = str(user.id) in request.POST
+        user.save()
+
+    return render_to_response(
+        'update_user.html',
+        {'u': user},
         context_instance=RequestContext(request)
     )
 
