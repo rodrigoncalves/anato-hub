@@ -59,12 +59,6 @@ function search_user(){
                 $('#loading').remove();
                 $('#search-results').remove();
 
-                $('<br><div id="search-results"</div>').insertAfter('#search-bar');
-                $('#search-results').addClass('row');
-
-                $('#search-results').append('<div id="user-not-found">');
-                $('#user-not-found').addClass('small-14 medium-10 large-10 small-centered text-center');
-
                 ajax_request = false;
             }
         })

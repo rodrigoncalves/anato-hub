@@ -13,33 +13,6 @@
         </div>
     </div>
 
-<!--     <form action="/painel/" method="post">
-        {% csrf_token %}
-        <table class="small-14 small-centered medium-7 large-3 columns">
-            <tr>
-                <td>Nome de usuário</td>
-                <td>Ativo</td>
-            </tr>
-            {% for user in users %}
-                {% load has_group %}
-                <tr>
-                    <td>
-                    {% ifequal user.username current_username %}<b>{% endifequal %}
-                    {{user.username}}
-                {% ifequal user.username current_username %}</b>{% endifequal %}
-            </td>
-            <td>
-                <input type="checkbox" name="{{user.id}}" {% if user.is_active %}checked{% endif %}
-                {% if user|has_group:"Administrative" or user.username == current_username%}readonly="on"{% endif %} />
-            </td>
-        </tr>
-        {% endfor %}
-        </table>
-        <div class="small-15 medium-12 large-3 medium-centered large-centered columns">
-            <input type="submit" class="button postfix" value="Salvar">
-        </div>
-    </form>
- -->
 {% endblock 'content' %}
 {% block 'footer-scripts' %}
 {% load staticfiles %}

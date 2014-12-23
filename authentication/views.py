@@ -58,14 +58,6 @@ def log_out(request):
 @permission_required_with_403('auth.change_user')
 @login_required(login_url='/', redirect_field_name='')
 def admin_painel(request):
-    # users = User.objects.all()
-    # current_username = request.user.username
-
-    # if request.method == 'POST':
-    #     for u in users:
-    #         u.is_active = str(u.id) in request.POST
-    #         u.save()
-
     return render_to_response(
         'admin_painel.html',
         locals(),
@@ -74,11 +66,15 @@ def admin_painel(request):
 
 
 def search_user(request, cpf):
-    users = list(User.objects.filter(
-        username__startswith=cpf).order_by('-date_joined'))
-    status_code = 500
-    serialize_users = serializers.serialize('json', users)
-    json_data = json.loads(serialize_users)
-    json_data = json.dumps({'users': json_data})
-    response = HttpResponse(json_data, content_type='application/json')
+    try:
+        users = list(User.objects.filter(
+            username__startswith=cpf).order_by('-date_joined'))
+        status_code = 500
+        serialize_users = serializers.serialize('json', users)
+        json_data = json.loads(serialize_users)
+        json_data = json.dumps({'users': json_data})
+        response = HttpResponse(json_data, content_type='application/json')
+    except:
+        response = HttpResponse()
+
     return response
