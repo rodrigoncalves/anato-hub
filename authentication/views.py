@@ -65,6 +65,22 @@ def admin_painel(request):
     )
 
 
+@permission_required_with_403('auth.change_user')
+@login_required(login_url='/', redirect_field_name='')
+def update_user(request, id_user):
+    user = User.objects.get(pk=id_user)
+
+    if request.method == 'POST':
+        user.is_active = str(user.id) in request.POST
+        user.save()
+
+    return render_to_response(
+        'update_user.html',
+        {'u': user},
+        context_instance=RequestContext(request)
+    )
+
+
 def search_user(request, cpf):
     try:
         users = list(User.objects.filter(

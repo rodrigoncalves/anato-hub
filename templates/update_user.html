@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block 'title' %}Autorizar Usuário | Anato HUB{% endblock %}
+{% block 'content' %}
+    <div class="small-15 medium-13 large-13 small-centered columns">
+        <p><h2 class="title">Anato - HUB</h2></p>
+        <hr>
+        <p><h4 class="title">Painel administrativo</h4></p>
+        <br>
+    </div>
+    
+    <form action="" method="post">
+        {% csrf_token %}
+        <table class="small-14 small-centered medium-7 large-3 columns">
+            <tr>
+                <td>CPF</td>
+                <td>Ativo</td>
+            </tr>
+
+            <tr>
+                <td>{{u.username}}</td>
+	            <td>
+            		{% load has_group %}
+	                <input type="checkbox" name="{{u.id}}" {% if u.is_active %}checked{% endif %}
+	                {% if u|has_group:"Administrative" or u.username == user.username %}readonly{% endif %} />
+	            </td>
+	        </tr>
+        
+        </table>
+        <div class="small-15 medium-12 large-3 medium-centered large-centered columns">
+            <input type="submit" class="button postfix" value="Salvar">
+        </div>
+    </form>
+
+{% endblock 'content' %}
+{% block 'footer-scripts' %}
+{% load staticfiles %}
+<script src={% static "js/user_search.js" %}></script>
+{% endblock 'footer-scripts' %}
